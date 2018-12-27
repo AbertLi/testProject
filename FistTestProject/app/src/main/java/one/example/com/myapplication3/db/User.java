@@ -17,6 +17,9 @@ public class User {
     @ColumnInfo(name = "last_name")
     private String lastName;
 
+    @ColumnInfo(name = "_age")
+    private int age;
+
     public User() {
     }
 
