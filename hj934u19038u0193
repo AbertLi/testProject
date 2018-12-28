@@ -1,0 +1,36 @@
+[33mcommit 0fa0da3174e405040779131f7c2e960887eac0a9[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/masterer_Version1.3[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmasterer_Version1.3[m[33m)[m
+Merge: 2197e98 d25b2c7
+Author: Albertrt_Lee <3185017028@qq.com>
+Date:   Thu Dec 27 19:54:31 2018 +0800
+
+    Merge branch 'master' of https://github.com/AbertLi/testProject
+
+[33mcommit 2197e982bcab5effcbf11f51ef20674d8b2f5707[m
+Author: Albertrt_Lee <3185017028@qq.com>
+Date:   Thu Dec 27 19:52:25 2018 +0800
+
+    FistTestProject
+
+[33mcommit f3fecc2dbc26eb36a299ccda692de77af7918225[m
+Author: Albertrt_Lee <3185017028@qq.com>
+Date:   Thu Dec 27 19:31:42 2018 +0800
+
+    添加UserBean和User
+
+[33mcommit d25b2c78f109e3d5d7ac7fc732907c354de305e5[m
+Author: Albert_Lee <3185017028@qq.com>
+Date:   Thu Dec 27 19:38:02 2018 +0800
+
+    Update README.md
+
+[33mcommit a13a35824958ce62fd636713303c9224784600ba[m
+Author: Albert_Lee <3185017028@qq.com>
+Date:   Thu Dec 27 19:37:06 2018 +0800
+
+    Create README.md
+
+[33mcommit b4e9ace0e1138e7b7350cfd00d867aaa092557b4[m
+Author: Albertrt_Lee <3185017028@qq.com>
+Date:   Thu Dec 27 15:29:50 2018 +0800
+
+    “
