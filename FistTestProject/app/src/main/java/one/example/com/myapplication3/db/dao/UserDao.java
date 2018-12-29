@@ -1,5 +1,4 @@
 package one.example.com.myapplication3.db.dao;
-
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -25,4 +24,7 @@ public interface UserDao {
     @Delete
     void delete(User user);
 
+
+//    @Query("SELECT * FROM user")
+//    public LiveData<List<User>> getAllUseLiveData();
 }

@@ -6,6 +6,6 @@ import android.arch.persistence.room.RoomDatabase;
 import one.example.com.myapplication3.db.dao.UserDao;
 
 @Database(entities = {User.class}, version = 1)
-abstract class AppDatabase extends RoomDatabase {
+public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
 }

@@ -1,9 +1,10 @@
 package one.example.com.myapplication3.bindings;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
 import android.util.Log;
+
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 import one.example.com.myapplication3.MainActivity;
 
 public class MyLifecycleObserver implements LifecycleObserver {
