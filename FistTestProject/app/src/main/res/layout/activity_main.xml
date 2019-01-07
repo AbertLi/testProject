@@ -13,46 +13,45 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:onClick="btn"
-        android:text="Request"
-        />
+        android:text="TestBinding" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
         android:onClick="btn"
-        android:text="TEST Kotlin"
-        android:layout_below="@+id/button"
+        android:text="FragMentTest"
 
         />
+
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
         android:onClick="btn"
-        android:text="button3"
-        android:layout_below="@+id/button2"
+        android:text="RecyclerView"
 
         />
+
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
         android:layout_centerHorizontal="true"
         android:onClick="btn"
-        android:text="DB_select"
-        android:layout_below="@+id/button3"
-        />
+        android:text="DB_select" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/button4"
         android:layout_centerHorizontal="true"
         android:onClick="btn"
-        android:text="DB_insert"
-        android:layout_below="@+id/button4"
-        />
+        android:text="DB_insert" />
 </RelativeLayout>

@@ -1,12 +1,21 @@
 package one.example.com.myapplication3.bindings;
 
-public class PersonBean {
+public class PersonBean implements IPersonBean {
+    private int id;
     private String name;
-    private int age;
+    private String age;
 
-    public PersonBean(String name, int age) {
+    public PersonBean(String name, String age) {
         this.name = name;
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -17,11 +26,11 @@ public class PersonBean {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 }
