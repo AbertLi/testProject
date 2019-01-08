@@ -6,10 +6,18 @@ public class Logs {
     private static final String TAG = "Logs";
 
     public static void iprintln(String str) {
-        Log.i(TAG, "" + str);
+        iprintln( TAG, str );
     }
 
     public static void eprintln(String str) {
-        Log.e(TAG, "" + str);
+        eprintln( TAG, str );
+    }
+
+    public static void iprintln(String tag, String str) {
+        Log.i( tag, str );
+    }
+
+    public static void eprintln(String tag, String str) {
+        Log.e( tag, str );
     }
 }

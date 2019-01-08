@@ -51,16 +51,12 @@
             </LinearLayout>
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/list_item"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </FrameLayout>
-
+            android:layout_height="match_parent"
+            android:contentDescription="PersonList"
+            app:layoutManager="LinearLayoutManager" />
+        //LayoutManager这个值如果不设置就没办法展示数据，在Java代码中设置这个参数也可以
     </LinearLayout>
 </layout>

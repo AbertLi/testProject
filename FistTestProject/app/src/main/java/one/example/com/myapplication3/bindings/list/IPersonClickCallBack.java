@@ -1,7 +1,7 @@
 package one.example.com.myapplication3.bindings.list;
 
-import one.example.com.myapplication3.bindings.PersonBean;
+import one.example.com.myapplication3.bindings.IPersonBean;
 
 public interface IPersonClickCallBack {
-    void onClick(PersonBean person);
+    void onClick(IPersonBean person);
 }
