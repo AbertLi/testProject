@@ -5,7 +5,7 @@
     <data>
         <variable
             name="personBean"
-            type="one.example.com.myapplication3.bindings.IPersonBean" />
+            type="one.example.com.myapplication3.db.dao.IPersonBean" />
 
         <variable
             name="callback"

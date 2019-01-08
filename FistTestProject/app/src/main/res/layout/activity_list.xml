@@ -6,7 +6,7 @@
 
         <variable
             name="personBean"
-            type="one.example.com.myapplication3.bindings.PersonBean" />
+            type="one.example.com.myapplication3.db.entity.PersonBean" />
 
         <variable
             name="titleName"

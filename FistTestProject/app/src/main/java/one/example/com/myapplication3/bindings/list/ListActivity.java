@@ -3,7 +3,6 @@ package one.example.com.myapplication3.bindings.list;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -14,8 +13,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.R;
-import one.example.com.myapplication3.bindings.IPersonBean;
-import one.example.com.myapplication3.bindings.PersonBean;
+import one.example.com.myapplication3.db.dao.IPersonBean;
+import one.example.com.myapplication3.db.entity.PersonBean;
 import one.example.com.myapplication3.databinding.ActivityListBinding;
 
 

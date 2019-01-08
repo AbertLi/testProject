@@ -1,4 +1,4 @@
-package one.example.com.myapplication3.bindings;
+package one.example.com.myapplication3.db.dao;
 
 public interface IPersonBean {
     int getId();

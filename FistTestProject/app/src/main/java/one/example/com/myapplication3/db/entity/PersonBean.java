@@ -1,4 +1,6 @@
-package one.example.com.myapplication3.bindings;
+package one.example.com.myapplication3.db.entity;
+
+import one.example.com.myapplication3.db.dao.IPersonBean;
 
 public class PersonBean implements IPersonBean {
     private int id;

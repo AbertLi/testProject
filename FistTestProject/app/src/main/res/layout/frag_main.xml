@@ -4,9 +4,9 @@
 
     <data>
         <import type="android.view.View"/>
-        <variable
-            name="personViewModle"
-            type="one.example.com.myapplication3.bindings.viewmodlelivedate.PersonViewModle" />
+        <!--<variable-->
+            <!--name="personViewModle"-->
+            <!--type="one.example.com.myapplication3.viewmodle.PersonViewModle" />-->
     </data>
 
 

@@ -1,15 +1,17 @@
-package one.example.com.myapplication3.bindings.viewmodlelivedate;
+package one.example.com.myapplication3.viewmodle;
 
 import android.app.Application;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import one.example.com.myapplication3.Logs;
-import one.example.com.myapplication3.bindings.PersonBean;
+import one.example.com.myapplication3.db.entity.PersonBean;
 
-public class PersonViewModle extends AndroidViewModel {
-    public PersonViewModle(@NonNull Application application) {
+public class PersonListViewModle extends AndroidViewModel {
+    public PersonListViewModle(@NonNull Application application) {
         super( application );
     }
 
@@ -20,21 +22,21 @@ public class PersonViewModle extends AndroidViewModel {
     }
 
     // 创建LiveData
-    private MutableLiveData<PersonBean> mAccount = new MutableLiveData<>();
+    private MutableLiveData<List<PersonBean>> mAccount = new MutableLiveData<>();
 
 
     public void setPerson(String name, String age) {
-        mAccount.setValue( new PersonBean( name, age ) );
+
     }
 
-    public MutableLiveData<PersonBean> getPerson() {
+    public MutableLiveData<List<PersonBean>> getPerson() {
         return mAccount;
     }
 
     // 当MyActivity被销毁时，Framework会调用ViewModel的onCleared()
     @Override
     protected void onCleared() {
-        Logs.eprintln( "AccountModel ==========onCleared()==========" );
+        Logs.eprintln( "PersonListViewModle  ==========onCleared()==========" );
         super.onCleared();
     }
 }
