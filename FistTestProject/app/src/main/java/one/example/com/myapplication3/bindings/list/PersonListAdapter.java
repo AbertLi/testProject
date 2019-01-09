@@ -13,7 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import one.example.com.myapplication3.R;
-import one.example.com.myapplication3.db.dao.IPersonBean;
+import one.example.com.myapplication3.modle.IPersonBean;
 import one.example.com.myapplication3.databinding.PersonRecyclerviewItemBinding;
 
 public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.PersonViewHolper> {

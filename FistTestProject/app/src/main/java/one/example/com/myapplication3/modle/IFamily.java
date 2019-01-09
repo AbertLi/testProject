@@ -1,4 +1,4 @@
-package one.example.com.myapplication3.db.dao;
+package one.example.com.myapplication3.modle;
 
 public interface IFamily {
     int getId();

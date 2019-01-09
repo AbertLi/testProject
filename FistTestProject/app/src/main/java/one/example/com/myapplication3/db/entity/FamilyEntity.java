@@ -1,8 +1,10 @@
 package one.example.com.myapplication3.db.entity;
 
-import one.example.com.myapplication3.db.dao.IFamily;
-
-public class FamilyEtity implements IFamily {
+import androidx.room.Entity;
+import one.example.com.myapplication3.db.DbConstant;
+import one.example.com.myapplication3.modle.IFamily;
+@Entity(tableName = DbConstant.FAMILY_TABLE_NAME)
+public class FamilyEntity implements IFamily {
     private int id;
     private int personId;
     private String text;

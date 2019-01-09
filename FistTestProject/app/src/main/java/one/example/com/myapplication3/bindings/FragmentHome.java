@@ -11,11 +11,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import one.example.com.myapplication3.R;
-import one.example.com.myapplication3.viewmodle.PersonViewModle;
+import one.example.com.myapplication3.viewmodle.FamilyViewModle;
 import one.example.com.myapplication3.databinding.FragMainBinding;
 
 public class FragmentHome extends Fragment {
-    PersonViewModle mViewModle;
+    FamilyViewModle mViewModle;
     FragMainBinding binding;
     View v;
 
@@ -24,7 +24,7 @@ public class FragmentHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate( inflater, R.layout.frag_main, container, false );
         v = binding.getRoot();
-        mViewModle = ViewModelProviders.of( this ).get( PersonViewModle.class );
+        mViewModle = ViewModelProviders.of( this ).get( FamilyViewModle.class );
         return v;
     }
 
@@ -34,7 +34,7 @@ public class FragmentHome extends Fragment {
         v.findViewById( R.id.btn_showName ).setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final PersonViewModle model = ViewModelProviders.of( FragmentHome.this ).get( PersonViewModle.class );
+                final FamilyViewModle model = ViewModelProviders.of( FragmentHome.this ).get( FamilyViewModle.class );
                 binding.setPersonViewModle( model );
             }
         } );

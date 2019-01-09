@@ -13,8 +13,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.R;
-import one.example.com.myapplication3.db.dao.IPersonBean;
-import one.example.com.myapplication3.db.entity.PersonBean;
+import one.example.com.myapplication3.modle.IPersonBean;
+import one.example.com.myapplication3.db.entity.PersonEntity;
 import one.example.com.myapplication3.databinding.ActivityListBinding;
 
 
@@ -24,7 +24,7 @@ import one.example.com.myapplication3.databinding.ActivityListBinding;
 public class ListActivity extends Activity {
     private String TAG = "ListActivity";
     private ActivityListBinding binding;
-    private PersonBean select;
+    private PersonEntity select;
     private PersonListAdapter adapter;
 
 
@@ -38,7 +38,7 @@ public class ListActivity extends Activity {
         binding.recyclerview.setAdapter( adapter );
 
         if (select == null) {
-            select = new PersonBean( "暂时么有选择", "" );
+            select = new PersonEntity( "暂时么有选择", "" );
         }
         addTitle( select );
     }
@@ -51,16 +51,16 @@ public class ListActivity extends Activity {
         binding.executePendingBindings();//计算挂起的绑定，更新将表达式绑定到已修改变量的任何视图。
     }
 
-    public void addTitle(PersonBean select) {
+    public void addTitle(PersonEntity select) {
         binding.setTitleName( select.getName() );
         binding.setTitleAge( select.getAge() );
     }
 
     public void addData(PersonListAdapter adapter) {
-        List<PersonBean> listBean = new ArrayList<>();
+        List<PersonEntity> listBean = new ArrayList<>();
         String[] strData = {"AAA", "BBB", "CCC", "DDD", "Jack", "Mary", "Fox", "Albert", "Jason", "FFF", "ggg"};
         for (int j = 0; j < strData.length; j++) {
-            PersonBean personBean = new PersonBean( strData[j], "" + (21 + j) );
+            PersonEntity personBean = new PersonEntity( strData[j], "" + (21 + j) );
             listBean.add( personBean );
         }
         adapter.addPersonList( listBean );
@@ -69,7 +69,7 @@ public class ListActivity extends Activity {
     IPersonClickCallBack clickCallBack = new IPersonClickCallBack() {
         @Override
         public void onClick(IPersonBean person) {
-            select = (PersonBean) person;
+            select = (PersonEntity) person;
             addTitle( select );
             Logs.eprintln( TAG, "点击：" + person.getName() );
         }

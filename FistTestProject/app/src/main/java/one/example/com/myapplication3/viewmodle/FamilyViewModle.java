@@ -6,10 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import one.example.com.myapplication3.Logs;
-import one.example.com.myapplication3.db.entity.PersonBean;
+import one.example.com.myapplication3.db.entity.PersonEntity;
 
-public class PersonViewModle extends AndroidViewModel {
-    public PersonViewModle(@NonNull Application application) {
+public class FamilyViewModle extends AndroidViewModel {
+    public FamilyViewModle(@NonNull Application application) {
         super( application );
     }
 
@@ -20,14 +20,14 @@ public class PersonViewModle extends AndroidViewModel {
     }
 
     // 创建LiveData
-    private MutableLiveData<PersonBean> mAccount = new MutableLiveData<>();
+    private MutableLiveData<PersonEntity> mAccount = new MutableLiveData<>();
 
 
     public void setPerson(String name, String age) {
-        mAccount.setValue( new PersonBean( name, age ) );
+        mAccount.setValue( new PersonEntity( name, age ) );
     }
 
-    public MutableLiveData<PersonBean> getPerson() {
+    public MutableLiveData<PersonEntity> getPerson() {
         return mAccount;
     }
 

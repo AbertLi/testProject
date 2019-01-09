@@ -1,13 +1,15 @@
 package one.example.com.myapplication3.db.entity;
 
-import one.example.com.myapplication3.db.dao.IPersonBean;
-
-public class PersonBean implements IPersonBean {
+import androidx.room.Entity;
+import one.example.com.myapplication3.db.DbConstant;
+import one.example.com.myapplication3.modle.IPersonBean;
+@Entity(tableName = DbConstant.PERSON_TABLE_NAME)
+public class PersonEntity implements IPersonBean {
     private int id;
     private String name;
     private String age;
 
-    public PersonBean(String name, String age) {
+    public PersonEntity(String name, String age) {
         this.name = name;
         this.age = age;
     }
