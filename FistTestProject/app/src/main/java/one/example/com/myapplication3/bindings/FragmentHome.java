@@ -34,8 +34,6 @@ public class FragmentHome extends Fragment {
         v.findViewById( R.id.btn_showName ).setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final FamilyViewModle model = ViewModelProviders.of( FragmentHome.this ).get( FamilyViewModle.class );
-                binding.setPersonViewModle( model );
             }
         } );
 

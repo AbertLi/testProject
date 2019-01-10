@@ -20,7 +20,7 @@ public class BaseApplication extends Application {
         return AppDataBase.getInstance(this, mAppExecutors);
     }
 
-//    public DataRepository getRepository() {
-//        return DataRepository.getInstance(getDatabase());
-//    }
+    public DataRepository getRepository() {
+        return DataRepository.getInstance(getDatabase());
+    }
 }

@@ -3,10 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View"/>
-        <!--<variable-->
-            <!--name="personViewModle"-->
-            <!--type="one.example.com.myapplication3.viewmodle.FamilyViewModle" />-->
     </data>
 
 

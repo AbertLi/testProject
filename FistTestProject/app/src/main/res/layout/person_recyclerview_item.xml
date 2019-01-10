@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="personBean"
             type="one.example.com.myapplication3.modle.IPersonBean" />
@@ -30,6 +31,7 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:gravity="center"
@@ -41,6 +43,7 @@
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:gravity="center"

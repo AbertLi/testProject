@@ -10,6 +10,10 @@ import one.example.com.myapplication3.bindings.ActivityTestFragment;
 import one.example.com.myapplication3.bindings.list.ListActivity;
 import one.example.com.myapplication3.recyclerviews.RecyclerViewActivity;
 
+/**
+ * 该项目参考google提供的sample的基础架构组件，Architecture Components Basic
+ *
+ */
 public class MainActivity extends Activity {
     public static String TAG = "MyApplication";
 

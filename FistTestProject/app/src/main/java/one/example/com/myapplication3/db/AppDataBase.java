@@ -2,6 +2,7 @@ package one.example.com.myapplication3.db;
 import android.content.Context;
 import java.util.List;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.room.Database;
 import androidx.room.Room;
@@ -85,6 +86,10 @@ public abstract class AppDataBase extends RoomDatabase {
 
     private void setDatabaseCreated() {
         mIsDatabaseCreated.postValue( true );
+    }
+
+    public LiveData<Boolean> getDatabaseCreated() {
+        return mIsDatabaseCreated;
     }
 
 
