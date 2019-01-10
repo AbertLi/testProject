@@ -1,10 +1,13 @@
 package one.example.com.myapplication3.db.entity;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 import one.example.com.myapplication3.db.DbConstant;
 import one.example.com.myapplication3.modle.IFamily;
+
 @Entity(tableName = DbConstant.FAMILY_TABLE_NAME)
 public class FamilyEntity implements IFamily {
+    @PrimaryKey
     private int id;
     private int personId;
     private String text;
@@ -14,14 +17,17 @@ public class FamilyEntity implements IFamily {
     public int getId() {
         return id;
     }
+
     @Override
     public int getPersonId() {
         return personId;
     }
+
     @Override
     public String getText() {
         return text;
     }
+
     @Override
     public String getAge() {
         return age;

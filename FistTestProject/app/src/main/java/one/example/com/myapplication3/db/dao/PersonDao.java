@@ -3,12 +3,13 @@ package one.example.com.myapplication3.db.dao;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import one.example.com.myapplication3.db.DbConstant;
 import one.example.com.myapplication3.db.entity.PersonEntity;
-
+@Dao
 public interface PersonDao {
     @Query("SELECT * FROM " + DbConstant.PERSON_TABLE_NAME)
     LiveData<List<PersonEntity>> loadAllProducts();
