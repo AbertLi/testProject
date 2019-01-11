@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
 /*
@@ -18,11 +19,12 @@ public class DataGenerator {
     public static List<PersonEntity> generatePersons() {
         List<PersonEntity> listPerson = new ArrayList<>();
         Random rnd = new Random();
-        for (int i = 0; i < listPerson.size(); i++) {
+        for (int i = 0; i < name.length; i++) {
             PersonEntity bean = new PersonEntity( name[i], String.valueOf( rnd.nextInt(50) + 22 ) );
             bean.setId( 100+i );
             listPerson.add( bean );
         }
+        Logs.iprintln( "DataGenerator","person size="+listPerson.size() );
         return listPerson;
     }
 
@@ -38,6 +40,7 @@ public class DataGenerator {
             familyEtity.setAge( ""+(rnd.nextInt(30)+20) );
             listFamily.add( familyEtity );
         }
+        Logs.iprintln( "DataGenerator","family size="+listFamily.size() );
         return listFamily;
     }
 }

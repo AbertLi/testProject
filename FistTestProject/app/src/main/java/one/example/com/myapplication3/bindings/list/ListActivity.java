@@ -70,11 +70,11 @@ public class ListActivity extends FragmentActivity {
      */
     public void addDataToViewModle(PersonListAdapter adapter) {
         final PersonListViewModle viewModel = ViewModelProviders.of( this ).get( PersonListViewModle.class );//  final PersonListViewModle viewModel = ViewModelProviders.of( this ).get( PersonListViewModle.class ); Fragment的数据获取方式
-        subscribeUi( viewModel.getProducts() );
+        subscribeUi( viewModel.getProducts(), adapter );
     }
 
 
-    private void subscribeUi(LiveData<List<PersonEntity>> liveData) {
+    private void subscribeUi(LiveData<List<PersonEntity>> liveData, PersonListAdapter adapter) {
         Logs.eprintln( TAG, liveData.toString() );
         // Update the list when the data changes
         liveData.observe( this, new Observer<List<PersonEntity>>() {
@@ -85,6 +85,7 @@ public class ListActivity extends FragmentActivity {
                     adapter.addPersonList( person );
                     Logs.eprintln( TAG, "subscribeUi  onChanged" + person.size() );
                 } else {
+
                 }
                 // espresso does not know how to wait for data binding's loop so we execute changes
                 // sync.

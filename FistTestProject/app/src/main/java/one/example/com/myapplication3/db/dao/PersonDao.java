@@ -15,7 +15,7 @@ public interface PersonDao {
     LiveData<List<PersonEntity>> loadAllProducts();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<PersonEntity> products);
+    void insertAll(List<PersonEntity> person);
 
     @Query("select * from " + DbConstant.PERSON_TABLE_NAME+" where id = :productId")
     LiveData<PersonEntity> loadProduct(int productId);

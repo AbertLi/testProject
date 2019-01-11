@@ -10,6 +10,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import one.example.com.myapplication3.AppExecutors;
+import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.db.dao.FamilyDao;
 import one.example.com.myapplication3.db.dao.PersonDao;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
@@ -68,10 +69,11 @@ public abstract class AppDataBase extends RoomDatabase {
     public abstract FamilyDao familyDao();
 
 
-    private static void insertData(final AppDataBase database, final List<PersonEntity> person, final List<FamilyEntity> Family) {
+    private static void insertData(final AppDataBase database, final List<PersonEntity> person, final List<FamilyEntity> family) {
         database.runInTransaction( () -> {
+            Logs.iprintln("generator person data="+person.toString()+" length="+person.size()+"   generator family data="+family.toString()+"   ;length="+family.size());
             database.personDao().insertAll( person );
-            database.familyDao().insertAll( Family );
+            database.familyDao().insertAll( family );
         } );
     }
 
