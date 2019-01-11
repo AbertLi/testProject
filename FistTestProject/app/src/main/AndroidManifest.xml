@@ -23,7 +23,9 @@
         </activity>
         <activity android:name=".ui.bindings.list.ListActivity" />
         <activity android:name=".ui.bindings.ActivityTestFragment" />
-        <activity android:name=".ui.recyclerviews.RecyclerViewActivity"></activity>
+        <activity android:name=".ui.recyclerviews.RecyclerViewActivity" />
+        <activity android:name=".ui.Notifications.NotificationTestActivity" />
+        <activity android:name=".ui.Notifications.H5DetailActivity"></activity>
     </application>
 
 </manifest>

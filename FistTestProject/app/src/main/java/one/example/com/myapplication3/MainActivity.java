@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import one.example.com.myapplication3.ui.Notifications.NotificationTestActivity;
 import one.example.com.myapplication3.ui.bindings.ActivityTestFragment;
 import one.example.com.myapplication3.ui.bindings.list.ListActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
@@ -39,6 +40,8 @@ public class MainActivity extends Activity {
                 startActivity( intent3 );
                 break;
             case R.id.button4:
+                Intent intent4 = new Intent( this, NotificationTestActivity.class );
+                startActivity( intent4 );
                 break;
             case R.id.button5:
                 break;

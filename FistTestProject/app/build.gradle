@@ -57,7 +57,8 @@ dependencies {
     //Room的引用包
     implementation 'androidx.room:room-runtime:2.0.0-rc01'               //
 //    implementation 'androidx.room:room-rxjava2:2.0.0-rc01'               //
-    annotationProcessor 'androidx.room:room-compiler:2.0.0-rc01'         // 如果不加这个引用就回报这个错误：Caused by: java.lang.RuntimeException: cannot find implementation for one.example.com.myapplication3.db.AppDataBase. AppDataBase_Impl does not exist
+    annotationProcessor 'androidx.room:room-compiler:2.0.0-rc01'
+    // 如果不加这个引用就回报这个错误：Caused by: java.lang.RuntimeException: cannot find implementation for one.example.com.myapplication3.db.AppDataBase. AppDataBase_Impl does not exist
 
     // ViewModel和LiveData依赖   Android Studio 3.2以下的版本，不包括 3.2
 //    implementation "android.arch.lifecycle:extensions:1.1.0"
