@@ -8,4 +8,6 @@ public interface IFamily {
     String getText();
 
     String getAge();
+
+    String getLike();
 }

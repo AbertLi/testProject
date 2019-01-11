@@ -10,7 +10,7 @@
 
         <variable
             name="callback"
-            type="one.example.com.myapplication3.bindings.list.IPersonClickCallBack" />
+            type="one.example.com.myapplication3.ui.bindings.list.IPersonClickCallBack" />
     </data>
 
 

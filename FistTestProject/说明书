@@ -1,0 +1,28 @@
+参考BrowserVideo的结构和google的官方sample Architecture Components Basic来实现。
+
+BrowserVideo
+全局：
+包名.binding: 全局的的自定义databinding
+包名.db: 存放App的database对象
+业务模块，下面六个必须
+
+包名.模块名.db:
+包名.模块名.model:
+包名.模块名.pojo
+包名.模块名.ui
+包名.模块名.viewmodel
+包名.模块名.webservice
+
+
+
+
+包名.模块名.db:
+包名.模块名.model:
+包名.模块名.ui
+包名.模块名.viewmodel
+
+包名.模块名.webservice 没有
+包名.模块名.pojo       没有
+
+
+

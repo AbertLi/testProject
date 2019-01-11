@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import one.example.com.myapplication3.bindings.ActivityTestFragment;
-import one.example.com.myapplication3.bindings.list.ListActivity;
-import one.example.com.myapplication3.recyclerviews.RecyclerViewActivity;
+import one.example.com.myapplication3.ui.bindings.ActivityTestFragment;
+import one.example.com.myapplication3.ui.bindings.list.ListActivity;
+import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
 
 /**
  * 该项目参考google提供的sample的基础架构组件，Architecture Components Basic

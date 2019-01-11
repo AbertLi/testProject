@@ -1,4 +1,4 @@
-package one.example.com.myapplication3.bindings;
+package one.example.com.myapplication3.ui.bindings;
 
 import android.os.Bundle;
 

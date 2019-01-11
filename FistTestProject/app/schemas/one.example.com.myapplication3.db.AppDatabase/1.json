@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f995010e4b1057b7ca2cf28a15bd3013",
+    "identityHash": "94c013f19576e1de1a4e2437a7d741ae",
     "entities": [
       {
         "tableName": "PersonBean_Table",
@@ -38,7 +38,7 @@
       },
       {
         "tableName": "FamilyEtity_Table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `personId` INTEGER NOT NULL, `text` TEXT, `age` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `personId` INTEGER NOT NULL, `text` TEXT, `age` TEXT, `like` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -63,6 +63,12 @@
             "columnName": "age",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "like",
+            "columnName": "like",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -77,7 +83,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"f995010e4b1057b7ca2cf28a15bd3013\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"94c013f19576e1de1a4e2437a7d741ae\")"
     ]
   }
 }

@@ -2,39 +2,28 @@ package one.example.com.myapplication3.viewmodle;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
+import java.util.List;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.MutableLiveData;
-import one.example.com.myapplication3.Logs;
-import one.example.com.myapplication3.db.entity.PersonEntity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
+import one.example.com.myapplication3.BaseApplication;
+import one.example.com.myapplication3.DataRepository;
+import one.example.com.myapplication3.db.entity.FamilyEntity;
 
 public class FamilyViewModle extends AndroidViewModel {
-    public FamilyViewModle(@NonNull Application application) {
+    private final DataRepository mRepository;
+    private final MediatorLiveData<List<FamilyEntity>> mObservableProducts;
+    public FamilyViewModle(Application application) {
         super( application );
+        mObservableProducts = new MediatorLiveData<>();
+        mObservableProducts.setValue( null );
+        mRepository = ((BaseApplication) application).getRepository();
     }
 
-    @NonNull
-    @Override
-    public <T extends Application> T getApplication() {
-        return super.getApplication();
-    }
-
-    // 创建LiveData
-    private MutableLiveData<PersonEntity> mAccount = new MutableLiveData<>();
-
-
-    public void setPerson(String name, String age) {
-        mAccount.setValue( new PersonEntity( name, age ) );
-    }
-
-    public MutableLiveData<PersonEntity> getPerson() {
-        return mAccount;
-    }
-
-    // 当MyActivity被销毁时，Framework会调用ViewModel的onCleared()
-    @Override
-    protected void onCleared() {
-        Logs.eprintln( "AccountModel ==========onCleared()==========" );
-        super.onCleared();
+    public LiveData<List<FamilyEntity>> getFamilyByPersonId(int personId) {
+        LiveData<List<FamilyEntity>> family = mRepository.getFamilyBypersonId( personId );
+        // observe the changes of the products from the database and forward them
+        mObservableProducts.addSource( family, mObservableProducts::setValue );
+        return mObservableProducts;
     }
 }

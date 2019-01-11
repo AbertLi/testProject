@@ -21,9 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".bindings.list.ListActivity" />
-        <activity android:name=".bindings.ActivityTestFragment" />
-        <activity android:name=".recyclerviews.RecyclerViewActivity"></activity>
+        <activity android:name=".ui.bindings.list.ListActivity" />
+        <activity android:name=".ui.bindings.ActivityTestFragment" />
+        <activity android:name=".ui.recyclerviews.RecyclerViewActivity"></activity>
     </application>
 
 </manifest>

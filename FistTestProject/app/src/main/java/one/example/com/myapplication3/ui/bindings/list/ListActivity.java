@@ -1,10 +1,7 @@
-package one.example.com.myapplication3.bindings.list;
+package one.example.com.myapplication3.ui.bindings.list;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.view.View;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -70,7 +67,7 @@ public class ListActivity extends FragmentActivity {
      */
     public void addDataToViewModle(PersonListAdapter adapter) {
         final PersonListViewModle viewModel = ViewModelProviders.of( this ).get( PersonListViewModle.class );//  final PersonListViewModle viewModel = ViewModelProviders.of( this ).get( PersonListViewModle.class ); Fragment的数据获取方式
-        subscribeUi( viewModel.getProducts(), adapter );
+        subscribeUi( viewModel.getPerson(), adapter );
     }
 
 

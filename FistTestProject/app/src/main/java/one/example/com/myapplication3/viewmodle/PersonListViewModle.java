@@ -12,17 +12,6 @@ import one.example.com.myapplication3.DataRepository;
 import one.example.com.myapplication3.db.entity.PersonEntity;
 
 public class PersonListViewModle extends AndroidViewModel {
-
-//    public PersonListViewModle(@NonNull Application application) {
-//        super( application );
-//    }
-//
-//    @Override
-//    protected void onCleared() {
-//        super.onCleared();
-//    }
-
-
     private final DataRepository mRepository;
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
@@ -45,11 +34,16 @@ public class PersonListViewModle extends AndroidViewModel {
     /**
      * Expose the LiveData Products query so the UI can observe it.
      */
-    public LiveData<List<PersonEntity>> getProducts() {
+    public LiveData<List<PersonEntity>> getPerson() {
         return mObservableProducts;
     }
 
-//    public LiveData<List<PersonEntity>> searchProducts(String query) {
-//        return mRepository.searchProducts(query);
-//    }
+    /**
+     * 2019-01-11 暂时不做模糊搜索
+     * @param query
+     * @return
+     */
+    public LiveData<List<PersonEntity>> searchPerson(String query) {
+        return mRepository.searchProducts(query);
+    }
 }

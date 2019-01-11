@@ -1,4 +1,4 @@
-package one.example.com.myapplication3.bindings;
+package one.example.com.myapplication3.ui.bindings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,9 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import one.example.com.myapplication3.R;
-import one.example.com.myapplication3.viewmodle.FamilyViewModle;
 import one.example.com.myapplication3.databinding.FragMainBinding;
 
 public class FragmentHome extends Fragment {

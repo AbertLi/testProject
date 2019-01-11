@@ -1,12 +1,10 @@
 package one.example.com.myapplication3;
 import java.util.List;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import one.example.com.myapplication3.db.AppDataBase;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
-
 /**
  * Repository handling the work with products and comments.
  */
@@ -19,7 +17,7 @@ public class DataRepository {
         mDatabase = database;
         mObservableProducts = new MediatorLiveData<>();
 
-        mObservableProducts.addSource(mDatabase.personDao().loadAllProducts(),
+        mObservableProducts.addSource(mDatabase.personDao().loadAllPerson(),
                 personEntities -> {
                     if (mDatabase.getDatabaseCreated().getValue() != null) {
                         mObservableProducts.postValue(personEntities);
@@ -45,15 +43,17 @@ public class DataRepository {
         return mObservableProducts;
     }
 
-    public LiveData<PersonEntity> loadPersons(final int productId) {
-        return mDatabase.personDao().loadProduct(productId);
+    public LiveData<List<PersonEntity>> searchProducts(String query) {
+        return mDatabase.personDao().searchAllPerson(query);
     }
 
-    public LiveData<List<FamilyEntity>> loadFamilys(final int productId) {
-        return mDatabase.familyDao().loadComments(productId);
+
+
+    public LiveData<List<FamilyEntity>> getAllFamilys() {
+        return mDatabase.familyDao().loadFamilys();
     }
 
-//    public LiveData<List<FamilyEntity>> searchProducts(String query) {
-//        return mDatabase.familyDao().searchAllProducts(query);
-//    }
+    public LiveData<List<FamilyEntity>> getFamilyBypersonId(final int personId) {
+        return mDatabase.familyDao().loadFamilyByPersonId(personId);
+    }
 }

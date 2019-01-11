@@ -12,6 +12,7 @@ public class FamilyEntity implements IFamily {
     private int personId;
     private String text;
     private String age;
+    private String like;
 
     @Override
     public int getId() {
@@ -33,6 +34,12 @@ public class FamilyEntity implements IFamily {
         return age;
     }
 
+    @Override
+    public String getLike() {
+        return like;
+    }
+
+
     public void setId(int id) {
         this.id = id;
     }
@@ -47,5 +54,9 @@ public class FamilyEntity implements IFamily {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public void setLike(String like) {
+        this.like = like;
     }
 }

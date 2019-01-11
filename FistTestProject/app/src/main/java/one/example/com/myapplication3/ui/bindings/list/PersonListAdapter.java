@@ -1,4 +1,4 @@
-package one.example.com.myapplication3.bindings.list;
+package one.example.com.myapplication3.ui.bindings.list;
 
 import android.os.Build;
 import android.view.LayoutInflater;

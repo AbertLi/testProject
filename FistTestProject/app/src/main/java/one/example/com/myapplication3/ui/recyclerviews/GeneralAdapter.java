@@ -1,4 +1,4 @@
-package one.example.com.myapplication3.recyclerviews;
+package one.example.com.myapplication3.ui.recyclerviews;
 
 import android.content.Context;
 import android.view.View;
