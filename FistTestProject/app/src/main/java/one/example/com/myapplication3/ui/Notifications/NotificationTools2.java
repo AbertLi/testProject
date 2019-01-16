@@ -18,14 +18,14 @@ import static android.app.Notification.VISIBILITY_SECRET;
 //作者：wuchao226，在这个基础上修改
 // 链接：https://www.jianshu.com/p/b83fc1697232\
 //三种Notification实现方式：https://blog.csdn.net/qq_34908107/article/details/75105971
-public class NotificationUtils extends ContextWrapper {
+public class NotificationTools2 extends ContextWrapper {
 
     public static final String CHANNEL_ID = "default";
     private static final String CHANNEL_NAME = "Default Channel";
     private static final String CHANNEL_DESCRIPTION = "this is default channel!";
     private NotificationManager mManager;
 
-    public NotificationUtils(Context base) {
+    public NotificationTools2(Context base) {
         super(base);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel();
