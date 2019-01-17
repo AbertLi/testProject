@@ -41,7 +41,7 @@ public abstract class AppDataBase extends RoomDatabase {
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
                         super.onCreate( db );
                         executors.diskIO().execute( () -> {
-                            // Add a delay to simulate a long-running operation
+                            // Add fullScreenNotification delay to simulate fullScreenNotification long-running operation
                             addDelay();
                             // Generate the data for pre-population
                             AppDataBase database = AppDataBase.getInstance( appContext, executors );

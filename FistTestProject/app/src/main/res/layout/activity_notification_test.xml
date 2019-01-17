@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:onClick="btnOnclick"
-                android:text="普通通知" />
+                android:text="自定义布局通知" />
 
             <Button
                 android:id="@+id/btn_2"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:onClick="btnOnclick"
-                android:text="折叠通知" />
+                android:text="大图折叠通知" />
 
             <Button
                 android:id="@+id/btn_3"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:onClick="btnOnclick"
-                android:text="悬挂通知" />
+                android:text="悬挂通知跳转浏览器" />
 
             <Button
                 android:id="@+id/btn_4"
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:onClick="btnOnclick"
-                android:text="悬挂通知2" />
+                android:text="悬挂通知跳转Act" />
         </LinearLayout>
 
     </LinearLayout>
