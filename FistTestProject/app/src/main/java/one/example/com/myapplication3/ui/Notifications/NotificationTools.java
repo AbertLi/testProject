@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
@@ -14,6 +15,8 @@ import android.widget.RemoteViews;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import one.example.com.myapplication3.Logs;
+import one.example.com.myapplication3.MainActivity;
 import one.example.com.myapplication3.R;
 
 import static android.app.Notification.VISIBILITY_SECRET;
@@ -36,6 +39,8 @@ public class NotificationTools {
         }
         return utils;
     }
+
+    public static int notificationIds = 0;
 
     NotificationManager mNotificationManager;
 
@@ -84,22 +89,60 @@ public class NotificationTools {
         return notification;
     }
 
-    public void sendCustomNotification() {
+    /**
+     * 自定义布局。RemoteViews介绍：https://www.jianshu.com/p/13d56fb221e2
+     */
+    private static int notificationId;
+
+    public void sendCustomNotification(int notificationId) {
+        if (notificationId > 1) {
+            Logs.eprintln( "只能创建一个自定义Notification" );
+            return;
+        }
+        this.notificationId = notificationId;
         NotificationCompat.Builder builder = getNotificationBuilder();
         RemoteViews remoteViews = new RemoteViews( context.getPackageName(), R.layout.layout_custom_notifition );
-        remoteViews.setTextViewText( R.id.notification_title, "custom_title" );
-        remoteViews.setTextViewText( R.id.notification_content, "custom_content" );
+        remoteViews.setTextViewText( R.id.notification_title, "进入主页" );
+        remoteViews.setTextViewText( R.id.notification_content, "进入详情页" );
 
         Intent intent = new Intent( context, H5DetailActivity.class );
-        PendingIntent pendingIntent = PendingIntent.getActivity( context, -1,
-                intent, PendingIntent.FLAG_UPDATE_CURRENT );
+        PendingIntent pendingIntent = PendingIntent.getActivity( context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT );
         remoteViews.setOnClickPendingIntent( R.id.turn_next, pendingIntent );
+
+        Intent intent2 = new Intent( "close" );
+        intent2.putExtra( "key", this.notificationId );
+        PendingIntent pendingIntentClose = PendingIntent.getBroadcast( context, 0, intent2, 0 );
+        remoteViews.setOnClickPendingIntent( R.id.iv_close, pendingIntentClose );
+
+        ListenerNotificationBrodcaseRecever.ListenerNotificationBrodcaseRecever( this.notificationId, new ListenerNotificationBrodcaseRecever.ICallBack() {
+            @Override
+            public void callBack(int key) {
+                Logs.eprintln( "关闭通知栏" );
+                getNotificationManager().cancel( notificationId );
+                notificationIds = 0;
+            }
+        } );
+        builder.setOngoing( true );//设置无法取消
+        builder.setAutoCancel( false );//点击后不取消
         builder.setCustomContentView( remoteViews );
-        getNotificationManager().notify( (int) System.currentTimeMillis(), builder.build() );
+        getNotificationManager().notify( notificationId, builder.build() );
     }
 
+
+    public static void registerBoradcastReceiver(Context con) {
+        IntentFilter myIntentFilter = new IntentFilter();
+        myIntentFilter.addAction( "close" );
+        //注册广播
+        con.registerReceiver( new ListenerNotificationBrodcaseRecever(), myIntentFilter );
+    }
+
+
+    /**
+     * 悬挂通知栏
+     */
     public void xungaunNotification() {
-        NotificationCompat.Builder builder3 = new NotificationCompat.Builder( context );
+        NotificationManager nm = getNotificationManager();
+        NotificationCompat.Builder builder3 = getNotificationBuilder();
         Intent intent3 = new Intent( Intent.ACTION_VIEW, Uri.parse( "https://www.baidu.com" ) );
         PendingIntent pendingIntent3 = PendingIntent.getActivity( context, 0, intent3, 0 );
         builder3.setContentIntent( pendingIntent3 );
@@ -107,6 +150,7 @@ public class NotificationTools {
         builder3.setLargeIcon( BitmapFactory.decodeResource( context.getResources(), R.mipmap.ic_launcher ) );
         builder3.setAutoCancel( true );
         builder3.setContentTitle( "悬挂通知" );
+        builder3.setContentText( "正文四大金刚经过加热on任何内容" );
 
         Intent XuanIntent = new Intent();
         XuanIntent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
@@ -114,7 +158,53 @@ public class NotificationTools {
 
         PendingIntent xuanpengdIntent = PendingIntent.getActivity( context, 0, XuanIntent, PendingIntent.FLAG_CANCEL_CURRENT );
         builder3.setFullScreenIntent( xuanpengdIntent, true );
-        getNotificationManager().notify( (int) System.currentTimeMillis(), builder3.build() );
+        nm.notify( (int) System.currentTimeMillis(), builder3.build() );
     }
+
+    /**
+     * 悬挂通知栏
+     */
+   public void a(int notifyId) {
+        String notifyTag;
+        NotificationManager nm = getNotificationManager();
+        final NotificationCompat.Builder builder = getNotificationBuilder();
+        Intent intent = new Intent( context, H5DetailActivity.class );
+        PendingIntent pendingIntent = PendingIntent.getActivity( context, 0, intent, 0 );
+        builder.setContentIntent( pendingIntent );//普通消息
+        builder.setWhen( System.currentTimeMillis() );
+        builder.setSmallIcon( R.mipmap.ic_launcher_round );
+        builder.setLargeIcon( BitmapFactory.decodeResource( context.getResources(), R.mipmap.richudongfang_4202829 ) );
+        builder.setAutoCancel( true );
+        builder.setDefaults( NotificationCompat.DEFAULT_ALL );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC );
+        }
+
+        builder.setContentTitle( "自定义消息标题" );
+        builder.setContentText( "自定义消息内容" );
+
+        nm.notify( notifyId, builder.build() );//普通消息提示  显示在状态栏
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//SDK版本大于等于21才有悬挂式通知栏
+            Intent xintent = new Intent( context, MainActivity.class );
+            xintent.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+            PendingIntent hangIntent = PendingIntent.getActivity( context, 0, xintent,PendingIntent.FLAG_CANCEL_CURRENT );
+            builder.setFullScreenIntent( hangIntent, true );//悬挂式通知  悬挂在手机屏上方
+            notifyTag = notifyId + "jpush";//由于同一条消息  id 一样  ，有针对悬挂式通知打了一个tag；
+            nm.notify( notifyTag, notifyId, builder.build() );
+            new Thread( new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep( 3000 );//五秒后悬挂式通知消失
+                        nm.cancel( notifyTag, notifyId );//按tag id 来清除消息
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } ).start();
+        }
+    }
+
 
 }

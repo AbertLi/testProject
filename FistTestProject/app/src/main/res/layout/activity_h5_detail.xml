@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:onClick="onClick"
+                android:onClick="btn"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView

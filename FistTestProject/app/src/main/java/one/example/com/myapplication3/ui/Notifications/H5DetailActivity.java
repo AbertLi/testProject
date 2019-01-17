@@ -16,6 +16,7 @@ public class H5DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         binding = DataBindingUtil.setContentView( this, R.layout.activity_h5_detail );
+        binding.tvTitle.setText( getIntent().getStringExtra( "key" ) );
 
         WebView webView = binding.webView;
         webView.getSettings().setJavaScriptEnabled( true );

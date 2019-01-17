@@ -39,6 +39,14 @@
                 android:layout_margin="10dp"
                 android:onClick="btnOnclick"
                 android:text="悬挂通知" />
+
+            <Button
+                android:id="@+id/btn_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="btnOnclick"
+                android:text="悬挂通知2" />
         </LinearLayout>
 
     </LinearLayout>

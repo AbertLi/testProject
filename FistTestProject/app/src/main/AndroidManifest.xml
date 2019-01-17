@@ -31,6 +31,14 @@
         <activity
             android:name=".ui.Notifications.H5DetailActivity"
             android:theme="@style/notAnimation"></activity>
+
+        <!--<receiver-->
+            <!--android:name=".ui.Notifications.ListenerNotificationBrodcaseRecever"-->
+            <!--android:exported="true">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="close" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
     </application>
 
 </manifest>
