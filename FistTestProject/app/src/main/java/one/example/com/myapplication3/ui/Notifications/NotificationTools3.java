@@ -1,38 +1,33 @@
 package one.example.com.myapplication3.ui.Notifications;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-import android.widget.RemoteViews;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
-import one.example.com.myapplication3.Logs;
-import one.example.com.myapplication3.MainActivity;
 import one.example.com.myapplication3.R;
 
-import static android.app.Notification.VISIBILITY_SECRET;
-
-public class NotificationTools {
+public class NotificationTools3 {
     private Context context;
-    private static NotificationTools utils;
+    private static NotificationTools3 utils;
 
-    public NotificationTools(Context context) {
+    public NotificationTools3(Context context) {
         this.context = context;
     }
 
-    public static NotificationTools getInstance(Context context) {
+    public static NotificationTools3 getInstance(Context context) {
         if (utils == null) {
-            synchronized (NotificationTools.class) {
+            synchronized (NotificationTools3.class) {
                 if (utils == null) {
-                    utils = new NotificationTools( context );
+                    utils = new NotificationTools3( context );
                 }
             }
         }
@@ -49,7 +44,7 @@ public class NotificationTools {
             //闪光灯
             channel.enableLights( true );
             //锁屏显示通知
-            channel.setLockscreenVisibility( VISIBILITY_SECRET );
+            channel.setLockscreenVisibility( Notification.VISIBILITY_SECRET );
             //闪关灯的灯光颜色
             channel.setLightColor( Color.RED );
             //桌面launcher的消息角标
@@ -74,62 +69,6 @@ public class NotificationTools {
         notification.setSmallIcon( R.mipmap.ic_launcher );
         notification.setAutoCancel( true );
         return notification;
-    }
-
-    /**
-     * 自定义布局。RemoteViews介绍：https://www.jianshu.com/p/13d56fb221e2
-     */
-    private static boolean isCreate = false;
-    private int notificationId = 1212121;
-
-    public void sendCustomNotification(String url) {
-        if (!NotificationUtile.isOpenPermission( context )) {
-            return;
-        }
-
-        if (isCreate) {
-            Logs.eprintln( "只能创建一个自定义Notification" );
-            isCreate = true;
-            return;
-        }
-        NotificationCompat.Builder builder = getNotificationBuilder();
-        RemoteViews remoteViews = new RemoteViews( context.getPackageName(), R.layout.layout_custom_notifition );
-        remoteViews.setTextViewText( R.id.notification_title, "标题" );
-        remoteViews.setTextViewText( R.id.notification_content, "内容：XXXXXXXXXX" );
-
-        Intent intent = new Intent( context, H5DetailActivity.class );
-        intent.putExtra( "key", url );
-        PendingIntent pendingIntent = PendingIntent.getActivity( context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT );
-        remoteViews.setOnClickPendingIntent( R.id.turn_next, pendingIntent );
-
-        Intent intent2 = new Intent( "close" );//过滤action为close
-        PendingIntent pendingIntentClose = PendingIntent.getBroadcast( context, 0, intent2, 0 );
-        remoteViews.setOnClickPendingIntent( R.id.iv_close, pendingIntentClose );
-
-        ListenerNotificationBrodcaseRecever.ListenerNotificationBrodcaseRecever( key -> {
-            Logs.eprintln( "关闭通知栏" );
-            NotificationUtile.getNotificationManager( context ).cancel( notificationId );
-            isCreate = false;
-        } );
-        builder.setOngoing( true );//设置无法取消
-        builder.setAutoCancel( false );//点击后不取消
-        builder.setCustomContentView( remoteViews );
-        NotificationUtile.getNotificationManager( context ).notify( notificationId, builder.build() );
-    }
-
-
-    /**
-     * 自定义布局的按钮广播注册
-     *
-     * @param con
-     */
-    public static void registerBoradcastReceiver(Context con) {
-        IntentFilter myIntentFilter = new IntentFilter();
-        myIntentFilter.addAction( "close" );//如果之定义布局有多个按钮则可以定义多个过滤条件
-        myIntentFilter.addAction( "next" );
-        myIntentFilter.addAction( "previous" );
-        //注册广播
-        con.registerReceiver( new ListenerNotificationBrodcaseRecever(), myIntentFilter );
     }
 
 

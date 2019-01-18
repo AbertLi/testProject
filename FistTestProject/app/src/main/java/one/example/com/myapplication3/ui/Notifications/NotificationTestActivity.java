@@ -7,31 +7,33 @@ import android.os.Bundle;
 import android.view.View;
 
 public class NotificationTestActivity extends AppCompatActivity {
-    NotificationTools notificationTools;
-    NotifacationTools3 notifacationTools3;
+    NotificationTools1 notificationTools1;
+    NotificationTools2 notificationTools2;
+    NotificationTools3 notificationTools3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_notification_test );
-        notificationTools = NotificationTools.getInstance( this.getApplicationContext() );
-        notifacationTools3 = NotifacationTools3.getInstance( this.getApplicationContext() );
+        notificationTools1 = NotificationTools1.getInstance( this.getApplicationContext() );
+        notificationTools2 = NotificationTools2.getInstance( this.getApplicationContext() );
+        notificationTools3 = NotificationTools3.getInstance( this.getApplicationContext() );
     }
 
 
     public void btnOnclick(View view) {
         switch (view.getId()) {
             case R.id.btn_1:
-                notificationTools.sendCustomNotification( "https://www.baidu.com" );
+                notificationTools1.sendNotification( "https://www.baidu.com", H5DetailActivity.class );
                 break;
             case R.id.btn_2:
-                notifacationTools3.sendNotification( "https://www.baidu.com", H5DetailActivity.class );
+                notificationTools2.sendCustomNotification( "https://www.baidu.com" );
                 break;
             case R.id.btn_3:
-                notificationTools.fullScreenNotification1( 2,"https://www.baidu.com" );
+                notificationTools3.fullScreenNotification1( 2, "https://www.baidu.com" );
                 break;
             case R.id.btn_4:
-                notificationTools.fullScreenNotification( 1,"https://www.qq.com/" );
+                notificationTools3.fullScreenNotification( 1, "https://www.baidu.com/" );
                 break;
         }
     }

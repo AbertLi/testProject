@@ -13,20 +13,20 @@ import androidx.core.app.NotificationCompat;
 import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.R;
 
-public class NotifacationTools3 {
-    private String TAG = "NotifacationTools3  ";
+public class NotificationTools1 {
+    private String TAG = "NotificationTools1  ";
     private Context context;
-    private static NotifacationTools3 utils;
+    private static NotificationTools1 utils;
 
-    public NotifacationTools3(Context context) {
+    public NotificationTools1(Context context) {
         this.context = context;
     }
 
-    public static NotifacationTools3 getInstance(Context context) {
+    public static NotificationTools1 getInstance(Context context) {
         if (utils == null) {
-            synchronized (NotificationTools.class) {
+            synchronized (NotificationTools3.class) {
                 if (utils == null) {
-                    utils = new NotifacationTools3( context );
+                    utils = new NotificationTools1( context );
                 }
             }
         }
