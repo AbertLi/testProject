@@ -1,11 +1,14 @@
 package one.example.com.myapplication3.db.entity;
 
+import java.io.Serializable;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import one.example.com.myapplication3.db.DbConstant;
 import one.example.com.myapplication3.modle.IPersonBean;
+
 @Entity(tableName = DbConstant.PERSON_TABLE_NAME)
-public class PersonEntity implements IPersonBean {
+public class PersonEntity implements IPersonBean, Serializable {
     @PrimaryKey
     private int id;
     private String name;

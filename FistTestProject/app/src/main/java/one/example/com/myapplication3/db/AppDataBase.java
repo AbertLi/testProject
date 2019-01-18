@@ -1,6 +1,9 @@
 package one.example.com.myapplication3.db;
+
 import android.content.Context;
+
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -16,7 +19,7 @@ import one.example.com.myapplication3.db.dao.PersonDao;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
 
-@Database(entities = {PersonEntity.class, FamilyEntity.class}, version = 1)
+@Database(entities = {PersonEntity.class, FamilyEntity.class}, version = DbConstant.DB_VERSION)
 public abstract class AppDataBase extends RoomDatabase {
 
 
@@ -45,10 +48,10 @@ public abstract class AppDataBase extends RoomDatabase {
                             addDelay();
                             // Generate the data for pre-population
                             AppDataBase database = AppDataBase.getInstance( appContext, executors );
-                            List<PersonEntity> products = DataGenerator.generatePersons();
-                            List<FamilyEntity> comments = DataGenerator.generateFamilyForPersons( products );
+                            List<PersonEntity> person = DataGenerator.generatePersons();
+                            List<FamilyEntity> family = DataGenerator.generateFamilyForPersons( person );
                             // notify that the database was created and it's ready to be used
-                            insertData( database, products, comments );
+                            insertData( database, person, family );
                             database.setDatabaseCreated();
                         } );
                     }
@@ -71,7 +74,7 @@ public abstract class AppDataBase extends RoomDatabase {
 
     private static void insertData(final AppDataBase database, final List<PersonEntity> person, final List<FamilyEntity> family) {
         database.runInTransaction( () -> {
-            Logs.iprintln("generator person data="+person.toString()+" length="+person.size()+"   generator family data="+family.toString()+"   ;length="+family.size());
+            Logs.iprintln( "generator person data=" + person.toString() + " length=" + person.size() + "   generator family data=" + family.toString() + "   ;length=" + family.size() );
             database.personDao().insertAll( person );
             database.familyDao().insertAll( family );
         } );

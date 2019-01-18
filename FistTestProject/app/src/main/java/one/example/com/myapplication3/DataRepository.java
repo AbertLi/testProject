@@ -9,18 +9,31 @@ import one.example.com.myapplication3.db.entity.PersonEntity;
  * Repository handling the work with products and comments.
  */
 public class DataRepository {
+    private String TAG="DataRepository   ";
     private static DataRepository sInstance;
     private final AppDataBase mDatabase;
-    private MediatorLiveData<List<PersonEntity>> mObservableProducts;
+    private MediatorLiveData<List<PersonEntity>> mObservablePersons
+            ;
+    private MediatorLiveData<List<FamilyEntity>> mObservableFamilys;
 
     private DataRepository(final AppDataBase database) {
         mDatabase = database;
-        mObservableProducts = new MediatorLiveData<>();
+        mObservablePersons = new MediatorLiveData<>();
+        mObservableFamilys = new MediatorLiveData<>();
 
-        mObservableProducts.addSource(mDatabase.personDao().loadAllPerson(),
+        mObservablePersons.addSource(mDatabase.personDao().loadAllPerson(),
                 personEntities -> {
+                    Logs.eprintln( TAG,"personEntities size="+personEntities.size() );
                     if (mDatabase.getDatabaseCreated().getValue() != null) {
-                        mObservableProducts.postValue(personEntities);
+                        mObservablePersons.postValue(personEntities);
+                    }
+                });
+
+        mObservableFamilys.addSource(mDatabase.familyDao().loadFamilys(),
+                familys -> {
+                    Logs.eprintln( TAG,"familys size="+familys.size() );
+                    if (mDatabase.getDatabaseCreated().getValue() != null) {
+                        mObservableFamilys.postValue(familys);
                     }
                 });
     }
@@ -40,7 +53,7 @@ public class DataRepository {
      * Get the list of products from the database and get notified when the data changes.
      */
     public LiveData<List<PersonEntity>> getPersons() {
-        return mObservableProducts;
+        return mObservablePersons;
     }
 
     public LiveData<List<PersonEntity>> searchProducts(String query) {
@@ -50,7 +63,7 @@ public class DataRepository {
 
 
     public LiveData<List<FamilyEntity>> getAllFamilys() {
-        return mDatabase.familyDao().loadFamilys();
+        return mObservableFamilys;
     }
 
     public LiveData<List<FamilyEntity>> getFamilyBypersonId(final int personId) {

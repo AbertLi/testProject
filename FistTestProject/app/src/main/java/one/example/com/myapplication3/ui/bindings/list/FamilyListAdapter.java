@@ -13,19 +13,19 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import one.example.com.myapplication3.R;
-import one.example.com.myapplication3.modle.IPersonBean;
-import one.example.com.myapplication3.databinding.PersonRecyclerviewItemBinding;
+import one.example.com.myapplication3.databinding.FamilyRecyclerviewItemBinding;
+import one.example.com.myapplication3.modle.IFamily;
 
-public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.PersonViewHolper> {
-    private List<? extends IPersonBean> beanList;
-    private final IPersonCallBack mClickCallBack;
+public class FamilyListAdapter extends RecyclerView.Adapter<FamilyListAdapter.PersonViewHolper> {
+    private List<? extends IFamily> beanList;
+    private final IFamilyCallBack mClickCallBack;
 
-    public PersonListAdapter(IPersonCallBack clickCallBack) {
+    public FamilyListAdapter(IFamilyCallBack clickCallBack) {
         mClickCallBack = clickCallBack;
         setHasStableIds( true );//为了使 url 没变的时候刷新RecyclerView时ImageView 不重新加载
     }
 
-    public void addPersonList(List<? extends IPersonBean> list) {
+    public void addFamily(List<? extends IFamily> list) {
         if (beanList == null) {
             beanList = list;
             notifyItemRangeInserted( 0, beanList.size() );
@@ -49,9 +49,12 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Pe
                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 @Override
                 public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-                    IPersonBean newProduct = list.get( newItemPosition );
-                    IPersonBean oldProduct = beanList.get( oldItemPosition );
-                    return newProduct.getId() == oldProduct.getId() && Objects.equals( newProduct.getAge(), oldProduct.getAge() ) && Objects.equals( newProduct.getName(), oldProduct.getName() );
+                    IFamily newProduct = list.get( newItemPosition );
+                    IFamily oldProduct = beanList.get( oldItemPosition );
+                    return newProduct.getId() == oldProduct.getId() && newProduct.getPersonId() == oldProduct.getPersonId()
+                            && Objects.equals( newProduct.getAge(), oldProduct.getAge() )
+                            && Objects.equals( newProduct.getText(), oldProduct.getText() )
+                            && Objects.equals( newProduct.getLike(), oldProduct.getLike() );
                 }
             } );
             beanList = list;
@@ -62,7 +65,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Pe
     @NonNull
     @Override
     public PersonViewHolper onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        PersonRecyclerviewItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.person_recyclerview_item, parent, false );
+        FamilyRecyclerviewItemBinding binding = DataBindingUtil.inflate( LayoutInflater.from( parent.getContext() ), R.layout.family_recyclerview_item, parent, false );
         binding.setCallback( mClickCallBack );
         return new PersonViewHolper( binding );
     }
@@ -70,7 +73,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Pe
 
     @Override
     public void onBindViewHolder(@NonNull PersonViewHolper holder, int position) {
-        holder.mBinding.setPersonBean( beanList.get( position ) );
+        holder.mBinding.setFamily( beanList.get( position ) );
         holder.mBinding.executePendingBindings();
     }
 
@@ -85,9 +88,9 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Pe
     }
 
     static class PersonViewHolper extends RecyclerView.ViewHolder {
-        final PersonRecyclerviewItemBinding mBinding;
+        final FamilyRecyclerviewItemBinding mBinding;
 
-        public PersonViewHolper(PersonRecyclerviewItemBinding binding) {
+        public PersonViewHolper(FamilyRecyclerviewItemBinding binding) {
             super( binding.getRoot() );
             this.mBinding = binding;
         }

@@ -1,6 +1,7 @@
 package one.example.com.myapplication3.ui.bindings.list;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import org.jetbrains.annotations.Nullable;
@@ -11,7 +12,6 @@ import java.util.List;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import one.example.com.myapplication3.Logs;
@@ -74,20 +74,15 @@ public class ListActivity extends FragmentActivity {
     private void subscribeUi(LiveData<List<PersonEntity>> liveData, PersonListAdapter adapter) {
         Logs.eprintln( TAG, liveData.toString() );
         // Update the list when the data changes
-        liveData.observe( this, new Observer<List<PersonEntity>>() {
-            @Override
-            public void onChanged(@androidx.annotation.Nullable List<PersonEntity> person) {
-                Logs.eprintln( TAG, "subscribeUi  onChanged  myProducts==null " + (person == null) );
-                if (person != null) {
-                    adapter.addPersonList( person );
-                    Logs.eprintln( TAG, "subscribeUi  onChanged" + person.size() );
-                } else {
+        liveData.observe( this, listPerson -> {
+            Logs.eprintln( TAG, "subscribeUi  onChanged  myProducts==null " + (listPerson == null) );
+            if (listPerson != null) {
+                adapter.addPersonList( listPerson );
+                Logs.eprintln( TAG, "subscribeUi  onChanged=" + listPerson.size() );
+            } else {
 
-                }
-                // espresso does not know how to wait for data binding's loop so we execute changes
-                // sync.
-                binding.executePendingBindings();
             }
+            binding.executePendingBindings();
         } );
     }
 
@@ -106,11 +101,14 @@ public class ListActivity extends FragmentActivity {
         adapter.addPersonList( listBean );
     }
 
-    IPersonClickCallBack clickCallBack = new IPersonClickCallBack() {
+    IPersonCallBack clickCallBack = new IPersonCallBack() {
         @Override
         public void onClick(IPersonBean person) {
             select = (PersonEntity) person;
             addTitle( select );
+            Intent intent = new Intent( ListActivity.this, DetailActivity.class );
+            intent.putExtra( "person", select );
+            ListActivity.this.startActivity( intent );
             Logs.eprintln( TAG, "点击：" + person.getName() );
         }
     };

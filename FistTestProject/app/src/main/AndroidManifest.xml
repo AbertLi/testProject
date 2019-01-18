@@ -27,10 +27,10 @@
         <activity
             android:name=".ui.Notifications.NotificationTestActivity"
             android:theme="@style/notAnimation" />
-
         <activity
             android:name=".ui.Notifications.H5DetailActivity"
-            android:theme="@style/notAnimation"></activity>
+            android:theme="@style/notAnimation" />
+        <activity android:name=".ui.bindings.list.DetailActivity"></activity>
     </application>
 
 </manifest>
