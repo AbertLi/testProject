@@ -27,7 +27,7 @@ public class UserRepository {
 
     public static UserRepository getInstance(final AppDataBase database) {
         if (sInstance == null) {
-            synchronized (DataRepository.class) {
+            synchronized (PersonRepository.class) {
                 if (sInstance == null) {
                     sInstance = new UserRepository( database );
                 }

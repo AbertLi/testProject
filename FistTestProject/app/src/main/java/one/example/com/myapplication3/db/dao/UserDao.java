@@ -7,7 +7,6 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import io.reactivex.Single;
 import one.example.com.myapplication3.db.entity.User;
 
 @Dao
@@ -18,8 +17,8 @@ public interface UserDao {
     @Query("SELECT * FROM user")
     LiveData<List<User>> getAllLiveData();
 
-    @Query("SELECT * FROM user")
-    Single<List<User>> getAllRxJava();
+//    @Query("SELECT * FROM user")
+//    Single<List<User>> getAllRxJava();
 
     @Query("SELECT * FROM user WHERE uid IN (:userIds)")
     List<User> loadAllByIds(int[] userIds);
