@@ -8,9 +8,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import one.example.com.myapplication3.BaseApplication;
-import one.example.com.myapplication3.DataRepository;
+import one.example.com.myapplication3.db.AppDataBase;
+import one.example.com.myapplication3.modle.Repository.DataRepository;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
-import one.example.com.myapplication3.db.entity.PersonEntity;
+import one.example.com.myapplication3.utile.ApplicationUtile;
 
 public class FamilyViewModle extends AndroidViewModel {
     private final DataRepository mRepository;
@@ -20,7 +21,7 @@ public class FamilyViewModle extends AndroidViewModel {
         super( application );
         mObservableProducts = new MediatorLiveData<>();
         mObservableProducts.setValue( null );
-        mRepository = ((BaseApplication) application).getRepository();
+        mRepository = DataRepository.getInstance( AppDataBase.getInstance( ApplicationUtile.getApplication(), ApplicationUtile.getExecutors() ) );
         LiveData<List<FamilyEntity>> family = mRepository.getAllFamilys();
         // observe the changes of the products from the database and forward them
         mObservableProducts.addSource( family, mObservableProducts::setValue );
