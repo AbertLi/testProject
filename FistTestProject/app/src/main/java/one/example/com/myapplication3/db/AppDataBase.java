@@ -19,6 +19,12 @@ import one.example.com.myapplication3.db.dao.PersonDao;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
 
+/**
+ * 1,数据库里面的主键值不能一样否则就会被替换。（主键默认不是自增长，不知道是否可以让他进行自增长）
+ * 2,关于数据库升级的问题。
+ * 3,
+ *
+ */
 @Database(entities = {PersonEntity.class, FamilyEntity.class}, version = DbConstant.DB_VERSION)
 public abstract class AppDataBase extends RoomDatabase {
 
@@ -56,7 +62,9 @@ public abstract class AppDataBase extends RoomDatabase {
                         } );
                     }
                 } )
-                .addMigrations( MIGRATION_1_2 )
+                .addMigrations( MIGRATION_1_2 )//这种方法可以添加字段，修改表名等，比较常用。
+                .allowMainThreadQueries()//表示可以在主线程访问
+//                .fallbackToDestructiveMigration()//更新新数据库（这种方法是删除原来的表和数据从新建表）
                 .build();
     }
 

@@ -16,6 +16,9 @@ public interface FamilyDao {
     @Query("SELECT * FROM "+DbConstant.FAMILY_TABLE_NAME )
     LiveData<List<FamilyEntity>> loadFamilys();
 
+    @Query("SELECT * FROM "+DbConstant.FAMILY_TABLE_NAME )
+    List<FamilyEntity> loadFamilysList();
+
     @Query("SELECT * FROM "+DbConstant.FAMILY_TABLE_NAME +" where personId = :personId")
     LiveData<List<FamilyEntity>> loadFamilyByPersonId(int personId);
 

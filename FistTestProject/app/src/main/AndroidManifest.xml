@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.dbactivity.DbActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +31,7 @@
         <activity
             android:name=".ui.Notifications.H5DetailActivity"
             android:theme="@style/notAnimation" />
-        <activity android:name=".ui.bindings.list.DetailActivity"></activity>
+        <activity android:name=".ui.bindings.list.DetailActivity" />
     </application>
 
 </manifest>

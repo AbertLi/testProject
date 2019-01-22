@@ -3,6 +3,7 @@ package one.example.com.myapplication3.ui.bindings.list;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.R;
 import one.example.com.myapplication3.databinding.ActivityDetailBinding;
@@ -28,6 +29,7 @@ public class DetailActivity extends AppCompatActivity {
         //查询数据库
         FamilyListAdapter adapter = new FamilyListAdapter( callback );
         addDataToAdapter( adapter, personEntity );
+        binding.recyclerview.setLayoutManager( new LinearLayoutManager( this ) );
         binding.recyclerview.setAdapter( adapter );
     }
 

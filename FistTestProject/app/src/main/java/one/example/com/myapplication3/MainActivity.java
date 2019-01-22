@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import one.example.com.myapplication3.ui.Notifications.NotificationTestActivity;
 import one.example.com.myapplication3.ui.bindings.ActivityTestFragment;
 import one.example.com.myapplication3.ui.bindings.list.ListActivity;
+import one.example.com.myapplication3.ui.dbactivity.DbActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
 
 /**
@@ -44,6 +45,8 @@ public class MainActivity extends Activity {
                 startActivity( intent4 );
                 break;
             case R.id.button5:
+                Intent intent5 = new Intent( this, DbActivity.class );
+                startActivity( intent5 );
                 break;
         }
     }

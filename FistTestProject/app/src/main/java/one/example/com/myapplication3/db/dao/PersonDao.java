@@ -15,6 +15,9 @@ public interface PersonDao {
     @Query("SELECT * FROM " + DbConstant.PERSON_TABLE_NAME)
     LiveData<List<PersonEntity>> loadAllPerson();
 
+    @Query("SELECT * FROM " + DbConstant.PERSON_TABLE_NAME)
+    List<PersonEntity> loadAllPersonList();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<PersonEntity> person);
 
