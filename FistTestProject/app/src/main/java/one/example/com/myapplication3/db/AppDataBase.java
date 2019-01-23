@@ -14,9 +14,11 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import one.example.com.myapplication3.AppExecutors;
 import one.example.com.myapplication3.Logs;
+import one.example.com.myapplication3.db.dao.AdDao;
 import one.example.com.myapplication3.db.dao.FamilyDao;
 import one.example.com.myapplication3.db.dao.PersonDao;
 import one.example.com.myapplication3.db.dao.UserDao;
+import one.example.com.myapplication3.db.entity.AdEntity;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
 import one.example.com.myapplication3.db.entity.User;
@@ -26,7 +28,7 @@ import one.example.com.myapplication3.db.entity.User;
  * 2,关于数据库升级的问题。(添加数据表，更改表名，增改删加表字段)
  * 3,在项目中不能出现多个RoomDatabase的实现类。否则编译不能通过。
  */
-@Database(entities = {PersonEntity.class, FamilyEntity.class, User.class}, version = DbConstant.DB_VERSION_3)
+@Database(entities = {PersonEntity.class, FamilyEntity.class, User.class, AdEntity.class}, version = DbConstant.DB_VERSION_3)
 public abstract class AppDataBase extends RoomDatabase {
     private static AppDataBase mFistProjectDataBase;
 
@@ -79,6 +81,8 @@ public abstract class AppDataBase extends RoomDatabase {
     public abstract FamilyDao familyDao();
 
     public abstract UserDao userDao();
+
+    public abstract AdDao adDao();
 
     private static void insertData(final AppDataBase database, final List<PersonEntity> person, final List<FamilyEntity> family) {
         database.runInTransaction( () -> {
