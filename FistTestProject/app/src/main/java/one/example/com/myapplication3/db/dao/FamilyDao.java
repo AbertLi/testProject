@@ -22,7 +22,7 @@ public interface FamilyDao {
     @Query("SELECT * FROM "+DbConstant.FAMILY_TABLE_NAME +" where personId = :personId")
     LiveData<List<FamilyEntity>> loadFamilyByPersonId(int personId);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)   //onConflict = OnConflictStrategy.REPLACE  表示如果遇到相同的字段则替换
     void insertAll(List<FamilyEntity> family);
 
 }
