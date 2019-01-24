@@ -4,16 +4,18 @@
 出现下面错误的解决方法
 
 问题：
-Android:android.database.sqlite.SQLiteConstraintException:UNIQUE constraint failed
+    Android:android.database.sqlite.SQLiteConstraintException:UNIQUE constraint failed
 解决方法：
-1，https://blog.csdn.net/wangyanguiyiyang/article/details/51132033
-2，可能发生这种BUG的两种情况
-  1：定义的字段为NOT　NULL，而插入时对应的字段为NULL
-  2：你定义的自动为PRIMARY，而插入时想插入的值已经在表中存在。
+    1，https://blog.csdn.net/wangyanguiyiyang/article/details/51132033
+    2，可能发生这种BUG的两种情况
+      1：定义的字段为NOT　NULL，而插入时对应的字段为NULL
+      2：你定义的自动为PRIMARY，而插入时想插入的值已经在表中存在。
 
-  针对情况2，建议用replace代替insert。或者在insert方法上面的备注改成 @Insert(onConflict = OnConflictStrategy.REPLACE) 这样就可以替换原来的字段。
+      针对情况2，建议用replace代替insert。或者在insert方法上面的备注改成 @Insert(onConflict = OnConflictStrategy.REPLACE) 这样就可以替换原来的字段。
 
 
 
 问题：
+    7.0以上不包括7.0Android系统悬挂式菜单无法生效。
 解决方法：
+    1,经过查看发现是没有打开悬挂式通知的权限。其实这个问题并不存在，关于微信为什么安装后就可以有悬挂式菜单栏的权限，应该微信有和各个手机厂商合作，已经把他们的应用加入到白名单。
