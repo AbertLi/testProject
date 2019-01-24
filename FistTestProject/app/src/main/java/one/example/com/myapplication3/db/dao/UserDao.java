@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import io.reactivex.Single;
 import one.example.com.myapplication3.db.entity.User;
@@ -27,7 +28,7 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE first_name LIKE :first AND " + "last_name LIKE :last LIMIT 1")
     User findByName(String first, String last);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)//替换原来有相同的主键的项（里面有替换，回滚，中止，失败，忽略等方式）
     void insertAll(User... users);
 
     @Delete

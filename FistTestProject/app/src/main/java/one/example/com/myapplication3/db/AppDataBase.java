@@ -14,21 +14,19 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import one.example.com.myapplication3.AppExecutors;
 import one.example.com.myapplication3.Logs;
-import one.example.com.myapplication3.db.dao.AdDao;
 import one.example.com.myapplication3.db.dao.FamilyDao;
 import one.example.com.myapplication3.db.dao.PersonDao;
 import one.example.com.myapplication3.db.dao.UserDao;
-import one.example.com.myapplication3.db.entity.AdEntity;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
 import one.example.com.myapplication3.db.entity.User;
 
 /**
- * 1,数据库里面的主键值不能一样否则就会被替换。（主键默认不是自增长，不知道是否可以让他进行自增长）。
+ * 1, insert方法里面 @Insert(onConflict = OnConflictStrategy.REPLACE) 的REPLACE表示替换原有的单项数据。（主键默认不是自增长，不知道是否可以让他进行自增长）。
  * 2,关于数据库升级的问题。(添加数据表，更改表名，增改删加表字段)
  * 3,在项目中不能出现多个RoomDatabase的实现类。否则编译不能通过。
  */
-@Database(entities = {PersonEntity.class, FamilyEntity.class, User.class, AdEntity.class}, version = DbConstant.DB_VERSION_3)
+@Database(entities = {PersonEntity.class, FamilyEntity.class, User.class}, version = DbConstant.DB_VERSION_2)
 public abstract class AppDataBase extends RoomDatabase {
     private static AppDataBase mFistProjectDataBase;
 
@@ -63,7 +61,7 @@ public abstract class AppDataBase extends RoomDatabase {
                         } );
                     }
                 } )
-                .addMigrations( MIGRATION_1_2, MIGRATION_2_3 )//这种方法可以添加字段，修改表名等，比较常用。
+                .addMigrations( MIGRATION_1_2 )//这种方法可以添加字段，修改表名等，比较常用。
 //                .fallbackToDestructiveMigration()//如果更新新数据库,则丢弃原来的表
                 .allowMainThreadQueries()//表示可以在主线程访问
                 .build();
@@ -81,8 +79,6 @@ public abstract class AppDataBase extends RoomDatabase {
     public abstract FamilyDao familyDao();
 
     public abstract UserDao userDao();
-
-    public abstract AdDao adDao();
 
     private static void insertData(final AppDataBase database, final List<PersonEntity> person, final List<FamilyEntity> family) {
         database.runInTransaction( () -> {
@@ -115,18 +111,18 @@ public abstract class AppDataBase extends RoomDatabase {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
 //            database.execSQL( "DROP TABLE User" );
-            database.execSQL( "CREATE  TABLE IF NOT EXISTS 'User'(`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `first_name` TEXT, `last_name` TEXT)" );//添加User表，里面的字段必须和User实体类里面的字段一致。
+            database.execSQL( "CREATE  TABLE IF NOT EXISTS 'User'(`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `first_name` TEXT, `last_name` TEXT ,`age` TEXT)" );//添加User表，里面的字段必须和User实体类里面的字段一致。
 //            database.execSQL( "INSERT INTO User (1, `name`, `description`)  SELECT `id`, `name`, `description` FROM products" );
         }
     };
 
-    //版本从2升级到3用到的。User表里面添加age字段
-    private static final Migration MIGRATION_2_3 = new Migration( DbConstant.DB_VERSION_3, DbConstant.DB_VERSION_4 ) {
-        @Override
-        public void migrate(@NonNull SupportSQLiteDatabase database) {
-            database.execSQL( "ALTER TABLE User ADD COLUMN 'age' TEXT" );//添加User表，里面的字段必须和User实体类里面的字段一致。
-        }
-    };
+    //版本从2升级到3用到的。User表里面添加age字段   这种方式以后问题！！！
+//    private static final Migration MIGRATION_2_3 = new Migration( DbConstant.DB_VERSION_3, DbConstant.DB_VERSION_4 ) {
+//        @Override
+//        public void migrate(@NonNull SupportSQLiteDatabase database) {
+//            database.execSQL( "ALTER TABLE User ADD COLUMN 'age' TEXT" );//添加User表，里面的字段必须和User实体类里面的字段一致。
+//        }
+//    };
 
 
 }
@@ -149,3 +145,15 @@ public abstract class AppDataBase extends RoomDatabase {
 //    public void clearAllTables() {
 //
 //    }
+
+
+
+
+//  bug解决方法如下  Android:android.database.sqlite.SQLiteConstraintException:UNIQUE constraint failed
+//
+//可能发生这种BUG的两种情况
+//        1：定义的字段为NOT　NULL，而插入时对应的字段为NULL
+//        2：你定义的自动为PRIMARY，而插入时想插入的值已经在表中存在。
+//
+//        针对情况2，建议用replace代替insert
+//        详细介绍查看博客：Android:Sqlite插入或更新–replace
