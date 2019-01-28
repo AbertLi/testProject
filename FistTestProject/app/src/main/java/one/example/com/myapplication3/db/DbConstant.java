@@ -1,7 +1,7 @@
 package one.example.com.myapplication3.db;
 
 public class DbConstant {
-
+    //以时间为版本，没次数据库改动时保留版本。
     public static final int DB_VERSION_1 = 1;
     public static final int DB_VERSION_2 = 2;
     public static final int DB_VERSION_3 = 3;

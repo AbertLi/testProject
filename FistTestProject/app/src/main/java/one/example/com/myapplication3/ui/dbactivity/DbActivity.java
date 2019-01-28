@@ -26,7 +26,7 @@ public class DbActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         binding = DataBindingUtil.setContentView( this, R.layout.activity_db );
-        dataBase = AppDataBase.getInstance( this, new AppExecutors() );
+        dataBase = AppDataBase.getInstance( this,  AppExecutors.getInstance() );
     }
 
     public void btn(View view) {
@@ -115,7 +115,7 @@ public class DbActivity extends AppCompatActivity {
     private void setAdapterss(List<User> list) {
         List<String> datas = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            datas.add( list.get( i ).firstName + "  like  " + list.get( i ).lastName +"  agessss "+list.get( i ).age);
+            datas.add( list.get( i ).firstName + "  like  " + list.get( i ).lastName +"  agessss "+list.get( i ).age);//
         }
         Logs.eprintln( "person size=" + list.size() );
         adapter = new DbListAdapter( this, datas );

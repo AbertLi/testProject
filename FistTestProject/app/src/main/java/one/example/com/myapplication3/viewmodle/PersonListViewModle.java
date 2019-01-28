@@ -7,6 +7,7 @@ import java.util.List;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
+import one.example.com.myapplication3.AppExecutors;
 import one.example.com.myapplication3.db.AppDataBase;
 import one.example.com.myapplication3.modle.Repository.PersonRepository;
 import one.example.com.myapplication3.db.entity.PersonEntity;
@@ -19,17 +20,18 @@ public class PersonListViewModle extends AndroidViewModel {
     private final MediatorLiveData<List<PersonEntity>> mObservableProducts;
 
     public PersonListViewModle(Application application) {
-        super( application );
+        super(application);
 
         mObservableProducts = new MediatorLiveData<>();
         // set by default null, until we get data from the database.
-        mObservableProducts.setValue( null );
+        mObservableProducts.setValue(null);
 
-        mRepository = PersonRepository.getInstance( AppDataBase.getInstance( ApplicationUtile.getApplication(), ApplicationUtile.getExecutors() ) );
+        mRepository = PersonRepository.getInstance(AppDataBase.getInstance(ApplicationUtile.getApplication(),
+                AppExecutors.getInstance()));
         LiveData<List<PersonEntity>> products = mRepository.getPersons();
 
         // observe the changes of the products from the database and forward them
-        mObservableProducts.addSource( products, mObservableProducts::setValue );
+        mObservableProducts.addSource(products, mObservableProducts::setValue);
     }
 
     /**
@@ -46,6 +48,6 @@ public class PersonListViewModle extends AndroidViewModel {
      * @return
      */
     public LiveData<List<PersonEntity>> searchPerson(String query) {
-        return mRepository.searchProducts( query );
+        return mRepository.searchProducts(query);
     }
 }

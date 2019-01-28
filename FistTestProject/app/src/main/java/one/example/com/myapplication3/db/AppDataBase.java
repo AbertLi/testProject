@@ -26,7 +26,7 @@ import one.example.com.myapplication3.db.entity.User;
  * 2,关于数据库升级的问题。(添加数据表，更改表名，增改删加表字段)
  * 3,在项目中不能出现多个RoomDatabase的实现类。否则编译不能通过。
  */
-@Database(entities = {PersonEntity.class, FamilyEntity.class, User.class}, version = DbConstant.DB_VERSION_2)
+@Database(entities = {PersonEntity.class, FamilyEntity.class, User.class}, version = DbConstant.DB_VERSION_4)
 public abstract class AppDataBase extends RoomDatabase {
     private static AppDataBase mFistProjectDataBase;
 
@@ -62,6 +62,8 @@ public abstract class AppDataBase extends RoomDatabase {
                     }
                 } )
                 .addMigrations( MIGRATION_1_2 )//这种方法可以添加字段，修改表名等，比较常用。
+                .addMigrations( MIGRATION_2_3 )//这种方法可以添加字段，修改表名等，比较常用。
+                .addMigrations( MIGRATION_3_4)//这种方法可以添加字段，修改表名等，比较常用。
 //                .fallbackToDestructiveMigration()//如果更新新数据库,则丢弃原来的表
                 .allowMainThreadQueries()//表示可以在主线程访问
                 .build();
@@ -117,13 +119,21 @@ public abstract class AppDataBase extends RoomDatabase {
     };
 
     //版本从2升级到3用到的。User表里面添加age字段   这种方式以后问题！！！
-//    private static final Migration MIGRATION_2_3 = new Migration( DbConstant.DB_VERSION_3, DbConstant.DB_VERSION_4 ) {
-//        @Override
-//        public void migrate(@NonNull SupportSQLiteDatabase database) {
-//            database.execSQL( "ALTER TABLE User ADD COLUMN 'age' TEXT" );//添加User表，里面的字段必须和User实体类里面的字段一致。
-//        }
-//    };
+    private static final Migration MIGRATION_2_3 = new Migration( DbConstant.DB_VERSION_2, DbConstant.DB_VERSION_3 ) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL( "ALTER TABLE User ADD COLUMN 'age' TEXT" );//添加User表，里面的字段必须和User实体类里面的字段一致。
+        }
+    };
 
+
+    private static final Migration MIGRATION_3_4 = new Migration( DbConstant.DB_VERSION_3, DbConstant.DB_VERSION_4 ) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+//            database.execSQL( "ALTER TABLE User ADD COLUMN 'age' TEXT" );//添加User表，里面的字段必须和User实体类里面的字段一致。
+            database.execSQL("ALTER TABLE User ADD COLUMN sex TEXT");
+        }
+    };
 
 }
 

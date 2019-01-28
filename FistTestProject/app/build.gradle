@@ -8,8 +8,8 @@ android {
         applicationId "one.example.com.myapplication3"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 20190128
+        versionName "2019.01.28"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //指定room.schemaLocation生成的文件路径
         javaCompileOptions {

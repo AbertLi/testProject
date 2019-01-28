@@ -31,6 +31,18 @@ import androidx.annotation.NonNull;
  * webservice requests).
  */
 public class AppExecutors {
+    private static AppExecutors mAppExecutors;
+
+    public static AppExecutors getInstance() {
+        if (mAppExecutors == null) {
+            synchronized (AppExecutors.class) {
+                if (mAppExecutors == null) {
+                    mAppExecutors = new AppExecutors();
+                }
+            }
+        }
+        return mAppExecutors;
+    }
 
     private final Executor mDiskIO;
 
@@ -38,14 +50,17 @@ public class AppExecutors {
 
     private final Executor mMainThread;
 
-    private AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
+    private final Executor newCachedT;
+
+    private AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread,Executor abc) {
         this.mDiskIO = diskIO;
         this.mNetworkIO = networkIO;
         this.mMainThread = mainThread;
+        this.newCachedT=abc;
     }
 
-    public AppExecutors() {
-        this( Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool( 3 ), new MainThreadExecutor() );
+    private AppExecutors() {
+        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(3), new MainThreadExecutor(),Executors.newCachedThreadPool());
     }
 
     public Executor diskIO() {
@@ -60,12 +75,16 @@ public class AppExecutors {
         return mMainThread;
     }
 
+    public Executor getNewCachedT() {
+        return newCachedT;
+    }
+
     private static class MainThreadExecutor implements Executor {
-        private Handler mainThreadHandler = new Handler( Looper.getMainLooper() );
+        private Handler mainThreadHandler = new Handler(Looper.getMainLooper());
 
         @Override
         public void execute(@NonNull Runnable command) {
-            mainThreadHandler.post( command );
+            mainThreadHandler.post(command);
         }
     }
 }

@@ -17,4 +17,8 @@ public class User {
 
     @ColumnInfo(name = "age")
     public String age;
+
+    @ColumnInfo(name = "sex")
+    public String sex;
+
 }

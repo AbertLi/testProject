@@ -7,6 +7,7 @@ import java.util.List;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
+import one.example.com.myapplication3.AppExecutors;
 import one.example.com.myapplication3.db.AppDataBase;
 import one.example.com.myapplication3.db.entity.User;
 import one.example.com.myapplication3.modle.Repository.UserRepository;
@@ -17,10 +18,11 @@ public class UserViewModle extends AndroidViewModel {
     private final MediatorLiveData<List<User>> mObservableProducts;
 
     public UserViewModle(Application application) {
-        super( application );
+        super(application);
         mObservableProducts = new MediatorLiveData<>();
-        mObservableProducts.setValue( null );
-        mRepository = UserRepository.getInstance( AppDataBase.getInstance( ApplicationUtile.getApplication(), ApplicationUtile.getExecutors() ) );
+        mObservableProducts.setValue(null);
+        mRepository = UserRepository.getInstance(AppDataBase.getInstance(ApplicationUtile.getApplication(),
+                AppExecutors.getInstance()));
         LiveData<List<User>> family = mRepository.getUserListLiveData();
 //        mObservableProducts.addSource( family, new Observer<List<User>>() {
 //            @Override
@@ -29,7 +31,7 @@ public class UserViewModle extends AndroidViewModel {
 //            }
 //        } );
         //上面式子等价于下面式子
-        mObservableProducts.addSource( family, mObservableProducts::setValue );
+        mObservableProducts.addSource(family, mObservableProducts::setValue);
 
     }
 
@@ -39,7 +41,7 @@ public class UserViewModle extends AndroidViewModel {
 
 
     public void insert(List<User> list) {
-        mRepository.insertData( list );
+        mRepository.insertData(list);
     }
 
     /**
