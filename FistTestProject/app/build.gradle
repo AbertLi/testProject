@@ -64,6 +64,15 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    // Retrofit库
+    implementation 'com.squareup.retrofit2:retrofit:2.0.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.1.2' // Okhttp库
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.2' // 用Gson解析json的转换器
+
+
     //Room先前引用包
 //    implementation "android.arch.persistence.room:runtime:1.0.0-alpha5"
 //    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha5"
