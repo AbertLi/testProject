@@ -62,8 +62,8 @@ public abstract class AppDataBase extends RoomDatabase {
                     }
                 } )
                 .addMigrations( MIGRATION_1_2 )//这种方法可以添加字段，修改表名等，比较常用。
-                .addMigrations( MIGRATION_2_3 )//这种方法可以添加字段，修改表名等，比较常用。
-                .addMigrations( MIGRATION_3_4)//这种方法可以添加字段，修改表名等，比较常用。
+                .addMigrations( MIGRATION_2_3 )
+                .addMigrations( MIGRATION_3_4)
 //                .fallbackToDestructiveMigration()//如果更新新数据库,则丢弃原来的表
                 .allowMainThreadQueries()//表示可以在主线程访问
                 .build();
