@@ -16,17 +16,15 @@ import one.example.com.myapplication3.AppExecutors;
 import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.db.dao.FamilyDao;
 import one.example.com.myapplication3.db.dao.PersonDao;
-import one.example.com.myapplication3.db.dao.UserDao;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
-import one.example.com.myapplication3.db.entity.User;
 
 /**
  * 1, insert方法里面 @Insert(onConflict = OnConflictStrategy.REPLACE) 的REPLACE表示替换原有的单项数据。（主键默认不是自增长，不知道是否可以让他进行自增长）。
  * 2,关于数据库升级的问题。(添加数据表，更改表名，增改删加表字段)
  * 3,在项目中不能出现多个RoomDatabase的实现类。否则编译不能通过。
  */
-@Database(entities = {PersonEntity.class, FamilyEntity.class, User.class}, version = DbConstant.DB_VERSION_4)
+@Database(entities = {PersonEntity.class, FamilyEntity.class}, version = DbConstant.DB_VERSION_5)
 public abstract class AppDataBase extends RoomDatabase {
     private static AppDataBase mFistProjectDataBase;
 
@@ -64,6 +62,7 @@ public abstract class AppDataBase extends RoomDatabase {
                 .addMigrations( MIGRATION_1_2 )//这种方法可以添加字段，修改表名等，比较常用。
                 .addMigrations( MIGRATION_2_3 )
                 .addMigrations( MIGRATION_3_4)
+                .addMigrations( MIGRATION_4_5)
 //                .fallbackToDestructiveMigration()//如果更新新数据库,则丢弃原来的表
                 .allowMainThreadQueries()//表示可以在主线程访问
                 .build();
@@ -80,7 +79,6 @@ public abstract class AppDataBase extends RoomDatabase {
 
     public abstract FamilyDao familyDao();
 
-    public abstract UserDao userDao();
 
     private static void insertData(final AppDataBase database, final List<PersonEntity> person, final List<FamilyEntity> family) {
         database.runInTransaction( () -> {
@@ -127,11 +125,20 @@ public abstract class AppDataBase extends RoomDatabase {
     };
 
 
+    //在user表里面增加sex字段
     private static final Migration MIGRATION_3_4 = new Migration( DbConstant.DB_VERSION_3, DbConstant.DB_VERSION_4 ) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
 //            database.execSQL( "ALTER TABLE User ADD COLUMN 'age' TEXT" );//添加User表，里面的字段必须和User实体类里面的字段一致。
             database.execSQL("ALTER TABLE User ADD COLUMN sex TEXT");
+        }
+    };
+
+    //删除数据库里面的User表
+    private static final Migration MIGRATION_4_5 = new Migration( DbConstant.DB_VERSION_4, DbConstant.DB_VERSION_5 ) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("DROP TABLE User");
         }
     };
 

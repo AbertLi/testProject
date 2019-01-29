@@ -8,8 +8,8 @@ android {
         applicationId "one.example.com.myapplication3"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 20190128
-        versionName "2019.01.28"
+        versionCode 20190129
+        versionName "2019.01.29"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //指定room.schemaLocation生成的文件路径
         javaCompileOptions {
@@ -21,7 +21,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

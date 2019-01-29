@@ -11,7 +11,6 @@ import one.example.com.myapplication3.db.AppDataBase;
 import one.example.com.myapplication3.db.DataGenerator;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
-import one.example.com.myapplication3.db.entity.User;
 import android.os.Bundle;
 import android.view.View;
 import java.util.ArrayList;
@@ -40,16 +39,16 @@ public class DbActivity extends AppCompatActivity {
                 Logs.eprintln( "family size=" + family.size() );
                 dataBase.familyDao().insertAll( family );
                 dataBase.personDao().insertAll( person );
-                User[] userlist = new User[person.size()];
-                for (int i = 0; i < person.size(); i++) {
-                    User user = new User();
-                    user.firstName = person.get( i ).getName();
-                    user.lastName = person.get( i ).getAge();
-                    user.age="age is "+person.get( i ).getAge();
-                    user.uid = i+1;
-                    userlist[i]=user;
-                }
-                dataBase.userDao().insertAll( userlist );
+//                User[] userlist = new User[person.size()];
+//                for (int i = 0; i < person.size(); i++) {
+//                    User user = new User();
+//                    user.firstName = person.get( i ).getName();
+//                    user.lastName = person.get( i ).getAge();
+//                    user.age="age is "+person.get( i ).getAge();
+//                    user.uid = i+1;
+//                    userlist[i]=user;
+//                }
+//                dataBase.userDao().insertAll( userlist );
                 break;
             case R.id.button2:
 //                Observable.create(new ObservableOnSubscribe<Integer>() {
@@ -105,17 +104,17 @@ public class DbActivity extends AppCompatActivity {
                 setAdapterssF( familys );
                 break;
             case R.id.button5:
-                List<User> personList = dataBase.userDao().getAll();
+                List<FamilyEntity> personList = dataBase.familyDao().loadFamilysList();
                 setAdapterss( personList );
                 break;
         }
     }
 
 
-    private void setAdapterss(List<User> list) {
+    private void setAdapterss(List<FamilyEntity> list) {
         List<String> datas = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            datas.add( list.get( i ).firstName + "  like  " + list.get( i ).lastName +"  agessss "+list.get( i ).age);//
+            datas.add( list.get( i ).getText()+ "  like  " + list.get( i ).getLike() +"  agessss "+list.get( i ).getAge());//
         }
         Logs.eprintln( "person size=" + list.size() );
         adapter = new DbListAdapter( this, datas );
