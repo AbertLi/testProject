@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
         <import type="android.view.View"/>
+
+        <variable
+            name="person"
+            type="one.example.com.myapplication3.db.entity.PersonEntity"/>
     </data>
 
 
@@ -11,14 +17,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Albert"
-            android:textSize="16dp" />
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="7dp"
+            android:letterSpacing="0.04"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:title="@{person.name}"
+            app:label="@{person.age}"
+            />
+
 
         <TextView
             android:id="@+id/age"
