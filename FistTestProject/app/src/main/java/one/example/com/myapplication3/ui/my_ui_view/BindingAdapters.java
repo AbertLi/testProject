@@ -1,14 +1,11 @@
 package one.example.com.myapplication3.ui.my_ui_view;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ImageSpan;
 import android.util.Log;
@@ -16,13 +13,11 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.R;
-import one.example.com.myapplication3.utile.FontUtil;
 
 /**
  * 自定义Binding adapters
