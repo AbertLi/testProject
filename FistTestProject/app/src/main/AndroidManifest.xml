@@ -14,6 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.animations.AnimationActivity">
+        </activity>
         <activity android:name=".sample.MainActivity">
         </activity>
         <activity android:name=".ui.dbactivity.DbActivity"/>
