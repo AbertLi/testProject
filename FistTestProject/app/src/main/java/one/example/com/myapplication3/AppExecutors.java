@@ -81,10 +81,36 @@ public class AppExecutors {
 
     private static class MainThreadExecutor implements Executor {
         private Handler mainThreadHandler = new Handler(Looper.getMainLooper());
-
         @Override
         public void execute(@NonNull Runnable command) {
             mainThreadHandler.post(command);
         }
+        public void removeRunnable(Runnable runnable){
+            mainThreadHandler.removeCallbacks(runnable);
+        }
+        public void postDelay(Runnable runnable,long delay){
+            mainThreadHandler.postDelayed(runnable,delay);
+        }
+    }
+
+    public boolean isMainThread() {
+        return Looper.getMainLooper() == Looper.myLooper();
     }
 }
+
+
+/*
+public boolean isMainThread() {
+    return Looper.getMainLooper() == Looper.myLooper();
+}
+或者
+
+public boolean isMainThread() {
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
+}
+或者
+
+public boolean isMainThread() {
+    return Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId();
+}
+ */
