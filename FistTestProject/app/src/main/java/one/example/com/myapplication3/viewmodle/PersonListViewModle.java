@@ -26,8 +26,7 @@ public class PersonListViewModle extends AndroidViewModel {
         // set by default null, until we get data from the database.
         mObservableProducts.setValue(null);
 
-        mRepository = PersonRepository.getInstance(AppDataBase.getInstance(ApplicationUtile.getApplication(),
-                AppExecutors.getInstance()));
+        mRepository = PersonRepository.getInstance();
         LiveData<List<PersonEntity>> products = mRepository.getPersons();
 
         // observe the changes of the products from the database and forward them

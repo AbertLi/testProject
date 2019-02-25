@@ -4,10 +4,12 @@ import java.util.List;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
+import one.example.com.myapplication3.AppExecutors;
 import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.db.AppDataBase;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
+import one.example.com.myapplication3.utile.ApplicationUtile;
 
 /**
  * Repository handling the work with products and comments.
@@ -20,8 +22,8 @@ public class FamilyRepository {
     ;
     private MediatorLiveData<List<FamilyEntity>> mObservableFamilys;
 
-    private FamilyRepository(final AppDataBase database) {
-        mDatabase = database;
+    private FamilyRepository() {
+        mDatabase = AppDataBase.getInstance(ApplicationUtile.getApplication(), AppExecutors.getInstance());
         mObservableFamilys = new MediatorLiveData<>();
 
 
@@ -34,11 +36,11 @@ public class FamilyRepository {
                 } );
     }
 
-    public static FamilyRepository getInstance(final AppDataBase database) {
+    public static FamilyRepository getInstance() {
         if (sInstance == null) {
             synchronized (FamilyRepository.class) {
                 if (sInstance == null) {
-                    sInstance = new FamilyRepository( database );
+                    sInstance = new FamilyRepository();
                 }
             }
         }

@@ -21,8 +21,7 @@ public class FamilyViewModle extends AndroidViewModel {
         super(application);
         mObservableProducts = new MediatorLiveData<>();
         mObservableProducts.setValue(null);
-        mRepository = FamilyRepository.getInstance(AppDataBase.getInstance(ApplicationUtile.getApplication(),
-                AppExecutors.getInstance()));
+        mRepository = FamilyRepository.getInstance();
         LiveData<List<FamilyEntity>> family = mRepository.getAllFamilys();
         // observe the changes of the products from the database and forward them
         mObservableProducts.addSource(family, mObservableProducts::setValue);
