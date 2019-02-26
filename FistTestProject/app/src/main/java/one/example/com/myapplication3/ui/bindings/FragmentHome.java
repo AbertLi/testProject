@@ -12,9 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.R;
 import one.example.com.myapplication3.databinding.FragMainBinding;
 import one.example.com.myapplication3.db.entity.PersonEntity;
+import one.example.com.myapplication3.utile.LiveDataBusEeven;
 
 public class FragmentHome extends Fragment {
     FragMainBinding binding;
@@ -34,6 +36,7 @@ public class FragmentHome extends Fragment {
         v.findViewById( R.id.btn_showName ).setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                LiveDataBusEeven.getInstance().with("lala").postValue("东临碣石，以观沧海。");
             }
         } );
 

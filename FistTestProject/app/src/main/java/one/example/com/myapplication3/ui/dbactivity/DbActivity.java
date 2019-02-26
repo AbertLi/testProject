@@ -11,7 +11,10 @@ import one.example.com.myapplication3.db.AppDataBase;
 import one.example.com.myapplication3.db.DataGenerator;
 import one.example.com.myapplication3.db.entity.FamilyEntity;
 import one.example.com.myapplication3.db.entity.PersonEntity;
+import one.example.com.myapplication3.utile.LiveDataBusEeven;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,12 @@ public class DbActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         binding = DataBindingUtil.setContentView( this, R.layout.activity_db );
         dataBase = AppDataBase.getInstance( this,  AppExecutors.getInstance() );
+        LiveDataBusEeven.getInstance().with("lala").observe( DbActivity.class,new LiveDataBusEeven.ICallBack(){
+            @Override
+            public void back(Object o) {
+                Logs.eprintln("EvenBus");
+            }
+        });
     }
 
     public void btn(View view) {
