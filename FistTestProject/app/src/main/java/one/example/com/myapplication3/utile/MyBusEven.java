@@ -1,21 +1,19 @@
 package one.example.com.myapplication3.utile;
 
-
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class LiveDataBusEeven {
+public class MyBusEven {
 
     private static Hashtable<String, BusliveEvent> liveDataBusEeven = new Hashtable<>();
 
     public static class singletHolder {
-        private static LiveDataBusEeven liveDataBusEeven = new LiveDataBusEeven();
+        private static MyBusEven myBusEeven = new MyBusEven();
     }
 
-    public static LiveDataBusEeven getInstance() {
-        return singletHolder.liveDataBusEeven;
+    public static MyBusEven getInstance() {
+        return singletHolder.myBusEeven;
     }
-
 
     public BusliveEvent with(String key) {
         if (!liveDataBusEeven.containsKey(key)) {
@@ -33,6 +31,9 @@ public class LiveDataBusEeven {
 
 
         public void postValue(final Object value) {
+            if (iCallBackTable.size() == 0) {
+                return;
+            }
             Enumeration<ICallBack> e2 = iCallBackTable.elements();
             while (e2.hasMoreElements()) {
                 ICallBack callBack = (ICallBack) e2.nextElement();
@@ -40,11 +41,9 @@ public class LiveDataBusEeven {
             }
         }
 
-
         public void observe(Class<?> c, final ICallBack iCallBack) {
             iCallBackTable.put(c, iCallBack);
         }
 
     }
-
 }
