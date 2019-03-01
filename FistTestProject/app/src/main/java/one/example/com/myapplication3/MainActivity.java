@@ -1,9 +1,14 @@
 package one.example.com.myapplication3;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import one.example.com.myapplication3.ui.Notifications.NotificationTestActivity;
@@ -11,7 +16,9 @@ import one.example.com.myapplication3.ui.animations.AnimationActivity;
 import one.example.com.myapplication3.ui.bindings.ActivityTestFragment;
 import one.example.com.myapplication3.ui.bindings.list.ListActivity;
 import one.example.com.myapplication3.ui.dbactivity.DbActivity;
+import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
+import one.example.com.myapplication3.utile.SystemBarTintManager;
 
 /**
  * 该项目参考google提供的sample的基础架构组件，Architecture Components Basic
@@ -22,8 +29,31 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            setTranslucentStatus(true);
+//            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+//            tintManager.setStatusBarTintEnabled(true);
+//            tintManager.setStatusBarTintResource(android.R.color.white);//通知栏所需颜色
+//        }
+
+
         setContentView(R.layout.activity_main);
     }
+
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        }
+        else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
+
 
     public void btn(View view) {
         switch (view.getId()) {
@@ -51,6 +81,10 @@ public class MainActivity extends Activity {
             case R.id.button6:
                 Intent intent6 = new Intent(this, AnimationActivity.class);
                 startActivity(intent6);
+                break;
+            case R.id.button7:
+                Intent intent7 = new Intent(this, Main2Activity.class);
+                startActivity(intent7);
                 break;
         }
     }
