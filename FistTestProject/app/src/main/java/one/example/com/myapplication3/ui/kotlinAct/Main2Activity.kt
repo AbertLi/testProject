@@ -38,6 +38,21 @@ class Main2Activity : FragmentActivity() {
         binding = DataBindingUtil.setContentView(this@Main2Activity, R.layout.activity_main2)
         adapter = PersonListAdapter(clickCallBack)
 
+        var result = "ladbekdkg".let {
+            it.length
+        }
+        Logs.eprintln(TAG, result.toString())
+
+        var personEntity = PersonEntity("Jack", "33")
+        var result2 = with(personEntity) {
+            var stringBuffer = StringBuffer()
+            stringBuffer.append(name)
+            stringBuffer.append(age)
+            stringBuffer
+        }
+        Logs.eprintln(TAG, result2.toString())
+
+
         binding?.recyclerview?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding?.recyclerview?.adapter = adapter
 
@@ -69,7 +84,7 @@ class Main2Activity : FragmentActivity() {
         val viewModel = ViewModelProviders.of(this).get(PersonListViewModle::class.java)
 
         val nameObserver = Observer<List<PersonEntity>> { listEntity ->
-            Logs.eprintln(TAG, "subscribeUi   listEntity==null" + (listEntity==null))
+            Logs.eprintln(TAG, "subscribeUi   listEntity==null" + (listEntity == null))
             if (listEntity != null) {
                 adapter?.addPersonList(listEntity)
                 binding?.executePendingBindings()//计算挂起的绑定，更新将表达式绑定到已修改变量的任何视图。
