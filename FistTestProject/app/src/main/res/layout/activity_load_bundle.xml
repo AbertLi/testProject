@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="personBean"
+            type="one.example.com.myapplication3.db.entity.PersonEntity"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_parents"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#749384">
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_showBundle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="显示 bundle"/>
+    </LinearLayout>
+</layout>

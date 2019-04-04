@@ -14,6 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.loadBundle.LoadBundleActivity">
+        </activity>
         <activity android:name=".ui.kotlinAct.Main2Activity">
         </activity>
         <activity android:name=".ui.animations.AnimationActivity">
