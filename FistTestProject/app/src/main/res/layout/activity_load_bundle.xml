@@ -5,7 +5,6 @@
     >
 
     <data>
-
         <variable
             name="personBean"
             type="one.example.com.myapplication3.db.entity.PersonEntity"/>
@@ -16,19 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <RelativeLayout
-            android:id="@+id/rl_parents"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="#749384">
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/btn_showBundle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="显示 bundle"/>
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </layout>

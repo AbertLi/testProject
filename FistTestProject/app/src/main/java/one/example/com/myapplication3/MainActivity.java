@@ -18,6 +18,7 @@ import one.example.com.myapplication3.ui.bindings.list.ListActivity;
 import one.example.com.myapplication3.ui.dbactivity.DbActivity;
 import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
 import one.example.com.myapplication3.ui.loadBundle.LoadBundleActivity;
+import one.example.com.myapplication3.ui.loadBundle.listviewBundle.BundleActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
 import one.example.com.myapplication3.utile.SystemBarTintManager;
 
@@ -90,6 +91,10 @@ public class MainActivity extends Activity {
             case R.id.button8:
                 Intent intent8 = new Intent(this, LoadBundleActivity.class);
                 startActivity(intent8);
+                break;
+            case R.id.button9:
+                Intent intent9 = new Intent(this, BundleActivity.class);
+                startActivity(intent9);
                 break;
         }
     }

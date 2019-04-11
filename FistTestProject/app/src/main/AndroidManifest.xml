@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.loadBundle.listviewBundle.BundleActivity">
+        </activity>
         <activity android:name=".ui.loadBundle.LoadBundleActivity">
         </activity>
         <activity android:name=".ui.kotlinAct.Main2Activity">
         </activity>
         <activity android:name=".ui.animations.AnimationActivity">
-        </activity>
-        <activity android:name=".sample.MainActivity">
         </activity>
         <activity android:name=".ui.dbactivity.DbActivity"/>
         <activity android:name=".MainActivity">

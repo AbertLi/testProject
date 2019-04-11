@@ -46,11 +46,11 @@ dependencies {
 
     // ViewModel和LiveData依赖google demo引用
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0"
 
     //v4,v7引用包
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'       //RecyclerView引用包
     implementation 'androidx.cardview:cardview:1.0.0'               //cardview引用包
 
@@ -71,6 +71,19 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.0.2'
     implementation 'com.squareup.okhttp3:okhttp:3.1.2' // Okhttp库
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2' // 用Gson解析json的转换器
+
+    //Fresco
+    implementation 'com.facebook.fresco:fresco:0.14.1'
+    implementation 'com.facebook.fresco:animated-base-support:0.14.1'//在 API < 14 上的机器支持 WebP 时，需要添加以下依赖
+    implementation 'com.facebook.fresco:animated-gif:0.14.1'         //支持GIF动图，需要添加以下依赖
+    implementation 'com.facebook.fresco:webpsupport:0.14.1'                 //支持WebP，需要添加以下依赖
+    implementation 'com.facebook.fresco:animated-webp:0.14.1'               //支持WebP动图，需要添加以下依赖
+    implementation 'com.facebook.fresco:imagepipeline-okhttp3:0.14.1'        // 网络实现层想使用okhttp3，需要添加以下依赖
+
+    //引用Lib包
+//    compile project(path: ':data')
+    implementation project(':data')
+    implementation project(':recyclerview')
 
     //Room先前引用包
 //    implementation "android.arch.persistence.room:runtime:1.0.0-alpha5"

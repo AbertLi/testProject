@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="13dp"
+        android:paddingTop="8.5dp"
+        android:lines="2"
+        android:textStyle="bold"
+        android:text="东陵碣石以观沧海"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/tv_constent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="13dp"
+        android:textSize="12dp"
+        android:text="listview的许多view呈现在Ui上，这样的View对我们来说是可见的，可以称为OnScreen的view(也为ActionView)。
+view被上滚移除屏幕，这样的view称为offScreenView（也称为ScrapView）。
+然后ScrapView会被listview删除，而RecycleView会将这部分保存。
+而listview底部需要显示的view会从RecycleBin里面取出一个ScrapView。"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        android:paddingBottom="8dp"
+        tools:ignore="MissingConstraints"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
