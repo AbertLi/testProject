@@ -3,8 +3,6 @@ package one.example.com.myapplication3;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -15,12 +13,12 @@ import one.example.com.myapplication3.ui.Notifications.NotificationTestActivity;
 import one.example.com.myapplication3.ui.animations.AnimationActivity;
 import one.example.com.myapplication3.ui.bindings.ActivityTestFragment;
 import one.example.com.myapplication3.ui.bindings.list.ListActivity;
+import one.example.com.myapplication3.ui.customProgressBarText.CustomProgressBarActivity;
 import one.example.com.myapplication3.ui.dbactivity.DbActivity;
 import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
 import one.example.com.myapplication3.ui.loadBundle.LoadBundleActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundle.BundleActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
-import one.example.com.myapplication3.utile.SystemBarTintManager;
 
 /**
  * 该项目参考google提供的sample的基础架构组件，Architecture Components Basic
@@ -95,6 +93,10 @@ public class MainActivity extends Activity {
             case R.id.button9:
                 Intent intent9 = new Intent(this, BundleActivity.class);
                 startActivity(intent9);
+                break;
+            case R.id.button10:
+                Intent intent10 = new Intent(this, CustomProgressBarActivity.class);
+                startActivity(intent10);
                 break;
         }
     }

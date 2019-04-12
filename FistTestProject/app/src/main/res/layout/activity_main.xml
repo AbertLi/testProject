@@ -100,6 +100,15 @@
                 android:layout_centerHorizontal="true"
                 android:onClick="btn"
                 android:text="ListView Bundle"/>
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button9"
+                android:layout_centerHorizontal="true"
+                android:onClick="btn"
+                android:text="CustomProgress text"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
