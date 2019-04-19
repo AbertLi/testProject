@@ -7,7 +7,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+
 import android.util.Log;
+
 import java.util.Date;
 
 /**
@@ -16,6 +18,7 @@ import java.util.Date;
  * Process.myTid（） - 返回调用线程
  */
 public class LogWriteUtile {
+    private boolean isRelease = false;
     SimpleDateFormat simpleDateFormatFileName = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 
@@ -49,14 +52,14 @@ public class LogWriteUtile {
     public static String getDelviceInfo() {
         StringBuilder delviceInfo = new StringBuilder();
         delviceInfo.append("[")
-                   .append(android.os.Build.BRAND)
-                   .append(" ")
-                   .append(Build.MODEL)
-                   .append(" system_build_version:")
-                   .append(Build.VERSION.RELEASE)
-                   .append(" system_versionCode:")
-                   .append(Build.VERSION.SDK_INT)
-                   .append("]");
+                .append(android.os.Build.BRAND)
+                .append(" ")
+                .append(Build.MODEL)
+                .append(" system_build_version:")
+                .append(Build.VERSION.RELEASE)
+                .append(" system_versionCode:")
+                .append(Build.VERSION.SDK_INT)
+                .append("]");
 
         return delviceInfo.toString();
     }
@@ -76,15 +79,15 @@ public class LogWriteUtile {
         String levelStr = LevelUtile.getLevel(level);
         StringBuilder sb = new StringBuilder();
         sb.append(time)
-          .append(" ")
-          .append(Process.myPid())
-          .append("-")
-          .append(Process.myTid())
-          .append(" /")
-          .append(levelStr)
-          .append("/ ")
-          .append(tag)
-          .append(content);
+                .append(" ")
+                .append(Process.myPid())
+                .append("-")
+                .append(Process.myTid())
+                .append(" /")
+                .append(levelStr)
+                .append("/ ")
+                .append(tag)
+                .append(content);
         return sb.toString();
     }
 
@@ -114,7 +117,10 @@ public class LogWriteUtile {
         }
     }
 
-    private void log(int level,String tag,String c) {
+    private void log(int level, String tag, String c) {
+        if (isRelease) {
+            return;
+        }
         switch (level) {
             case LevelUtile.VERBOSE:
                 Log.v(tag, c);
@@ -132,7 +138,7 @@ public class LogWriteUtile {
                 Log.e(tag, c);
                 break;
             case LevelUtile.ASSERT:
-                Log.e(tag, "a"+c);
+                Log.e(tag, "a" + c);
                 break;
         }
 

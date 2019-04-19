@@ -16,6 +16,13 @@ class ViewHolderManager {
         var content: TextView = view.findViewById(R.id.tv_constent)
     }
 
+    class ViewHolder2(var view: View) : BaseHolder {
+//        var title: TextView = view.findViewById(R.id.tv_title)
+//        var content: TextView = view.findViewById(R.id.tv_constent)
+        //把得到的UI存入到父佈局中
+
+    }
+
     companion object {
         val DEFULE_ITEM = 0
         val AD_ITEM = 1
@@ -31,6 +38,9 @@ class ViewHolderManager {
             if (convertView == null) {
                 when (viewType) {
                     AD_ITEM -> {
+                        root = LayoutInflater.from(context).inflate(R.layout.listview_item_adparents_group, parent, false)
+                        holder = ViewHolder2(root)
+                        root.tag = holder
                     }
 
                     DEFULE_ITEM -> {
@@ -46,6 +56,7 @@ class ViewHolderManager {
 
             when (viewType) {
                 AD_ITEM -> {
+
                 }
 
                 DEFULE_ITEM -> {
