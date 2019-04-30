@@ -1,5 +1,8 @@
 package one.example.com.myapplication3.utile.logutile;
 
+/**
+ * 日志入口，通过这个入口打印的日志可以展示在控制台上也可以写入到本地文件里面。
+ */
 public class Log {
     private static LogWriteUtile getLogWrite() {
         return LogWriteUtile.getInstance();
