@@ -9,5 +9,8 @@ project(':bundle_two').projectDir=new File(rootDir,'sample/bundle_two')
 include ':recyclerview'
 project(':recyclerview').projectDir=new File(rootDir,'Repository/recyclerview')
 
+//include ':bundle_common'
+//project(':bundle_common').projectDir=new File(rootDir,'../CommonProject/Lib/bundle_common')//引用本地其他工程里面的lib包
+
 include ':data'
 project(':data').projectDir=new File(rootDir,'Repository/data')
