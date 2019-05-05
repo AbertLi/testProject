@@ -17,6 +17,7 @@ import one.example.com.recyclerview.BaseViewItem;
 
 /**
  * 定制动态下发的样式 1
+ * 小图 H5跳转样式
  */
 public class AdViewOneItem implements BaseViewItem {
     private Context mContext;
@@ -26,7 +27,7 @@ public class AdViewOneItem implements BaseViewItem {
 
     @Override
     public AbstractView inflate(ViewGroup viewGroup) {
-        View root = LayoutInflater.from(mContext).inflate(R.layout.adview_one_item, viewGroup, false);
+        View root = LayoutInflater.from(mContext).inflate(R.layout.adview_two_item, viewGroup, false);
         return new AbstractView(root);
     }
 

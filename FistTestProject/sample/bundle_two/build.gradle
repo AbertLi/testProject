@@ -29,4 +29,7 @@ dependencies {
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'       //RecyclerView引用包
+    implementation project(':data')
+    implementation project(':recyclerview')
 }
