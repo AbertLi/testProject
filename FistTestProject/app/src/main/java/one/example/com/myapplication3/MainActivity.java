@@ -19,6 +19,7 @@ import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
 import one.example.com.myapplication3.ui.loadBundle.LoadBundleActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundle.BundleActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
+import one.example.com.myapplication3.ui.replugins.AppListActivity;
 
 /**
  * 该项目参考google提供的sample的基础架构组件，Architecture Components Basic
@@ -95,9 +96,14 @@ public class MainActivity extends Activity {
                 startActivity(intent9);
                 break;
             case R.id.button10:
-                Intent intent10 = new Intent(this, CustomProgressBarActivity.class);
+                Intent intent10 = new Intent(this, AppListActivity.class);
                 startActivity(intent10);
                 break;
+            case R.id.button11:
+                Intent intent11 = new Intent(this, CustomProgressBarActivity.class);
+                startActivity(intent11);
+                break;
+
         }
     }
 }

@@ -1,12 +1,12 @@
 package one.example.com.myapplication3;
 
-import android.app.Application;
+import com.qihoo360.replugin.RePluginApplication;
 
 import one.example.com.myapplication3.ui.Notifications.NotificationTools2;
 import one.example.com.myapplication3.utile.ApplicationUtile;
 import one.example.com.myapplication3.utile.logutile.LogWriteUtile;
 
-public class BaseApplication extends Application {
+public class BaseApplication extends RePluginApplication {
 
 
     @Override

@@ -10,9 +10,15 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
     >
 
-    <one.example.com.myapplication3.ui.customProgressBarText.TextProgressBar
+    <!--<one.example.com.myapplication3.ui.customProgressBarText.progress.ViewProgressBar-->
+        <!--android:id="@+id/textProgress"-->
+        <!--style="@style/StyleTextProgressBar"-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="23dp"/>-->
+
+    <one.example.com.myapplication3.ui.customProgressBarText.progress.ViewProgressBar
         android:id="@+id/textProgress"
-        style="@style/StyleTextProgressBar"
+        android:background="#007AFF"
         android:layout_width="200dp"
         android:layout_height="23dp"/>
 </RelativeLayout>

@@ -18,6 +18,8 @@ android {
             }
         }
     }
+    apply plugin: 'replugin-host-gradle'//replugin
+
 
     buildTypes {
         release {
@@ -35,6 +37,11 @@ android {
         targetCompatibility 1.8
     }
 
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
 }
 
 dependencies {
@@ -80,6 +87,8 @@ dependencies {
     implementation 'com.facebook.fresco:animated-webp:0.14.1'               //支持WebP动图，需要添加以下依赖
     implementation 'com.facebook.fresco:imagepipeline-okhttp3:0.14.1'        // 网络实现层想使用okhttp3，需要添加以下依赖
 
+    //RePlugin插件引用包
+    implementation 'com.qihoo360.replugin:replugin-host-lib:2.3.2'
     //引用Lib包
 //    compile project(path: ':data')
     implementation project(':data')
