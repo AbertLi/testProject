@@ -8,7 +8,6 @@ import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.R;
 import one.example.com.myapplication3.databinding.ActivityDetailBinding;
 import one.example.com.myapplication3.db.entity.PersonEntity;
-import one.example.com.myapplication3.modle.IFamily;
 import one.example.com.myapplication3.viewmodle.FamilyViewModle;
 
 import android.content.Intent;
@@ -16,7 +15,7 @@ import android.os.Bundle;
 
 
 public class DetailActivity extends AppCompatActivity {
-    private static String TAG = "DetailActivity   ";
+    private static final String TAG = "DetailActivity   ";
     ActivityDetailBinding binding;
 
     @Override
@@ -27,7 +26,7 @@ public class DetailActivity extends AppCompatActivity {
         PersonEntity personEntity = (PersonEntity) intent.getSerializableExtra( "person" );
         binding.setPersonBean( personEntity );
         //查询数据库
-        FamilyListAdapter adapter = new FamilyListAdapter( callback );
+        FamilyListAdapter adapter = new FamilyListAdapter(callback);
         addDataToAdapter( adapter, personEntity );
         binding.recyclerview.setLayoutManager( new LinearLayoutManager( this ) );
         binding.recyclerview.setAdapter( adapter );
@@ -47,18 +46,12 @@ public class DetailActivity extends AppCompatActivity {
             if (listFamily != null) {
                 adapter.addFamily( listFamily );
                 Logs.eprintln( TAG, "subscribeUi  onChanged=" + listFamily.size() );
-            } else {
-
             }
             binding.executePendingBindings();
         } );
     }
 
+    IFamilyCallBack callback = person ->
+        Logs.eprintln(TAG, "选择了 " + person.getText() + "\n" + person.getLike());
 
-    IFamilyCallBack callback = new IFamilyCallBack() {
-        @Override
-        public void onClick(IFamily person) {
-            Logs.eprintln( TAG, "选择了 " + person.getText() + "\n" + person.getLike() );
-        }
-    };
 }
