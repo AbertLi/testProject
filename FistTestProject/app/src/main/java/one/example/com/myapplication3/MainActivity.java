@@ -16,7 +16,7 @@ import one.example.com.myapplication3.ui.bindings.list.ListActivity;
 import one.example.com.myapplication3.ui.customProgressBarText.CustomProgressBarActivity;
 import one.example.com.myapplication3.ui.dbactivity.DbActivity;
 import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
-import one.example.com.myapplication3.ui.loadBundle.LoadBundleActivity;
+import one.example.com.myapplication3.ui.loadBundle.listviewBundlestyle2.LoadBundleActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundle.BundleActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
 import one.example.com.myapplication3.ui.replugins.AppListActivity;

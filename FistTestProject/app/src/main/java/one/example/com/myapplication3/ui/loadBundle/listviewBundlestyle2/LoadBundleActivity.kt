@@ -1,4 +1,4 @@
-package one.example.com.myapplication3.ui.loadBundle
+package one.example.com.myapplication3.ui.loadBundle.listviewBundlestyle2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +20,7 @@ class LoadBundleActivity : AppCompatActivity() {
     }
 
     fun init() {
-        ItemViewTypeManager.getInstance().registerItem(ItemViewTypeManager.DEFULT_ITEM,ViewItem())
+        ItemViewTypeManager.getInstance().registerItem(ItemViewTypeManager.DEFULT_ITEM, ViewItem())
         binding?.recyclerview!!.setLayoutManager(LinearLayoutManager(this))
         var adapter = MyAdapter(callBack)
         binding?.recyclerview!!.setAdapter(adapter)
