@@ -1,4 +1,4 @@
-package one.example.com.r_t;
+package com.albert.interfalib;
 
 import org.junit.Test;
 

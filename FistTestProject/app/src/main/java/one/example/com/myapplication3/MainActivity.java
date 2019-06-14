@@ -16,6 +16,7 @@ import one.example.com.myapplication3.ui.bindings.list.ListActivity;
 import one.example.com.myapplication3.ui.customProgressBarText.CustomProgressBarActivity;
 import one.example.com.myapplication3.ui.dbactivity.DbActivity;
 import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
+import one.example.com.myapplication3.ui.loadBundle.bundletest.BundleTestActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundlestyle2.LoadBundleActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundle.BundleActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
@@ -102,6 +103,11 @@ public class MainActivity extends Activity {
             case R.id.button11:
                 Intent intent11 = new Intent(this, CustomProgressBarActivity.class);
                 startActivity(intent11);
+                break;
+
+            case R.id.button12:
+                Intent intent12 = new Intent(this, BundleTestActivity.class);
+                startActivity(intent12);
                 break;
 
         }

@@ -96,6 +96,8 @@ dependencies {
 //    compile project(path: ':data')
     implementation project(':data')
     implementation project(':recyclerview')
+    implementation project(':r_t') //中间件
+    implementation project(':interfalib') //api 中间件，插件，host共同依赖。
 
     //Room先前引用包
 //    implementation "android.arch.persistence.room:runtime:1.0.0-alpha5"

@@ -1,5 +1,5 @@
 //include ':app', ':bundle_one'
-include ':app', ':r_t'
+include ':app', ':r_t', ':interfalib'
 include ':bundle_one'
 project(':bundle_one').projectDir=new File(rootDir,'sample/bundle_one')
 

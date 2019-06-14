@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.loadBundle.bundletest.BundleTestActivity">
 
+    <EditText
+        android:id="@+id/et_package_Id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/et_package_Id"
+        tools:ignore="MissingConstraints"/>
 
+    <Button
+        android:id="@+id/btn_loadPluginInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btn"
+        android:text="LoadPlugin  Info"
+        app:layout_constraintTop_toBottomOf="@id/et_package_Id"
+        />
 
+    <Button
+        android:id="@+id/btn_showWiew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="btn"
+        android:text="Show View"
+        app:layout_constraintTop_toBottomOf="@+id/btn_loadPluginInfo"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_parents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFFF00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_showWiew"
+        tools:ignore="MissingConstraints"
+        >
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
