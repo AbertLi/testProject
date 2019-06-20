@@ -7,4 +7,9 @@ import android.view.View;
  */
 public interface IPluginViewManager {
 
+    public void updataTheme(int theme);
+
+    public View getRootView();
+
+    public void setPluginStat(IStatCallBack callBack);
 }

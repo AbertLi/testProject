@@ -10,6 +10,7 @@ import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import one.example.com.myapplication3.R;
 import one.example.com.recyclerview.AbstractView;
 import one.example.com.data.BaseData;
 import one.example.com.recyclerview.BaseViewItem;
