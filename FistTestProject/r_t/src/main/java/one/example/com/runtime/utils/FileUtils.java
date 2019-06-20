@@ -1,95 +1,120 @@
 package one.example.com.runtime.utils;
 
+import android.text.TextUtils;
+
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class FileUtils {
-    public static boolean deleteQuietly(File file) {
-        if (file == null) {
+    private static final String TAG = "FileUtils";
+
+    /**
+     * 写入文件
+     * （当data = “” 的时候情况文件内容）
+     *
+     * @param filePath 文件地址
+     * @param data     写入文件的数据内容
+     * @return 是否写入成功
+     */
+    public static boolean writeData(String filePath, String data) {
+        if (!isFilePath(filePath)) {
+            Logs.eprintln(TAG, "Wrong address written to file");
             return false;
-        } else {
-            try {
-                if (file.isDirectory()) {
-                    cleanDirectory(file);
-                }
-            } catch (Exception var3) {
-            }
-
-            try {
-                return file.delete();
-            } catch (Exception var2) {
-                return false;
-            }
-        }
-    }
-
-    public static void cleanDirectory(File directory) throws IOException {
-        File[] files = verifiedListFiles(directory);
-        IOException exception = null;
-        File[] var3 = files;
-        int var4 = files.length;
-
-        for(int var5 = 0; var5 < var4; ++var5) {
-            File file = var3[var5];
-
-            try {
-                forceDelete(file);
-            } catch (IOException var8) {
-                exception = var8;
-            }
         }
 
-        if (null != exception) {
-            throw exception;
+        if (data == null) {
+            Logs.eprintln(TAG, "Data is null");
+            return false;
         }
-    }
-
-    private static File[] verifiedListFiles(File directory) throws IOException {
-        String message;
-        if (!directory.exists()) {
-            message = directory + " does not exist";
-            throw new IllegalArgumentException(message);
-        } else if (!directory.isDirectory()) {
-            message = directory + " is not a directory";
-            throw new IllegalArgumentException(message);
-        } else {
-            File[] files = directory.listFiles();
-            if (files == null) {
-                throw new IOException("Failed to list contents of " + directory);
-            } else {
-                return files;
-            }
-        }
-    }
-
-    public static void forceDelete(File file) throws IOException {
-        if (file.exists()) {
-            if (file.isDirectory()) {
-                deleteDirectory(file);
-            } else {
-                boolean filePresent = file.exists();
-                if (!file.delete()) {
-                    if (!filePresent) {
-                        throw new FileNotFoundException("File does not exist: " + file);
-                    }
-
-                    String message = "Unable to delete file: " + file;
-                    throw new IOException(message);
+        File file = new File(filePath);
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream(file);
+            fileOutputStream.write(data.getBytes(Charset.forName("UTF-8")));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fileOutputStream != null) {
+                try {
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
-
         }
+        return false;
+    }
+
+    /**
+     *
+     * @param filePath
+     * @return
+     */
+    public static String readData(String filePath) {
+        File file = new File(filePath);
+        BufferedReader fr = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        String line;
+        try {
+            fr = new BufferedReader(new FileReader(file));
+            while ((line = fr.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return stringBuilder.toString();
     }
 
 
-    public static void deleteDirectory(File directory) throws IOException {
-        if (directory.exists()) {
-            cleanDirectory(directory);
-            if (!directory.delete()) {
-                String message = "Unable to delete directory " + directory + ".";
-                throw new IOException(message);
-            }
+    /**
+     * 判断是否是文件路径。
+     * 如果没有创建文件夹就创建文件的存放的文件夹。
+     *
+     * @param filePath
+     * @return
+     */
+    private static boolean isFilePath(String filePath) {
+        if (TextUtils.isEmpty(filePath)) {
+            return false;
         }
+
+        File file = new File(filePath);
+        File fileParents = new File(file.getParent());
+        if (file.isDirectory()) {
+            Logs.eprintln(TAG, "filepath is Directory fail");
+            return false;
+        }
+        if (!fileParents.exists()) {
+            fileParents.mkdirs();
+        }
+        return true;
+    }
+
+
+    /**
+     * 是否创建
+     * @param path
+     * @return
+     */
+    public static boolean isCreate(String path) {
+        if (TextUtils.isEmpty(path)) {
+            return false;
+        }
+        File file = new File(path);
+        return file.exists();
     }
 }

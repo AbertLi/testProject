@@ -7,19 +7,23 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Pair;
 
-import java.io.File;
 import java.util.List;
 
 import one.example.com.runtime.host.HostInit;
 import one.example.com.runtime.plugin.AdvPlugin;
+import one.example.com.runtime.plugin.Loaders;
 import one.example.com.runtime.plugin.PluginInfo;
+import one.example.com.runtime.plugin.PluginInfoList;
 import one.example.com.runtime.plugin.PluginTable;
+import one.example.com.runtime.utils.FileUtils;
 import one.example.com.runtime.utils.Logs;
 
 /**
  * 中间件入口
- *
+ * <p>
  * （暂时不做签名验证）
+ * <p>
+ * 1，写入中间件或者文件到一半的时候突然关闭应用汇怎样。
  */
 public class PluginRt {
     private static final String TAG = "PluginRt";
@@ -33,13 +37,12 @@ public class PluginRt {
      *
      * @param infosIn
      */
-    public static synchronized void saveBundleInfos(List<PluginInfo> infosIn) {
+    public static synchronized void savePLuginToInfos(List<PluginInfo> infosIn) {
         if (infosIn == null || infosIn.isEmpty()) {
             Logs.eprintln(TAG, "pluginInfo is null or size is 0");
             return;
         }
     }
-
 
     /**
      * 通过包名获取最新版本的样式包对象
@@ -59,6 +62,7 @@ public class PluginRt {
     public static boolean isPluginInstalled(String pluginName) {
         return false;
     }
+
     /**
      * 安装这个插件，并且返回插件相关的信息
      *
@@ -71,7 +75,7 @@ public class PluginRt {
             return new Pair<>(null, "pluginPath is null");
         }
         //判断地址是否是文件地址
-        if (!isFilePath(pluginPath)) {
+        if (!FileUtils.isCreate(pluginPath)) {
             return new Pair<>(null, "The pluginPath path does not exist.");
         }
 
@@ -91,34 +95,34 @@ public class PluginRt {
         }
 
 
-        PluginInfo installedInfo = getInstallPluginInfo();
+        PluginInfo installedInfo = getInstallPluginInfo(infos);
         //检查插件是否有安装。
         if (installedInfo != null) {
             AdvPlugin advPlugin = PluginTable.getADVPluginByPluginInfo(context, installedInfo);
             return new Pair<>(advPlugin, null);
-        } else {
+        }
+        else {
             //执行安装
-            return ;
+            Loaders loaders = new Loaders(context, infos);
+            loaders.loadLoaders();
+            AdvPlugin pluginS = new AdvPlugin();
+            pluginS.setLoaders(loaders);
+            pluginS.setPluginInfo(infos);
+            PluginTable.putPlugin(infos.getAdvPuginMapKey(), pluginS);
+            PluginInfoList.savePluginInfo(infos);
+            return new Pair<>(pluginS, null);
         }
     }
 
 
     /**
-     * 查询相同包名和版本号的插件
+     * 通过包名查询插件对象
+     *
+     * @param packageId
      * @return
      */
-    public static PluginInfo getInstallPluginInfo(){
-
-        return null;
-    }
-
-    //是否是文件
-    public static boolean isFilePath(String path) {
-        if (TextUtils.isEmpty(path)) {
-            return false;
-        }
-        File file = new File(path);
-        return file.exists();
+    private static Pair<AdvPlugin, String> getAdvPlugin(String packageId) {
+        return PluginTable.getAdvPluginMap(packageId);
     }
 
 
@@ -131,5 +135,31 @@ public class PluginRt {
      */
     public static boolean startActivity(Context context, Intent intent) {
         return false;
+    }
+
+
+    /**
+     * 查询相同包名和版本号的插件信息
+     *
+     * @return
+     */
+    private static PluginInfo getInstallPluginInfo(PluginInfo infos) {
+        List<PluginInfo> list = PluginInfoList.loadPluginListData(false);
+        if (list == null) {
+            return null;
+        }
+        else {
+            for (PluginInfo info : list) {
+                if (info == null) {
+                    continue;
+                }
+                else {
+                    if (info.isHas(infos)) {
+                        return info;
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

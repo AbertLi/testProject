@@ -1,8 +1,15 @@
 package one.example.com.runtime.plugin;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.text.TextUtils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.Serializable;
@@ -24,6 +31,38 @@ public class PluginInfo implements Serializable {
     private String downLoadUrl;         //插件下载信息
     private boolean isOffMarket;        //是否下架
     private boolean isAutoInstall;      //是否自动安装
+
+
+    public PluginInfo(JSONObject o){
+        packageId = o.optString("packageId");
+        PluginName = o.optString("pluginName");
+        adapterActivityName = o.optString("adapterActivityName");
+        versionCode = o.optString("versionCode");
+        hostVersionCode = o.optString("hostVersionCode");
+        fingerprint = o.optString("fingerprint");
+        downLoadUrl = o.optString("downLoadUrl");
+        isOffMarket = o.optBoolean("isOffMarket");
+        isAutoInstall = o.optBoolean("preDownload");
+    }
+
+    public PluginInfo(){
+
+    }
+
+    public JSONObject obj2Json() throws JSONException{
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("packageId",packageId);
+        jsonObject.put("pluginName",PluginName);
+        jsonObject.put("versionCode",versionCode);
+        jsonObject.put("hostVersionCode",hostVersionCode);
+        jsonObject.put("isOffMarket",isOffMarket);
+        jsonObject.put("preDownload",isAutoInstall);
+        return jsonObject;
+    }
+
+    public boolean isHas(PluginInfo info) {
+        return TextUtils.equals(info.packageId, packageId) && TextUtils.equals(info.versionCode, versionCode);
+    }
 
     public String getPackageId() {
         return packageId;
@@ -112,10 +151,21 @@ public class PluginInfo implements Serializable {
                 '}';
     }
 
+
     public static PluginInfo parsePluginInfo2PluginInfo(PackageInfo info) {
-        PackageInfo manager = info.applicationInfo;
+        int versionCode = info.versionCode;
+        String packageId = info.packageName;
+        ApplicationInfo appInfo = info.applicationInfo;
+        Bundle bundle = appInfo.metaData;
+        String hostVersionCode = null;
+        if (bundle != null) {
+            hostVersionCode = bundle.getString("hostVersionCode");
+        }
 
         PluginInfo info1 = new PluginInfo();
+        info1.packageId = packageId;
+        info1.versionCode = String.valueOf(versionCode);
+        info1.hostVersionCode = hostVersionCode;
         return info1;
     }
 
@@ -164,7 +214,7 @@ public class PluginInfo implements Serializable {
 }
 /*
 
-插件的对应数据
+插件的对应数据，这是参考用的数据
 
 [{
 	"packageId": "com.coloros.advert.browser.smallpicturedeeplink",
@@ -192,7 +242,7 @@ public class PluginInfo implements Serializable {
 
 
 
-从服务端下发的数据
+从服务端下发的数据,这是本项目插件存放的数据
 [{
 	"packageId": "com.test.bundleone",
         "pluginName": "bundleone",
@@ -217,6 +267,25 @@ public class PluginInfo implements Serializable {
 	"isOffMarket": false,
 	"isAutoInstall": false
  }]
+
+
+
+[{
+	"packageId": "com.coloros.advert.browser.smallpicturedeeplink",
+	"PluginName": "deeplink广告",
+	"versionCode": "2",
+	"hostVersionCode": "100",
+	"isOffMarket": false,
+	"preDownload": false
+ },
+ {
+	"packageId": "com.coloros.advert.browser.grouppicturefastapp",
+	"PluginName": "deeplink广告",
+	"versionCode": "2",
+	"hostVersionCode": "100",
+	"isOffMarket": false,
+	"preDownload": false
+}]
 
 
 
