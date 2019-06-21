@@ -37,7 +37,7 @@ public class PluginRt {
      *
      * @param infosIn
      */
-    public static synchronized void savePLuginToInfos(List<PluginInfo> infosIn) {
+    public static synchronized void savePluginToInfos(List<PluginInfo> infosIn) {
         if (infosIn == null || infosIn.isEmpty()) {
             Logs.eprintln(TAG, "pluginInfo is null or size is 0");
             return;
@@ -81,12 +81,11 @@ public class PluginRt {
 
         //packageInfo判断
         Context context = HostInit.getHostAppContext();
-        PackageInfo packageInfo =
-                context.getPackageManager().getPackageArchiveInfo(pluginPath, PackageManager.GET_META_DATA);
-        if (packageInfo == null) {
+        PackageInfo pi = context.getPackageManager().getPackageArchiveInfo(pluginPath, PackageManager.GET_META_DATA);
+        if (pi == null) {
             return new Pair<>(null, "packageInfo is null");
         }
-        PluginInfo infos = PluginInfo.parsePluginInfo2PluginInfo(packageInfo);
+        PluginInfo infos = PluginInfo.parsePluginInfo2PluginInfo(pi);
         if (!infos.islegal()) {
             return new Pair<>(null, "This pluginInfo is not legal");
         }

@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="btn"
-        android:text="LoadPlugin  Info"
+        android:text="LoadPlugin Info"
         app:layout_constraintTop_toBottomOf="@id/et_package_Id"
         />
 

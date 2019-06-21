@@ -33,15 +33,19 @@ public class PluginInfoList {
     public static synchronized List<PluginInfo> loadPluginListData(boolean loadTofile) {
         if (loadTofile) {
             pluginInfoList.clear();
-            pluginInfoList.addAll(pares2bundleList());
+            ArrayList<PluginInfo> list = pares2bundleList();
+            if (list != null) {
+                pluginInfoList.addAll(list);
+            }
         }
         return pluginInfoList;
     }
 
     /**
      * 写入数据
-     *
+     * <p>
      * 1,缓存去重,缓存写入，永久化写入
+     *
      * @param info
      */
     public static void savePluginInfo(PluginInfo info) {
@@ -76,9 +80,9 @@ public class PluginInfoList {
     }
 
 
-    private static List<PluginInfo> pares2bundleList() {
+    private static ArrayList<PluginInfo> pares2bundleList() {
         Context context = HostInit.getHostAppContext();
-        List<PluginInfo> list = null;
+        ArrayList<PluginInfo> list = null;
         File dir = context.getDir(Contant.plugin_save_path, 0);
         File file = new File(dir, Contant.plugin_info_json);
         JSONArray jsonArray = null;

@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <meta-data android:name="plugin_class_name">one.example.com.bundleone.AdViewItem</meta-data>
+        <meta-data android:name="plugin_class_name">one.example.com.bundlethree.AdViewItem</meta-data>
     </application>
 
 </manifest>
