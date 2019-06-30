@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import one.example.com.data.BaseData;
 
 public class ItemViewTypeManager {
-    public static final int DEFULT_ITEM = 1;
-    public static final int AD_ITEM = 2;
     Map<Integer, BaseViewItem> viewTypeViewItem = new HashMap<>();
 
     public void registerItem(int key, BaseViewItem item) {

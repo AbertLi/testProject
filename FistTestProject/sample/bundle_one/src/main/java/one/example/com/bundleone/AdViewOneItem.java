@@ -26,7 +26,7 @@ public class AdViewOneItem implements BaseViewItem {
     }
 
     @Override
-    public AbstractView inflate(ViewGroup viewGroup) {
+    public AbstractView inflate(ViewGroup viewGroup,Context context) {
         View root = LayoutInflater.from(mContext).inflate(R.layout.adview_one_item, viewGroup, false);
         return new AbstractView(root);
     }

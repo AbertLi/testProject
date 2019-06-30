@@ -1,7 +1,5 @@
 package one.example.com.recyclerview;
-
 import android.view.ViewGroup;
-
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,14 +17,6 @@ import one.example.com.data.BaseData;
 public class MultipleItemViewAdapter<D extends BaseData> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<D> mListInfo = new ArrayList<>();
     public Map<Integer, Map<String, Object>> viewTypeCallBackMap = new HashMap<>();
-
-//    public MultipleItemViewAdapter(Object callBack) {
-//        Map<String, Object> mapCallBack = new HashMap<>();
-//        mapCallBack.put("clickCallBack", callBack);
-//        viewTypeCallBackMap.put(ItemViewTypeManager.DEFULT_ITEM, mapCallBack);
-//        viewTypeCallBackMap.put(ItemViewTypeManager.AD_ITEM, mapCallBack);
-//    }
-
     /**
      * 刷新
      *
