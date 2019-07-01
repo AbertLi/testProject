@@ -9,10 +9,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import one.example.com.myapplication3.R;
+import one.example.com.myapplication3.ui.customProgressBarText.progress.ViewProgressBar;
 
 public class CustomProgressBarActivity extends Activity implements View.OnClickListener {
 
-    private TextProgressBar mProgressView;
+    private ViewProgressBar mProgressView;
     private final int FOR_SCROLL = 1;
     private final int DELAY = 500;
     private float mProgress;
@@ -44,7 +45,7 @@ public class CustomProgressBarActivity extends Activity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_progress_bar);
-        mProgressView = (TextProgressBar) findViewById(R.id.textProgress);
+        mProgressView = (ViewProgressBar) findViewById(R.id.textProgress);
         mProgressView.setOnClickListener(this);
         mProgressView.setStateType(Constant.DEFAULT);
         String text = String.format("%.1f%%", 53.6897);
