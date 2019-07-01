@@ -1,7 +1,7 @@
 package com.albert.interfalib;
 
 public interface IDownLoadCallBack {
-    void downloadSuc();
+    public void downloadSuc();
 
-    void downloadFail(String failMsg);
+    public void downloadFail(String failMsg);
 }

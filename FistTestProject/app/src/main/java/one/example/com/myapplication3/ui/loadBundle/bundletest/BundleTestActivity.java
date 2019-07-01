@@ -52,7 +52,7 @@ public class BundleTestActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_showWiew:
                 String packAgeId = editText.getText().toString().trim();
-                AdvPlugin plugins1 = PluginRt.getBundleByPackageId(packAgeId);
+                Pair<AdvPlugin, String> plugins1 = PluginRt.getAdvPlugin(packAgeId);
 
                 rl_parent.addView(null);
                 break;

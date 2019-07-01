@@ -2,8 +2,10 @@ package com.albert.interfalib;
 
 public class IHost {
     private IHostCommeFeatrue iHostCommeFeatrue;
+    private IDownload iDownLoadPlugin;
 
     public static IHost mIHost;
+
     public static IHost getInstance() {
         if (mIHost == null) {
             synchronized (IHost.class) {
@@ -15,7 +17,8 @@ public class IHost {
         return mIHost;
     }
 
-    private IHost(){}
+    private IHost() {
+    }
 
 
     public IHostCommeFeatrue getiHostCommeFeatrue() {
@@ -24,5 +27,13 @@ public class IHost {
 
     public void setiHostCommeFeatrue(IHostCommeFeatrue iHostCommeFeatrue) {
         this.iHostCommeFeatrue = iHostCommeFeatrue;
+    }
+
+    public IDownload getiDownLoadPlugin() {
+        return iDownLoadPlugin;
+    }
+
+    public void setiDownLoadPlugin(IDownload iDownLoadPlugin) {
+        this.iDownLoadPlugin = iDownLoadPlugin;
     }
 }

@@ -16,11 +16,13 @@ import java.io.Serializable;
 
 import one.example.com.runtime.host.HostInit;
 import one.example.com.runtime.utils.Contant;
+import one.example.com.runtime.utils.Logs;
 
 /**
  * 插件信息
  */
 public class PluginInfo implements Serializable {
+    private String TAG = "PluginInfo";
     private String packageId;           //插件包名，也是唯一id
     private String PluginName;          //插件名字
     private String adapterActivityName; //适配页面名字
@@ -210,6 +212,24 @@ public class PluginInfo implements Serializable {
      */
     public boolean isHostVersion() {
         return Contant.mHostVersionCode.equals(hostVersionCode) ? true : false;
+    }
+
+
+    /**
+     * 是否需要升级
+     * @param vc
+     * @return
+     */
+    public boolean isNeedUpgrade(String vc) {
+        if (TextUtils.isEmpty(versionCode)) {
+            Logs.eprintln(TAG, "versionCode in info is enpty");
+            return false;
+        }
+
+        if (Integer.parseInt(versionCode) < Integer.parseInt(vc)) {
+            return true;
+        }
+        return false;
     }
 }
 /*

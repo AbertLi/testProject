@@ -7,6 +7,10 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Pair;
 
+import com.albert.interfalib.IDownLoadCallBack;
+import com.albert.interfalib.IHost;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import one.example.com.runtime.host.HostInit;
@@ -31,7 +35,7 @@ public class PluginRt {
     /**
      * 获取下发的bundleInfo列表
      * 执行逻辑
-     * 1，查询是否安装，赛选除未安装/需要更新的bundle信息，并将（未安装/需要更）信息持久化。
+     * 1，查询是否安装，筛选除未安装/需要更新的bundle信息，并将（未安装/需要更）信息持久化。
      * 2，对那些未安装/需要更新的bundle，进行下载和安装操作。
      * 3，执行完成更新状态信息。
      *
@@ -42,25 +46,71 @@ public class PluginRt {
             Logs.eprintln(TAG, "pluginInfo is null or size is 0");
             return;
         }
+
+        ArrayList<PluginInfo>needInstall = new ArrayList<>();
+        for (PluginInfo info : infosIn) {
+            if (TextUtils.isEmpty(info.getPackageId())){
+                Logs.eprintln(TAG, "savePluginToInfos this info is empty");
+                continue;
+            }
+            if (isNeedPluginInstall(info)){
+                needInstall.add(info);
+            }
+        }
+        if (!needInstall.isEmpty()) {
+            //启动下载，下载成功就回调安装。
+            for (PluginInfo needInstallInfo : needInstall) {
+                if (TextUtils.isEmpty(needInstallInfo.getDownLoadUrl())){
+                    Logs.eprintln(TAG, "savePluginToInfos getDownLoadUrl is empty");
+                    continue;
+                }
+                if (TextUtils.isEmpty(needInstallInfo.getSavePluginPath())){
+                    Logs.eprintln(TAG, "savePluginToInfos getSavePluginPath is empty");
+                    continue;
+                }
+                if (TextUtils.isEmpty(needInstallInfo.getPluginName())){
+                    Logs.eprintln(TAG, "savePluginToInfos getPluginName is empty");
+                    continue;
+                }
+                IHost.getInstance().getiDownLoadPlugin().downLoad(
+                        needInstallInfo.getDownLoadUrl(),
+                        needInstallInfo.getSavePluginPath(),
+                        needInstallInfo.getPluginName(),
+                        new IDownLoadCallBack() {
+                            @Override
+                            public void downloadSuc() {
+
+                            }
+
+                            @Override
+                            public void downloadFail(String failMsg) {
+
+                            }
+                        });
+            }
+        }
     }
 
     /**
-     * 通过包名获取最新版本的样式包对象
+     * 判断这个插件是否需要安装...（暂时不做签名验证）
      *
+     * @param info
      * @return
      */
-    public static AdvPlugin getBundleByPackageId(String packageId) {
-        return null;
+    private static boolean isNeedPluginInstall(PluginInfo info) {
+        Pair<AdvPlugin, String> pair = PluginTable.getAdvPluginMap(info.getPackageId());
+        boolean isNeetUpdata = pair.first.getPluginInfo().isNeedUpgrade(info.getVersionCode());
+        return pair == null || pair.second == null || isNeetUpdata;
     }
 
     /**
-     * 判断这个插件是否安装...（暂时不做签名验证）
+     * 通过包名查询插件对象
      *
-     * @param pluginName
+     * @param packageId
      * @return
      */
-    public static boolean isPluginInstalled(String pluginName) {
-        return false;
+    public static Pair<AdvPlugin, String> getAdvPlugin(String packageId) {
+        return PluginTable.getAdvPluginMap(packageId);
     }
 
     /**
@@ -111,17 +161,6 @@ public class PluginRt {
             PluginInfoList.savePluginInfo(infos);
             return new Pair<>(pluginS, null);
         }
-    }
-
-
-    /**
-     * 通过包名查询插件对象
-     *
-     * @param packageId
-     * @return
-     */
-    private static Pair<AdvPlugin, String> getAdvPlugin(String packageId) {
-        return PluginTable.getAdvPluginMap(packageId);
     }
 
 
