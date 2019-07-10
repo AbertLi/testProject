@@ -1,4 +1,5 @@
 package one.example.com.recyclerview;
+import android.content.Context;
 import android.view.ViewGroup;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import one.example.com.data.BaseData;
  * 多种ItemView的适配器
  */
 public class MultipleItemViewAdapter<D extends BaseData> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    public Context con;
     List<D> mListInfo = new ArrayList<>();
     public Map<Integer, Map<String, Object>> viewTypeCallBackMap = new HashMap<>();
     /**
@@ -46,7 +48,7 @@ public class MultipleItemViewAdapter<D extends BaseData> extends RecyclerView.Ad
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        AbstractView abstractView = ItemViewTypeManager.getInstance().inflate(viewType, parent);
+        AbstractView abstractView = ItemViewTypeManager.getInstance().inflate(viewType, parent,con);
         return getViewHolder(abstractView);
     }
 

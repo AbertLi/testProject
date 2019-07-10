@@ -1,13 +1,13 @@
 //include ':app', ':bundle_one'
 include ':app', ':r_t', ':interfalib'
-include ':bundle_one'
-project(':bundle_one').projectDir=new File(rootDir,'sample/bundle_one')
-
-include ':bundle_two'
-project(':bundle_two').projectDir=new File(rootDir,'sample/bundle_two')
-
-include ':bundle_three'
-project(':bundle_three').projectDir=new File(rootDir,'sample/bundle_three')
+//include ':bundle_one'
+//project(':bundle_one').projectDir=new File(rootDir,'sample/bundle_one')
+//
+//include ':bundle_two'
+//project(':bundle_two').projectDir=new File(rootDir,'sample/bundle_two')
+//
+//include ':bundle_three'
+//project(':bundle_three').projectDir=new File(rootDir,'sample/bundle_three')
 
 include ':recyclerview'
 project(':recyclerview').projectDir=new File(rootDir,'Repository/recyclerview')

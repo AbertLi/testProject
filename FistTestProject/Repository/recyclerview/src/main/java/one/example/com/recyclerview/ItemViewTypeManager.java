@@ -1,5 +1,6 @@
 package one.example.com.recyclerview;
 
+import android.content.Context;
 import android.view.ViewGroup;
 
 import java.util.HashMap;
@@ -24,8 +25,8 @@ public class ItemViewTypeManager {
         return Holder.mItemViewTypeManager;
     }
 
-    public AbstractView inflate(int viewType, ViewGroup parent) {
-        return viewTypeViewItem.get(viewType).inflate(parent);
+    public AbstractView inflate(int viewType, ViewGroup parent, Context con) {
+        return viewTypeViewItem.get(viewType).inflate(parent,con);
     }
 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int viewType, int position,

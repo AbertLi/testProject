@@ -1,6 +1,6 @@
 package one.example.com.data;
 
-
+//抽象数据实现类
 public class DataInfo implements BaseData {
     @Override
     public String getId() {

@@ -13,10 +13,9 @@ import one.example.com.recyclerview.BaseViewItem
  * 常用的Item样式
  */
 class ViewItem1 : BaseViewItem {
-    override fun inflate(viewGroup: ViewGroup?,context:Context): AbstractView {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        var view = LayoutInflater.from(context).inflate(R.layout.dklsjfd,null,false)
-        return  AbstractView(view)
+    override fun inflate(viewGroup: ViewGroup?, context: Context): AbstractView {
+        var view = LayoutInflater.from(context).inflate(R.layout.recyclerview_item1, null, false)
+        return AbstractView(view)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, info: BaseData?, callback: MutableMap<String, Any>?) {
