@@ -18,9 +18,9 @@ android {
             }
         }
     }
-    apply plugin: 'replugin-host-gradle'//replugin
-
-
+//    if (isCompileHostReplugin.toBoolean()) {
+//        apply plugin: 'replugin-host-gradle'//replugin
+//    }
     buildTypes {
         release {
             minifyEnabled true
@@ -91,7 +91,9 @@ dependencies {
     implementation 'com.facebook.fresco:imagepipeline-okhttp3:0.14.1'        // 网络实现层想使用okhttp3，需要添加以下依赖
 
     //RePlugin插件引用包
-    implementation 'com.qihoo360.replugin:replugin-host-lib:2.3.2'
+//    if (isCompileHostReplugin.toBoolean()) {
+//        implementation 'com.qihoo360.replugin:replugin-host-lib:2.3.2'
+//    }
     //引用Lib包
 //    compile project(path: ':data')
     implementation project(':data')

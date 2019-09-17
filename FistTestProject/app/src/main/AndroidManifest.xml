@@ -20,8 +20,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.loadBundle.bundletest.BundleTestActivity">
         </activity>
-        <activity android:name=".ui.replugins.AppListActivity">
-        </activity>
+        <!--<activity android:name=".ui.replugins.AppListActivity">-->
+        <!--</activity>-->
         <activity android:name=".ui.customProgressBarText.CustomProgressBarActivity"/>
         <activity android:name=".ui.loadBundle.listviewBundle.BundleActivity">
         </activity>
