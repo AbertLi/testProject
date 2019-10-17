@@ -23,8 +23,17 @@ android {
 //    }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled true//启动混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        languageTest{
+            initWith(buildTypes.release)
+        }
+        languageTestExp{
+            initWith(buildTypes.release)
+        }
+        dev{
+            initWith(buildTypes.release)
         }
     }
 
@@ -43,52 +52,45 @@ repositories {
     mavenLocal()
     jcenter()
 }
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-//    //工程刚刚创建的时候引用的包
-    testImplementation 'junit:junit:4.12'
-
-
-    //constraintlayout布局框架
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //    testImplementation 'junit:junit:4.12'
+    implementation base.stdlib
+    implementation base.constraintlayout//constraintlayout布局框架
 
     // ViewModel和LiveData依赖google demo引用
-    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0"
+    implementation base.lifecycle.extensions
+    annotationProcessor base.lifecycle.compiler
 
     //v4,v7引用包
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'       //RecyclerView引用包
-    implementation 'androidx.cardview:cardview:1.0.0'               //cardview引用包
+    implementation base.appcompat
+    implementation base.recyclerview       //RecyclerView引用包
+    implementation base.cardview               //cardview引用包
 
     //Room的引用包
-    implementation 'androidx.room:room-rxjava2:2.2.0-alpha01'       //如果要在数据库里面用到RxJava的值就需要添加这个引用
-    implementation 'androidx.room:room-runtime:2.2.0-alpha01'
-    annotationProcessor 'androidx.room:room-compiler:2.2.0-alpha01'
+    implementation base.room.rxjava2       //如果要在数据库里面用到RxJava的值就需要添加这个引用
+    annotationProcessor base.room.compiler
     // 如果不加这个引用就回报这个错误：Caused by: java.lang.RuntimeException: cannot find implementation for one.example.com.myapplication3.db.AppDataBase. AppDataBase_Impl does not exist
 
     //RxJava的引用包
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation base.rxjava.rxjava
+    implementation base.rxjava.rxandroid
 
     //gson
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation base.gson
 
     // Retrofit库
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0' // Okhttp库
-    implementation 'com.squareup.retrofit2:converter-gson:2.0.2' // 用Gson解析json的转换器
+    implementation base.retrofit.retrofit
+    implementation base.okhttp3 // Okhttp库
+    implementation base.retrofit.retrofitGson // 用Gson解析json的转换器
 
     //Fresco
-    implementation 'com.facebook.fresco:fresco:0.14.1'
-    implementation 'com.facebook.fresco:animated-base-support:0.14.1'//在 API < 14 上的机器支持 WebP 时，需要添加以下依赖
-    implementation 'com.facebook.fresco:animated-gif:0.14.1'         //支持GIF动图，需要添加以下依赖
-    implementation 'com.facebook.fresco:webpsupport:0.14.1'                 //支持WebP，需要添加以下依赖
-    implementation 'com.facebook.fresco:animated-webp:0.14.1'               //支持WebP动图，需要添加以下依赖
-    implementation 'com.facebook.fresco:imagepipeline-okhttp3:0.14.1'        // 网络实现层想使用okhttp3，需要添加以下依赖
+    implementation base.fresco.fresco
+    implementation base.fresco.animatedbase         //在 API < 14 上的机器支持 WebP 时，需要添加以下依赖
+    implementation base.fresco.animatedgif          //支持GIF动图，需要添加以下依赖
+    implementation base.fresco.webpsupport                //支持WebP，需要添加以下依赖
+    implementation base.fresco.animatedwbp               //支持WebP动图，需要添加以下依赖
+    implementation base.fresco.imagepipelineOkhttp        // 网络实现层想使用okhttp3，需要添加以下依赖
 
     //RePlugin插件引用包
 //    if (isCompileHostReplugin.toBoolean()) {
@@ -128,3 +130,5 @@ dependencies {
 //    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha1"
 
 }
+
+
