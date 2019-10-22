@@ -20,6 +20,7 @@ import one.example.com.myapplication3.ui.loadBundle.bundletest.BundleTestActivit
 import one.example.com.myapplication3.ui.loadBundle.listviewBundlestyle2.LoadBundleActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundle.BundleActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
+import one.example.com.myapplication3.ui.reflection.plugin.ReflectionActivity;
 
 /**
  * 该项目参考google提供的sample的基础架构组件，Architecture Components Basic
@@ -109,6 +110,10 @@ public class MainActivity extends Activity {
                 startActivity(intent12);
                 break;
 
+            case R.id.button13:
+                Intent intent13 = new Intent(this, ReflectionActivity.class);
+                startActivity(intent13);
+                break;
         }
     }
 }

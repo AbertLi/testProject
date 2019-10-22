@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ui.reflection.ui.ReflectionActivity"
+            android:name=".ui.reflection.plugin.ReflectionActivity"
             android:label="@string/title_activity_reflection"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
