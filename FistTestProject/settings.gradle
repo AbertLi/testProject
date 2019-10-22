@@ -1,5 +1,5 @@
 //include ':app', ':bundle_one'
-include ':app', ':r_t', ':interfalib'
+include ':app'
 //include ':bundle_one'
 //project(':bundle_one').projectDir=new File(rootDir,'sample/bundle_one')
 //
@@ -17,3 +17,9 @@ project(':recyclerview').projectDir=new File(rootDir,'Repository/recyclerview')
 
 include ':data'
 project(':data').projectDir=new File(rootDir,'Repository/data')
+
+include ':r_t'
+project(':r_t').projectDir=new File(rootDir,'libs/r_t')
+
+include ':interfalib'
+project(':interfalib').projectDir=new File(rootDir,'libs/interfalib')
