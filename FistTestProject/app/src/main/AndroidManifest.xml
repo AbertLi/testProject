@@ -18,10 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.loadBundle.bundletest.BundleTestActivity">
+        <activity
+            android:name=".ui.reflection.ui.ReflectionActivity"
+            android:label="@string/title_activity_reflection"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <!--<activity android:name=".ui.replugins.AppListActivity">-->
-        <!--</activity>-->
+        <activity android:name=".ui.loadBundle.bundletest.BundleTestActivity">
+        </activity> <!-- <activity android:name=".ui.replugins.AppListActivity"> -->
+        <!-- </activity> -->
         <activity android:name=".ui.customProgressBarText.CustomProgressBarActivity"/>
         <activity android:name=".ui.loadBundle.listviewBundle.BundleActivity">
         </activity>
