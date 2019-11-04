@@ -29,3 +29,18 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+//判断链接的结尾是否是SNAPSHOT字样
+def endsWithSnapShot(String str){
+    return str.endsWith("SNAPSHOT")
+}
+
+//获取plugin的keystore的地址。
+def getPluginKeystorePath(){
+    if(System.properties['os.name'].toLowerCase().contains('windows')){
+        return KEYSTORE_PATH_WINDOWS
+    }else{
+        return KEYSTORE_PATH_LINUX
+    }
+}

@@ -11,8 +11,9 @@
             <option value="$PROJECT_DIR$/Repository/data" />
             <option value="$PROJECT_DIR$/Repository/recyclerview" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/interfalib" />
-            <option value="$PROJECT_DIR$/r_t" />
+            <option value="$PROJECT_DIR$/libs/interfalib" />
+            <option value="$PROJECT_DIR$/libs/r_t" />
+            <option value="$PROJECT_DIR$/sample/bundle_one" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

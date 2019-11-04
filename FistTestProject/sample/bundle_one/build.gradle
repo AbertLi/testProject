@@ -1,10 +1,16 @@
-apply plugin: 'com.android.application'
+if (isbundleOneCompileApk.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 //apply plugin: ''
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.test.bundleone"
+        if (isbundleOneCompileApk.toBoolean()){
+            applicationId "com.test.bundleone"
+        }
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
@@ -12,15 +18,61 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        sourceSets {
+            main{
+                res.srcDirs 'res'//设置res资源的位置
+                if (isbundleOneCompileApk.toBoolean()) {
+                    manifest.srcFile 'src/main/bundlemanifest/AndroidManifest.xml'
+                } else {
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                }
+            }
         }
     }
 
+
+    signingConfigs {//签名设置
+        if (isbundleOneCompileApk.toBoolean()) {
+            debug {
+                storeFile file(getPluginKeystorePath())
+                storePassword KEYSTORE_KEYSTORE_PASSWORD
+                keyAlias KEYSTORE_ALIAS
+                keyPassword KEYSTORE_KEY_PASSWORD
+            }
+            release {
+                storeFile file(getPluginKeystorePath())
+                storePassword KEYSTORE_KEYSTORE_PASSWORD
+                keyAlias KEYSTORE_ALIAS
+                keyPassword KEYSTORE_KEY_PASSWORD
+            }
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false//是否混淆
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'//混淆文件地址
+            if (isbundleOneCompileApk.toBoolean()) {
+                signingConfig signingConfigs.release
+            }
+        }
+
+        debug {
+            if (isbundleOneCompileApk.toBoolean()) {
+                signingConfig signingConfigs.debug
+            }
+        }
+        languageTest {
+            initWith(buildTypes.release)
+        }
+        languageTestExp {
+            initWith(buildTypes.release)
+        }
+        dev {
+            initWith(buildTypes.release)
+        }
+    }
 }
 
 dependencies {
@@ -28,8 +80,7 @@ dependencies {
 //    implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'       //RecyclerView引用包
-    implementation project(':data')
-    implementation project(':recyclerview')
+    r_t
 
 //    providedAri project(':data')
 //    providedAri project(':recyclerview')
