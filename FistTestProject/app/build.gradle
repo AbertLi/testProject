@@ -43,6 +43,13 @@ android {
         }
     }
 
+
+    repositories {
+        flatDir {
+            dirs 'libs'   // 这样就可以使用libs文件夹里面的jar和aar包
+        }
+    }
+
     dataBinding {
         enabled = true
     }
@@ -60,6 +67,7 @@ repositories {
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api(name: 'dev-console-release', ext: 'aar')
     //    testImplementation 'junit:junit:4.12'
     implementation base.stdlib
     implementation base.constraintlayout//constraintlayout布局框架

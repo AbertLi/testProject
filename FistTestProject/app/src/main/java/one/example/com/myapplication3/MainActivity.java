@@ -4,9 +4,13 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.heytap.advert.dev_console.ConsoleConstant;
+import com.heytap.advert.dev_console.LogConsoleActivity;
 
 import androidx.annotation.Nullable;
 import one.example.com.myapplication3.ui.Notifications.NotificationTestActivity;
@@ -113,6 +117,26 @@ public class MainActivity extends Activity {
             case R.id.button13:
                 Intent intent13 = new Intent(this, ReflectionActivity.class);
                 startActivity(intent13);
+                break;
+
+            case R.id.button14://提前打开文件夹访问权限
+                String sdDir = "";
+                boolean sdCardExist = false;
+                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                    //为真则SD卡已装入，
+                    sdCardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+                }
+                if (sdCardExist) {
+                    sdDir = Environment.getExternalStorageDirectory().getAbsolutePath();//获取跟目录
+                    //查找SD卡根路径
+                    sdDir.toString();
+                    Logs.eprintln("main", "得到的根目录路径:" + sdDir);
+                }
+
+                Intent intent14 = new Intent(this, LogConsoleActivity.class);
+                intent14.putExtra(ConsoleConstant.THEME, 0);//0为默认样式，1,为定制样式
+                intent14.putExtra(ConsoleConstant.FOLDERPATH, sdDir);//文件夹路径
+                startActivity(intent14);
                 break;
         }
     }
