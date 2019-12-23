@@ -54,6 +54,7 @@
             android:theme="@style/notAnimation"/>
         <activity android:name=".ui.bindings.list.DetailActivity"/>
         <activity android:name=".ui.Notifications.MscActivity"/>
+        <activity android:name=".ui.imageload.ImageLoadActivity"/>
     </application>
 
 </manifest>

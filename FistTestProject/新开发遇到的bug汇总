@@ -35,13 +35,25 @@
 
 
 问题：
-
+     android混淆代码后崩溃日志中不显示行号的问题
 解决方法：
+      问题已解决。原因是在混淆代码时默认会去掉class文件中的调试信息（源码的行号、源文件信息等），需要在混淆配置文件中申明保持这些信息：
+
+    -renamesourcefileattribute SourceFile
+    -keepattributes SourceFile,LineNumberTable
 
 
 问题：
-
+    android 混淆代码后 app 运行报错时, 如何精准定位报错位置
 解决方法：
+    1,复制打包后这个位置下出现的 mapping 文件 app/build/outputs/mapping/release/mapping.txt
+    2,粘贴到 SDK 下的这个目录 D:\Android_SDK\sdk\tools\proguard\bin 并新建一个文档命名为 error.txt , 注意这个 sdk 的路径要替换为你本地的路径
+    3,复制控制台输出的异常 log, 粘贴在上面新建的 error.txt 中.
+    4,然后在 android studio 底部的 terminal 控制台调用下面这行命令:
+    5,D:\Android_SDK\sdk\tools\proguard\bin>retrace.bat -verbose mapping.txt error.txt
+    ————————————————
+    版权声明：本文为CSDN博主「geekqian」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+    原文链接：https://blog.csdn.net/geekqian/article/details/78961835
 
 
 问题：

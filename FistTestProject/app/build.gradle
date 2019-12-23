@@ -2,6 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+
+
+//APK编译相关的介绍。   https://www.jb51.net/article/99623.htm
+
+
+
+
 android {
     compileSdkVersion 28
     defaultConfig {

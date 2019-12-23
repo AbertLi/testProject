@@ -19,6 +19,7 @@ import one.example.com.myapplication3.ui.bindings.ActivityTestFragment;
 import one.example.com.myapplication3.ui.bindings.list.ListActivity;
 import one.example.com.myapplication3.ui.customProgressBarText.CustomProgressBarActivity;
 import one.example.com.myapplication3.ui.dbactivity.DbActivity;
+import one.example.com.myapplication3.ui.imageload.ImageLoadActivity;
 import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
 import one.example.com.myapplication3.ui.loadBundle.bundletest.BundleTestActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundlestyle2.LoadBundleActivity;
@@ -137,6 +138,11 @@ public class MainActivity extends Activity {
                 intent14.putExtra(ConsoleConstant.THEME, 0);//0为默认样式，1,为定制样式
                 intent14.putExtra(ConsoleConstant.FOLDERPATH, sdDir);//文件夹路径
                 startActivity(intent14);
+                break;
+
+            case R.id.button15:
+                Intent intent15 = new Intent(this, ImageLoadActivity.class);
+                startActivity(intent15);
                 break;
         }
     }

@@ -132,6 +132,14 @@
                 android:layout_centerHorizontal="true"
                 android:onClick="btn"
                 android:text="Log"/>
+
+            <Button
+                android:id="@+id/button15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick="btn"
+                android:text="图片相关 Fresco,Image"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
