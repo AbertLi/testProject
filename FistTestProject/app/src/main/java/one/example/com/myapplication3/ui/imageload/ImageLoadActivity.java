@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import one.example.com.myapplication3.Logs;
 import one.example.com.myapplication3.R;
 import one.example.com.myapplication3.databinding.ActivityImageloadBinding;
 import one.example.com.myapplication3.ui.imageload.myImageLoad.MyImageLoader;
@@ -74,6 +75,12 @@ public class ImageLoadActivity extends Activity {
                }
            }.start();
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Logs.eprintln("BaseApplication  ImageLOADACTIVITY " + "@Override onDestroy()");
     }
 }
 
