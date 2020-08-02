@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="one.example.com.myapplication3"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="one.example.com.myapplication3">
     <!-- SDK Only (4Stats)。也是“常用的”几个权限 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".BaseApplication"
@@ -18,44 +18,39 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.fresco.FrescoActivity"></activity>
         <activity
             android:name=".ui.reflection.plugin.ReflectionActivity"
             android:label="@string/title_activity_reflection"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".ui.loadBundle.bundletest.BundleTestActivity">
-        </activity> <!-- <activity android:name=".ui.replugins.AppListActivity"> -->
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ui.loadBundle.bundletest.BundleTestActivity"></activity> <!-- <activity android:name=".ui.replugins.AppListActivity"> -->
         <!-- </activity> -->
-        <activity android:name=".ui.customProgressBarText.CustomProgressBarActivity"/>
-        <activity android:name=".ui.loadBundle.listviewBundle.BundleActivity">
-        </activity>
-        <activity android:name=".ui.loadBundle.listviewBundlestyle2.LoadBundleActivity">
-        </activity>
-        <activity android:name=".ui.kotlinAct.Main2Activity">
-        </activity>
-        <activity android:name=".ui.animations.AnimationActivity">
-        </activity>
-        <activity android:name=".ui.dbactivity.DbActivity"/>
+        <activity android:name=".ui.customProgressBarText.CustomProgressBarActivity" />
+        <activity android:name=".ui.loadBundle.listviewBundle.BundleActivity"></activity>
+        <activity android:name=".ui.loadBundle.listviewBundlestyle2.LoadBundleActivity"></activity>
+        <activity android:name=".ui.kotlinAct.Main2Activity"></activity>
+        <activity android:name=".ui.animations.AnimationActivity"></activity>
+        <activity android:name=".ui.dbactivity.DbActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.bindings.list.ListActivity"/>
-        <activity android:name=".ui.bindings.ActivityTestFragment"/>
-        <activity android:name=".ui.recyclerviews.RecyclerViewActivity"/>
+        <activity android:name=".ui.bindings.list.ListActivity" />
+        <activity android:name=".ui.bindings.ActivityTestFragment" />
+        <activity android:name=".ui.recyclerviews.RecyclerViewActivity" />
         <activity
             android:name=".ui.Notifications.NotificationTestActivity"
-            android:theme="@style/notAnimation"/>
+            android:theme="@style/notAnimation" />
         <activity
             android:name=".ui.Notifications.H5DetailActivity"
-            android:theme="@style/notAnimation"/>
-        <activity android:name=".ui.bindings.list.DetailActivity"/>
-        <activity android:name=".ui.Notifications.MscActivity"/>
-        <activity android:name=".ui.imageload.ImageLoadActivity"/>
-        <activity android:name=".ui.rxjava.RxJavaTestActivity"/>
+            android:theme="@style/notAnimation" />
+        <activity android:name=".ui.bindings.list.DetailActivity" />
+        <activity android:name=".ui.Notifications.MscActivity" />
+        <activity android:name=".ui.imageload.ImageLoadActivity" />
+        <activity android:name=".ui.rxjava.RxJavaTestActivity" />
     </application>
 
 </manifest>

@@ -148,6 +148,22 @@
                 android:layout_centerHorizontal="true"
                 android:onClick="btn"
                 android:text="RxJava Test"/>
+
+            <Button
+                android:id="@+id/button17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick="btn"
+                android:text="Fresco"/>
+
+            <Button
+                android:id="@+id/button18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick="btn"
+                android:text="Glid"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

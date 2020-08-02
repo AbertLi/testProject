@@ -19,6 +19,7 @@ import one.example.com.myapplication3.ui.bindings.ActivityTestFragment;
 import one.example.com.myapplication3.ui.bindings.list.ListActivity;
 import one.example.com.myapplication3.ui.customProgressBarText.CustomProgressBarActivity;
 import one.example.com.myapplication3.ui.dbactivity.DbActivity;
+import one.example.com.myapplication3.ui.fresco.FrescoActivity;
 import one.example.com.myapplication3.ui.imageload.ImageLoadActivity;
 import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
 import one.example.com.myapplication3.ui.loadBundle.bundletest.BundleTestActivity;
@@ -148,6 +149,10 @@ public class MainActivity extends Activity {
             case R.id.button16:
                 Intent intent16 = new Intent(this, RxJavaTestActivity.class);
                 startActivity(intent16);
+                break;
+            case R.id.button17:
+                Intent intent17 = new Intent(this, FrescoActivity.class);
+                startActivity(intent17);
                 break;
         }
     }

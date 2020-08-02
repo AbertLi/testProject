@@ -1,7 +1,7 @@
 //include ':app', ':bundle_one'
 include ':app'
-include ':bundle_one'
-project(':bundle_one').projectDir=new File(rootDir,'sample/bundle_one')
+//include ':bundle_one'
+//project(':bundle_one').projectDir=new File(rootDir,'sample/bundle_one')
 //
 //include ':bundle_two'
 //project(':bundle_two').projectDir=new File(rootDir,'sample/bundle_two')
