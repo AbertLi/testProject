@@ -11,6 +11,7 @@ import android.view.WindowManager;
 
 import com.heytap.advert.dev_console.ConsoleConstant;
 import com.heytap.advert.dev_console.LogConsoleActivity;
+import com.wifi.mvpsample.MVPActivity;
 
 import androidx.annotation.Nullable;
 import one.example.com.myapplication3.ui.Notifications.NotificationTestActivity;
@@ -153,6 +154,10 @@ public class MainActivity extends Activity {
             case R.id.button17:
                 Intent intent17 = new Intent(this, FrescoActivity.class);
                 startActivity(intent17);
+                break;
+            case R.id.button19:
+                Intent intent18 = new Intent(this, MVPActivity.class);
+                startActivity(intent18);
                 break;
         }
     }

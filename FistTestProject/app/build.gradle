@@ -10,11 +10,11 @@ apply plugin: 'kotlin-android-extensions'
 
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "one.example.com.myapplication3"
-        minSdkVersion 15
-        targetSdkVersion 28
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 20190129
         versionName "2019.01.29"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
