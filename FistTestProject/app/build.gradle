@@ -122,6 +122,7 @@ dependencies {
 //    }
     //引用Lib包
 //    compile project(path: ':data')
+    implementation project(':mvpsample')
     implementation project(':data')
     implementation project(':recyclerview')
     implementation project(':r_t') //中间件

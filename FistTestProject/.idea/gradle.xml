@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/libs/interfalib" />
             <option value="$PROJECT_DIR$/libs/r_t" />
+            <option value="$PROJECT_DIR$/mvpsample" />
             <option value="$PROJECT_DIR$/testlib" />
           </set>
         </option>
