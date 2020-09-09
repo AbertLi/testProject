@@ -20,6 +20,7 @@ class MVPActivity() : AppCompatActivity(), IGoodView {
         setContentView(R.layout.activity_m_v_p)
         mPresenter = GoodsPresenter(this)
         mListView = findViewById<ListView>(R.id.listview)
+        mPresenter.attachView()
         mPresenter.fetch()
     }
 
@@ -29,6 +30,11 @@ class MVPActivity() : AppCompatActivity(), IGoodView {
 
     override fun showErrorMassage(msg: String) {
         TODO("Not yet implemented")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mPresenter.detachView()
     }
 
 }
