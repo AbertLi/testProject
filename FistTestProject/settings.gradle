@@ -1,5 +1,5 @@
 //include ':app', ':bundle_one'
-include ':app'
+include ':app', ':common'
 //include ':bundle_one'
 //project(':bundle_one').projectDir=new File(rootDir,'sample/bundle_one')
 //
