@@ -57,6 +57,38 @@
 
 
 问题：
+    CONFIGURE SUCCESSFUL in 22s
+    ERROR: Failed to parse XML in C:\AndroidStudioWorkspace\GitWorkSpace2\testProject\FistTestProject\sample\bundle_one\src\main\bundlemanifest\AndroidManifest.xml
+    ParseError at [row,col]:[18,9]
+    Message: expected start or end tag
+    Affected Modules: bundle_one
+
+    ERROR: Unable to resolve dependency for ':app@dev/compileClasspath': Could not resolve project :data.
+    Show Details
+    Affected Modules: app
+
+    ERROR: Unable to resolve dependency for ':app@dev/compileClasspath': Could not resolve project :recyclerview.
+    Show Details
+    Affected Modules: app
+
+    ERROR: Unable to resolve dependency for ':app@dev/compileClasspath': Could not resolve project :r_t.
+    Show Details
+    Affected Modules: app
+
+    ERROR: Unable to resolve dependency for ':app@dev/compileClasspath': Could not resolve project :interfalib.
+    Show Details
+    Affected Modules: app
+
+
+
+解决方法：
+
+
+问题：
+
+解决方法：
+
+问题：
 
 解决方法：
 
