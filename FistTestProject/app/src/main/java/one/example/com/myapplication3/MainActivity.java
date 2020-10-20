@@ -26,6 +26,7 @@ import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
 import one.example.com.myapplication3.ui.loadBundle.bundletest.BundleTestActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundlestyle2.LoadBundleActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundle.BundleActivity;
+import one.example.com.myapplication3.ui.okhttp.OkHttpActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
 import one.example.com.myapplication3.ui.reflection.plugin.ReflectionActivity;
 import one.example.com.myapplication3.ui.rxjava.RxJavaTestActivity;
@@ -158,6 +159,11 @@ public class MainActivity extends Activity {
             case R.id.button19:
                 Intent intent18 = new Intent(this, MVPActivity.class);
                 startActivity(intent18);
+                break;
+
+            case R.id.button20:
+                Intent button20 = new Intent(this, OkHttpActivity.class);
+                startActivity(button20);
                 break;
         }
     }

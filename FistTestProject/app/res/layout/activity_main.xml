@@ -172,6 +172,14 @@
                 android:layout_centerHorizontal="true"
                 android:onClick="btn"
                 android:text="MVP TEST"/>
+
+            <Button
+                android:id="@+id/button20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick="btn"
+                android:text="OkHttp Test"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

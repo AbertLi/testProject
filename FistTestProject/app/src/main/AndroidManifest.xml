@@ -18,18 +18,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.fresco.FrescoActivity"></activity>
+        <activity android:name=".ui.okhttp.OkHttpActivity"></activity>
+        <activity android:name=".ui.fresco.FrescoActivity" />
         <activity
             android:name=".ui.reflection.plugin.ReflectionActivity"
             android:label="@string/title_activity_reflection"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ui.loadBundle.bundletest.BundleTestActivity"></activity> <!-- <activity android:name=".ui.replugins.AppListActivity"> -->
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.loadBundle.bundletest.BundleTestActivity" /> <!-- <activity android:name=".ui.replugins.AppListActivity"> -->
         <!-- </activity> -->
         <activity android:name=".ui.customProgressBarText.CustomProgressBarActivity" />
-        <activity android:name=".ui.loadBundle.listviewBundle.BundleActivity"></activity>
-        <activity android:name=".ui.loadBundle.listviewBundlestyle2.LoadBundleActivity"></activity>
-        <activity android:name=".ui.kotlinAct.Main2Activity"></activity>
-        <activity android:name=".ui.animations.AnimationActivity"></activity>
+        <activity android:name=".ui.loadBundle.listviewBundle.BundleActivity" />
+        <activity android:name=".ui.loadBundle.listviewBundlestyle2.LoadBundleActivity" />
+        <activity android:name=".ui.kotlinAct.Main2Activity" />
+        <activity android:name=".ui.animations.AnimationActivity" />
         <activity android:name=".ui.dbactivity.DbActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
