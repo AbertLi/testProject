@@ -29,6 +29,7 @@ import one.example.com.myapplication3.ui.loadBundle.listviewBundle.BundleActivit
 import one.example.com.myapplication3.ui.okhttp.OkHttpActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
 import one.example.com.myapplication3.ui.reflection.plugin.ReflectionActivity;
+import one.example.com.myapplication3.ui.retrofit.RetrofitActivity;
 import one.example.com.myapplication3.ui.rxjava.RxJavaTestActivity;
 
 /**
@@ -155,6 +156,10 @@ public class MainActivity extends Activity {
             case R.id.button17:
                 Intent intent17 = new Intent(this, FrescoActivity.class);
                 startActivity(intent17);
+                break;
+            case R.id.button18:
+                Intent button18 = new Intent(this, RetrofitActivity.class);
+                startActivity(button18);
                 break;
             case R.id.button19:
                 Intent intent18 = new Intent(this, MVPActivity.class);

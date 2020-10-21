@@ -52,6 +52,7 @@
         <activity android:name=".ui.Notifications.MscActivity" />
         <activity android:name=".ui.imageload.ImageLoadActivity" />
         <activity android:name=".ui.rxjava.RxJavaTestActivity" />
+        <activity android:name=".ui.retrofit.RetrofitActivity" />
     </application>
 
 </manifest>

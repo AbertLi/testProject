@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:onClick="btn"
-                android:text="Glid"/>
+                android:text="Retrofit"/>
 
             <Button
                 android:id="@+id/button19"
