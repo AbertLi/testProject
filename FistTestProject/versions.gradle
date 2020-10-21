@@ -42,6 +42,15 @@ base.rxjava = rxjava
 def retrofit = [:]
 retrofit.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.retrofitGson = "com.squareup.retrofit2:converter-gson:$versions.retrofitGson"
+retrofit.rxJava = "compile 'com.squareup.retrofit2:adapter-rxjava:$versions.retrofitGson"
+
+//Gson: com.squareup.retrofit2:converter-gson:2.1.0
+//Moshi: com.squareup.retrofit2:converter-moshi:2.1.0
+//Jackson: com.squareup.retrofit2:converter-jackson:2.1.0
+//SimpleXML: com.squareup.retrofit2:converter-simplexml:2.1.0
+//ProtoBuf: com.squareup.retrofit2:converter-protobuf:2.1.0
+//Wire: com.squareup.retrofit2:converter-wire:2.1.0
+
 base.retrofit = retrofit
 
 def fresco = [:]

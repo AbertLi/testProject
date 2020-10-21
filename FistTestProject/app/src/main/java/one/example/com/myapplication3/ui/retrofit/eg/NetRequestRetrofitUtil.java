@@ -19,7 +19,7 @@ public class NetRequestRetrofitUtil {
         OkHttpClient client = new OkHttpClient.Builder().build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Content.INSTANCE.getBaseUrl2())
-//                .addCallAdapterFactory(cli)//添加拦截器
+//                .addCallAdapterFactory()
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
