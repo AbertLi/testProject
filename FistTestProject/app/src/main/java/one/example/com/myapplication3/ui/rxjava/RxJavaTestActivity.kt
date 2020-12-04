@@ -5,10 +5,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import io.reactivex.Observable
-import io.reactivex.ObservableEmitter
-import io.reactivex.ObservableOnSubscribe
-import io.reactivex.ObservableSource
+import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull
 import io.reactivex.functions.BiFunction
@@ -174,6 +171,17 @@ class RxJavaTestActivity : Activity(){
                 Logs.eprintln(TAG, "Integer emit : 呀 \n")
             }
         }
+    }
+
+    private fun singleTest()
+    {
+//        Single.create(new SingleOnSubscribe())
+//
+//
+//
+//        Single.create(new SingleOnSubscribe())
+
+
     }
 }
 

@@ -42,14 +42,41 @@ base.rxjava = rxjava
 def retrofit = [:]
 retrofit.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.retrofitGson = "com.squareup.retrofit2:converter-gson:$versions.retrofitGson"
-retrofit.rxJava = "compile 'com.squareup.retrofit2:adapter-rxjava:$versions.retrofitGson"
+//call adapter
+retrofit.rxJava = "com.squareup.retrofit2:adapter-rxjava:$versions.retrofitGson"
+retrofit.java8 = "com.squareup.retrofit2:adapter-java8:$versions.retrofitGson"
 
-//Gson: com.squareup.retrofit2:converter-gson:2.1.0
-//Moshi: com.squareup.retrofit2:converter-moshi:2.1.0
-//Jackson: com.squareup.retrofit2:converter-jackson:2.1.0
-//SimpleXML: com.squareup.retrofit2:converter-simplexml:2.1.0
-//ProtoBuf: com.squareup.retrofit2:converter-protobuf:2.1.0
-//Wire: com.squareup.retrofit2:converter-wire:2.1.0
+
+//Call Adapters
+//RxJava Observable & Single - com.squareup.retrofit2:adapter-rxjava
+//RxJava2 Observable, Flowable, Single, Completable & Maybe - com.squareup.retrofit2:adapter-rxjava2
+//RxJava3 Observable, Flowable, Single, Completable & Maybe - com.squareup.retrofit2:adapter-rxjava3
+//Guava ListenableFuture - com.squareup.retrofit2:adapter-guava
+//Java 8 CompletableFuture - com.squareup.retrofit2:adapter-java8
+
+//Converters
+//1
+//Gson - com.squareup.retrofit2:converter-gson
+//Jackson - com.squareup.retrofit2:converter-jackson
+//Moshi - com.squareup.retrofit2:converter-moshi
+//Protobuf - com.squareup.retrofit2:converter-protobuf
+//Wire - com.squareup.retrofit2:converter-wire
+//Simple Framework - com.squareup.retrofit2:converter-simplexml
+//Scalars - com.squareup.retrofit2:converter-scalars
+//2
+//MessagePack - org.komamitsu:retrofit-converter-msgpack:1.1.0
+//LoganSquare - com.github.aurae.retrofit2:converter-logansquare
+//FastJson - com.github.ZYRzyr:FastJsonConverter
+//FastJson - org.ligboy.retrofit2:converter-fastjson or org.ligboy.retrofit2:converter-fastjson-android
+//Thrifty - co.infinum:retrofit-converter-thrifty
+//jspoon (HTML)- pl.droidsonroids.retrofit2:converter-jspoon
+//Fruit - me.ghui:fruit-converter-retrofit
+//kotlinx.serialization - com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter
+//JakartaEE JsonB - io.github.cchacin:jsonb-retrofit-converter
+//3
+//Guava's Optional<T> - com.squareup.retrofit2:converter-guava
+//Java 8's Optional<T> - com.squareup.retrofit2:converter-java8
+
 
 base.retrofit = retrofit
 

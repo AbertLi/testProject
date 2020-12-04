@@ -180,6 +180,13 @@
                 android:layout_centerHorizontal="true"
                 android:onClick="btn"
                 android:text="OkHttp Test"/>
+            <Button
+                android:id="@+id/button21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:onClick="btn"
+                android:text="View和事件分发"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

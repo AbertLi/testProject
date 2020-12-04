@@ -50,7 +50,7 @@ public class OkHttpActivity extends AppCompatActivity {
 
     private void request1() {
         OkHttpClient client = new OkHttpClient.Builder().build();
-        Request request = new Request.Builder().url("www.baidu.com").build();
+        Request request = new Request.Builder().method("POST",null).url("www.baidu.com").build();
         Call call = client.newCall(request);
 
         call.enqueue(new Callback() {

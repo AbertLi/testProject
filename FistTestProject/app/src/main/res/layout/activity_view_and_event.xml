@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:background="#4B5164"
+    tools:context=".ui.viewAndEvent.ViewAndEventActivity">
+
+    <RelativeLayout
+        android:id="@+id/viewGroupA"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#95C1F4">
+
+        <RelativeLayout
+            android:id="@+id/View1"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="#BDD76A"></RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/viewB"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="#BDD76A"></RelativeLayout>
+
+</RelativeLayout>

@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.okhttp.OkHttpActivity"></activity>
+        <activity android:name=".ui.viewAndEvent.ViewAndEventActivity"></activity>
+        <activity android:name=".ui.okhttp.OkHttpActivity" />
         <activity android:name=".ui.fresco.FrescoActivity" />
         <activity
             android:name=".ui.reflection.plugin.ReflectionActivity"

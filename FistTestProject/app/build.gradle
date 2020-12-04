@@ -104,6 +104,8 @@ dependencies {
     implementation base.retrofit.retrofit
     implementation base.okhttp3 // Okhttp库
     implementation base.retrofit.retrofitGson // 用Gson解析json的转换器
+    implementation base.retrofit.rxJava
+    implementation base.retrofit.java8
 
     //Fresco
     implementation base.fresco.fresco

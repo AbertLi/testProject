@@ -31,6 +31,7 @@ import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
 import one.example.com.myapplication3.ui.reflection.plugin.ReflectionActivity;
 import one.example.com.myapplication3.ui.retrofit.RetrofitActivity;
 import one.example.com.myapplication3.ui.rxjava.RxJavaTestActivity;
+import one.example.com.myapplication3.ui.viewAndEvent.ViewAndEventActivity;
 
 /**
  * 该项目参考google提供的sample的基础架构组件，Architecture Components Basic
@@ -169,6 +170,11 @@ public class MainActivity extends Activity {
             case R.id.button20:
                 Intent button20 = new Intent(this, OkHttpActivity.class);
                 startActivity(button20);
+                break;
+
+            case R.id.button21:
+                Intent button21 = new Intent(this, ViewAndEventActivity.class);
+                startActivity(button21);
                 break;
         }
     }
