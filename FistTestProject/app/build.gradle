@@ -115,6 +115,9 @@ dependencies {
     implementation base.fresco.animatedwbp               //支持WebP动图，需要添加以下依赖
     implementation base.fresco.imagepipelineOkhttp        // 网络实现层想使用okhttp3，需要添加以下依赖
 
+    //BlockCanary
+    implementation base.blockCanary
+
     //RePlugin插件引用包
 //    if (isCompileHostReplugin.toBoolean()) {
 //        implementation 'com.qihoo360.replugin:replugin-host-lib:2.3.2'

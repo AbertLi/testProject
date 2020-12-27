@@ -9,6 +9,8 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.github.moduth.blockcanary.BlockCanary;
+
 import one.example.com.myapplication3.runtime.RunTimeInit;
 import one.example.com.myapplication3.ui.Notifications.NotificationTools2;
 import one.example.com.myapplication3.utile.ApplicationUtile;
@@ -33,6 +35,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Logs.eprintln(TAG + "@Override onCreate()");
+        BlockCanary.install(this, new AppBlockContext()).start();//监控UI卡顿
         AppExecutors.getInstance();
         ApplicationUtile.setApplication(this);//启动一个Application的上下文用于全局
         NotificationTools2.registerBoradcastReceiver(this);//启动广播监听
