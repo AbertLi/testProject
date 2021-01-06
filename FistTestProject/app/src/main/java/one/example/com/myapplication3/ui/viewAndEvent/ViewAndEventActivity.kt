@@ -31,8 +31,7 @@ class ViewAndEventActivity : AppCompatActivity() {
         var listView = ListView(this)
 //        var window = WindowImpl2(this)
 //        var phoneWindow = PhoneWindow()
-
-
-
+        Thread.sleep(80)
+        Toast.makeText(this, "hahaha", Toast.LENGTH_LONG).show()
     }
 }

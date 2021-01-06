@@ -1,6 +1,7 @@
 package one.example.com.myapplication3;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.github.moduth.blockcanary.internal.BlockInfo;
@@ -56,7 +57,7 @@ public class AppBlockContext extends BlockCanaryContext {
      * @return threshold in mills
      */
     public int provideBlockThreshold() {
-        return 1000;
+        return 100;
     }
 
     /**
@@ -155,6 +156,6 @@ public class AppBlockContext extends BlockCanaryContext {
      * Block interceptor, developer may provide their own actions.
      */
     public void onBlock(Context context, BlockInfo blockInfo) {
-
+        Logs.eprintln("bqt", "【UI阻塞了】耗时：" + blockInfo.timeCost + "\n" + blockInfo.toString());
     }
 }
