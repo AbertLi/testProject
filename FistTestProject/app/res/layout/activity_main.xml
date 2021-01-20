@@ -1,192 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <ScrollView
-        android:id="@+id/sv"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+<!--    <ScrollView-->
+<!--        android:id="@+id/sv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="Test_Binding"/>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingLeft="30dp"-->
+<!--            android:paddingRight="30dp">-->
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="Fragment_binding_Test"
+<!--            <Button-->
+<!--                android:id="@+id/button"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="Test_Binding" />-->
 
-                />
+<!--            <Button-->
+<!--                android:id="@+id/button2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="Fragment_binding_Test"-->
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="RecyclerView"
+<!--                />-->
 
-                />
+<!--            <Button-->
+<!--                android:id="@+id/button3"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="RecyclerView"-->
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="Notification"/>
+<!--                />-->
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="DB"/>
+<!--            <Button-->
+<!--                android:id="@+id/button4"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="Notification" />-->
 
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="Animation"/>
+<!--            <Button-->
+<!--                android:id="@+id/button5"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="DB" />-->
 
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="7,Kotlin"/>
+<!--            <Button-->
+<!--                android:id="@+id/button6"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="Animation" />-->
 
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="LoadBundle"/>
+<!--            <Button-->
+<!--                android:id="@+id/button7"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="7,Kotlin" />-->
 
-            <Button
-                android:id="@+id/button9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="ListView Bundle"/>
+<!--            <Button-->
+<!--                android:id="@+id/button8"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="LoadBundle" />-->
 
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="RePlugin"/>
+<!--            <Button-->
+<!--                android:id="@+id/button9"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="ListView Bundle" />-->
 
-            <Button
-                android:id="@+id/button11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="CustomProgress text"/>
+<!--            <Button-->
+<!--                android:id="@+id/button10"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="RePlugin" />-->
 
-            <Button
-                android:id="@+id/button12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="Bundle TEST"/>
+<!--            <Button-->
+<!--                android:id="@+id/button11"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="CustomProgress text" />-->
 
-            <Button
-                android:id="@+id/button13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="Reflection"/>
-            <Button
-                android:id="@+id/button14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="Log"/>
+<!--            <Button-->
+<!--                android:id="@+id/button12"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="Bundle TEST" />-->
 
-            <Button
-                android:id="@+id/button15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="图片相关 Fresco,Image"/>
+<!--            <Button-->
+<!--                android:id="@+id/button13"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="Reflection" />-->
 
-            <Button
-                android:id="@+id/button16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="RxJava Test"/>
+<!--            <Button-->
+<!--                android:id="@+id/button14"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="Log" />-->
 
-            <Button
-                android:id="@+id/button17"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="Fresco"/>
+<!--            <Button-->
+<!--                android:id="@+id/button15"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="图片相关 Fresco,Image" />-->
 
-            <Button
-                android:id="@+id/button18"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="Retrofit"/>
+<!--            <Button-->
+<!--                android:id="@+id/button16"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="RxJava Test" />-->
 
-            <Button
-                android:id="@+id/button19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="MVP TEST"/>
+<!--            <Button-->
+<!--                android:id="@+id/button17"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="Fresco" />-->
 
-            <Button
-                android:id="@+id/button20"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="OkHttp Test"/>
-            <Button
-                android:id="@+id/button21"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:onClick="btn"
-                android:text="View和事件分发"/>
-        </LinearLayout>
-    </ScrollView>
+<!--            <Button-->
+<!--                android:id="@+id/button18"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="Retrofit" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/button19"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="MVP TEST" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/button20"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="OkHttp Test" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/button21"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:onClick="btn"-->
+<!--                android:text="View和事件分发" />-->
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
 </RelativeLayout>
