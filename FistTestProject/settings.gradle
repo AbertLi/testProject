@@ -25,3 +25,5 @@ include ':interfalib'
 project(':interfalib').projectDir=new File(rootDir,'libs/interfalib')
 include ':testlib'
 include ':mvpsample'
+include ':mvcsample'
+

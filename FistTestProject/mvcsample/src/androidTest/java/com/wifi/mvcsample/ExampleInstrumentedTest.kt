@@ -1,4 +1,4 @@
-package com.wifi.mvpsample
+package com.wifi.mvcsample
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
