@@ -85,11 +85,11 @@ public class MainActivity extends Activity {
         list.add(new ItemBean("Notification",3));
         list.add(new ItemBean("DB",4));
         list.add(new ItemBean("Animation",5));
-        list.add(new ItemBean("Animation",6));
-        list.add(new ItemBean("7,Kotlin",7));
-        list.add(new ItemBean("LoadBundle",8));
-        list.add(new ItemBean("ListView Bundle",9));
-        list.add(new ItemBean("RePlugin",10));
+        list.add(new ItemBean("7,Kotlin",6));
+        list.add(new ItemBean("LoadBundle",7));
+        list.add(new ItemBean("ListView Bundle",8));
+        list.add(new ItemBean("空位",9));
+        list.add(new ItemBean("RePlugin 未实行",10));
         list.add(new ItemBean("CustomProgress text",11));
         list.add(new ItemBean("Bundle TEST",12));
         list.add(new ItemBean("Reflection",13));
