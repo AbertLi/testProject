@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Adapter;
 import android.widget.TextView;
 
 import com.heytap.advert.dev_console.ConsoleConstant;
@@ -32,6 +31,8 @@ import one.example.com.myapplication3.ui.bindings.list.ListActivity;
 import one.example.com.myapplication3.ui.customProgressBarText.CustomProgressBarActivity;
 import one.example.com.myapplication3.ui.dbactivity.DbActivity;
 import one.example.com.myapplication3.ui.fresco.FrescoActivity;
+import one.example.com.myapplication3.ui.handler.HandlerActivity;
+import one.example.com.myapplication3.ui.handler.HandlerJavaActivity;
 import one.example.com.myapplication3.ui.imageload.ImageLoadActivity;
 import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
 import one.example.com.myapplication3.ui.loadBundle.bundletest.BundleTestActivity;
@@ -101,7 +102,8 @@ public class MainActivity extends Activity {
         list.add(new ItemBean("MVP TEST",19));
         list.add(new ItemBean("OkHttp Test",20));
         list.add(new ItemBean("View和事件分发",21));
-
+        list.add(new ItemBean("Handler kotlin机制相关",22));
+        list.add(new ItemBean("Handler java机制相关",23));
         return list;
     }
 
@@ -214,6 +216,14 @@ public class MainActivity extends Activity {
             case 21:
                 Intent button21 = new Intent(this, ViewAndEventActivity.class);
                 startActivity(button21);
+                break;
+            case 22:
+                Intent button22 = new Intent(this, HandlerActivity.class);
+                startActivity(button22);
+                break;
+            case 23:
+                Intent button23 = new Intent(this, HandlerJavaActivity.class);
+                startActivity(button23);
                 break;
         }
     }

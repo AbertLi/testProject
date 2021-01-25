@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.viewAndEvent.ViewAndEventJavaActivity"></activity>
+        <activity android:name=".ui.handler.HandlerJavaActivity"></activity>
+        <activity android:name=".ui.handler.HandlerActivity" />
+        <activity android:name=".ui.viewAndEvent.ViewAndEventJavaActivity" />
         <activity android:name=".ui.viewAndEvent.ViewAndEventActivity" />
         <activity android:name=".ui.okhttp.OkHttpActivity" />
         <activity android:name=".ui.fresco.FrescoActivity" />
