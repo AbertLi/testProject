@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="one.example.com.myapplication3">
+
     <!-- SDK Only (4Stats)。也是“常用的”几个权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -18,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.handler.HandlerJavaActivity"></activity>
+        <activity android:name=".ui.handler.IntentHandler.IntentHandlerActivity" />
+        <activity android:name=".ui.handler.handlerthread.HandlerThreadActivity" />
+        <activity android:name=".ui.handler.HandlerJavaActivity" />
         <activity android:name=".ui.handler.HandlerActivity" />
         <activity android:name=".ui.viewAndEvent.ViewAndEventJavaActivity" />
         <activity android:name=".ui.viewAndEvent.ViewAndEventActivity" />
@@ -57,6 +60,12 @@
         <activity android:name=".ui.imageload.ImageLoadActivity" />
         <activity android:name=".ui.rxjava.RxJavaTestActivity" />
         <activity android:name=".ui.retrofit.RetrofitActivity" />
+
+        <service android:name=".ui.handler.IntentHandler.IntentServerImpl" />
+        <service
+            android:name=".ui.handler.IntentHandler.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
