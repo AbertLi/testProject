@@ -1,7 +1,6 @@
-package one.example.com.myapplication3.ui.handler.IntentHandler;
+package one.example.com.myapplication3.ui.async.IntentHandler;
 
 import android.app.IntentService;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

@@ -1,4 +1,4 @@
-package one.example.com.myapplication3.ui.handler.handlerthread;
+package one.example.com.myapplication3.ui.async.handlerthread;
 
 import android.os.Handler;
 import android.os.HandlerThread;

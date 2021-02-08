@@ -1,4 +1,4 @@
-package one.example.com.myapplication3.ui.handler.IntentHandler
+package one.example.com.myapplication3.ui.async.IntentHandler
 
 import android.app.Service
 import android.content.Intent

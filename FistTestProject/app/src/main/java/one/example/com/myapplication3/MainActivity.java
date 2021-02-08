@@ -26,21 +26,21 @@ import java.util.List;
 
 import one.example.com.myapplication3.ui.Notifications.NotificationTestActivity;
 import one.example.com.myapplication3.ui.animations.AnimationActivity;
+import one.example.com.myapplication3.ui.async.asynctask.AsyncTaskActivity;
 import one.example.com.myapplication3.ui.bindings.ActivityTestFragment;
 import one.example.com.myapplication3.ui.bindings.list.ListActivity;
 import one.example.com.myapplication3.ui.customProgressBarText.CustomProgressBarActivity;
 import one.example.com.myapplication3.ui.dbactivity.DbActivity;
 import one.example.com.myapplication3.ui.fresco.FrescoActivity;
-import one.example.com.myapplication3.ui.handler.HandlerActivity;
-import one.example.com.myapplication3.ui.handler.HandlerJavaActivity;
-import one.example.com.myapplication3.ui.handler.IntentHandler.IntentHandlerActivity;
-import one.example.com.myapplication3.ui.handler.handlerthread.HandlerThreadActivity;
+import one.example.com.myapplication3.ui.async.handlers.HandlerActivity;
+import one.example.com.myapplication3.ui.async.handlers.HandlerJavaActivity;
+import one.example.com.myapplication3.ui.async.IntentHandler.IntentHandlerActivity;
+import one.example.com.myapplication3.ui.async.handlerthread.HandlerThreadActivity;
 import one.example.com.myapplication3.ui.imageload.ImageLoadActivity;
 import one.example.com.myapplication3.ui.kotlinAct.Main2Activity;
 import one.example.com.myapplication3.ui.loadBundle.bundletest.BundleTestActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundlestyle2.LoadBundleActivity;
 import one.example.com.myapplication3.ui.loadBundle.listviewBundle.BundleActivity;
-import one.example.com.myapplication3.ui.loadBundle.listviewBundlestyle2.MyAdapter;
 import one.example.com.myapplication3.ui.okhttp.OkHttpActivity;
 import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
 import one.example.com.myapplication3.ui.reflection.plugin.ReflectionActivity;
@@ -108,6 +108,7 @@ public class MainActivity extends Activity {
         list.add(new ItemBean("Handler java机制相关",23));
         list.add(new ItemBean("HandlerThread 使用",24));
         list.add(new ItemBean("IntentService 使用",25));
+        list.add(new ItemBean("AsyncTask 使用",26));
         return list;
     }
 
@@ -236,6 +237,10 @@ public class MainActivity extends Activity {
             case 25:
                 Intent button25 = new Intent(this, IntentHandlerActivity.class);
                 startActivity(button25);
+                break;
+            case 26:
+                Intent button26 = new Intent(this, AsyncTaskActivity.class);
+                startActivity(button26);
                 break;
         }
     }

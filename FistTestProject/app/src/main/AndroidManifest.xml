@@ -19,10 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.handler.IntentHandler.IntentHandlerActivity" />
-        <activity android:name=".ui.handler.handlerthread.HandlerThreadActivity" />
-        <activity android:name=".ui.handler.HandlerJavaActivity" />
-        <activity android:name=".ui.handler.HandlerActivity" />
+        <activity android:name=".ui.async.asynctask.AsyncTaskActivity"></activity>
+        <activity android:name=".ui.async.IntentHandler.IntentHandlerActivity" />
+        <activity android:name=".ui.async.handlerthread.HandlerThreadActivity" />
+        <activity android:name=".ui.async.handlers.HandlerJavaActivity" />
+        <activity android:name=".ui.async.handlers.HandlerActivity" />
         <activity android:name=".ui.viewAndEvent.ViewAndEventJavaActivity" />
         <activity android:name=".ui.viewAndEvent.ViewAndEventActivity" />
         <activity android:name=".ui.okhttp.OkHttpActivity" />
@@ -61,11 +62,11 @@
         <activity android:name=".ui.rxjava.RxJavaTestActivity" />
         <activity android:name=".ui.retrofit.RetrofitActivity" />
 
-        <service android:name=".ui.handler.IntentHandler.IntentServerImpl" />
+        <service android:name=".ui.async.IntentHandler.IntentServerImpl" />
         <service
-            android:name=".ui.handler.IntentHandler.MyService"
+            android:name=".ui.async.IntentHandler.MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
     </application>
 
 </manifest>
