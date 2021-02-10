@@ -20,7 +20,7 @@ class AsyncTaskActivity : AppCompatActivity() {
                 imageView.setImageBitmap(it)
             })
 
-            asyncTask.execute(imageUrl)
+//            asyncTask.execute(imageUrl)
 //            asyncTask.cancel(true)
             asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,imageUrl)//可以通过设置执行的形式。串行or并行。
         }

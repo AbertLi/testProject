@@ -2,7 +2,7 @@ package one.example.com.myapplication3.ui.async.asynctask;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.HandlerThread;
+import android.os.AsyncTask;
 import android.os.Looper;
 
 import java.io.BufferedInputStream;
@@ -13,12 +13,7 @@ public class MyAsyncTask extends AsyncTask<String,Integer,Bitmap> {
     IResultCallBack mCallBack;
 
     public MyAsyncTask(IResultCallBack mCallBack) {
-        this(new HandlerThread("MyAsyncTask_Thread_Looper").getLooper());//对this的调用必须是在第一行。
         this.mCallBack = mCallBack;
-    }
-
-    private MyAsyncTask(Looper callbackLooper) {
-        super(callbackLooper);
     }
 
     @Override
