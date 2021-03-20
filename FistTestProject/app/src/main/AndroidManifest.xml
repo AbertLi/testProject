@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="one.example.com.myapplication3">
-
     <!-- SDK Only (4Stats)。也是“常用的”几个权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -19,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.async.asynctask.AsyncTaskActivity"></activity>
+        <activity android:name=".ui.wheelview.WheelViewActivity"></activity>
+        <activity android:name=".ui.async.asynctask.AsyncTaskActivity" />
         <activity android:name=".ui.async.IntentHandler.IntentHandlerActivity" />
         <activity android:name=".ui.async.handlerthread.HandlerThreadActivity" />
         <activity android:name=".ui.async.handlers.HandlerJavaActivity" />

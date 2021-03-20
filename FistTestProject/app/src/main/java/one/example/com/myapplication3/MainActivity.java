@@ -47,6 +47,7 @@ import one.example.com.myapplication3.ui.reflection.plugin.ReflectionActivity;
 import one.example.com.myapplication3.ui.retrofit.RetrofitActivity;
 import one.example.com.myapplication3.ui.rxjava.RxJavaTestActivity;
 import one.example.com.myapplication3.ui.viewAndEvent.ViewAndEventActivity;
+import one.example.com.myapplication3.ui.wheelview.WheelViewActivity;
 
 /**
  * 该项目参考google提供的sample的基础架构组件，Architecture Components Basic
@@ -109,6 +110,7 @@ public class MainActivity extends Activity {
         list.add(new ItemBean("HandlerThread 使用",24));
         list.add(new ItemBean("IntentService 使用",25));
         list.add(new ItemBean("AsyncTask 使用",26));
+        list.add(new ItemBean("WheelView",27));
         return list;
     }
 
@@ -241,6 +243,10 @@ public class MainActivity extends Activity {
             case 26:
                 Intent button26 = new Intent(this, AsyncTaskActivity.class);
                 startActivity(button26);
+                break;
+            case 27:
+                Intent button27 = new Intent(this, WheelViewActivity.class);
+                startActivity(button27);
                 break;
         }
     }

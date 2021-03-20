@@ -118,6 +118,8 @@ dependencies {
     //BlockCanary
     implementation base.blockCanary
 
+    implementation 'com.pl:wheelview:0.7.2'//wheelView
+
     //RePlugin插件引用包
 //    if (isCompileHostReplugin.toBoolean()) {
 //        implementation 'com.qihoo360.replugin:replugin-host-lib:2.3.2'

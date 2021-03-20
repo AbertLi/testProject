@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WheelView">
+        <attr name="unitHeight" format="dimension" />
+        <attr name="itemNumber" format="integer"/>
+        <attr name="normalTextColor" format="color" />
+        <attr name="normalTextSize" format="dimension" />
+        <attr name="selectedTextColor" format="color" />
+        <attr name="selectedTextSize" format="dimension" />
+        <attr name="isCyclic" format="boolean" />
+        <attr name="lineColor" format="color" />
+        <attr name="lineHeight" format="dimension" />
+        <attr name="noEmpty" format="boolean"/>
+        <attr name="isEnable" format="boolean"/>
+        <attr name="maskDarkColor" format="color" />
+        <attr name="maskLightColor" format="color" />
+        <attr name="inputBackground" format="reference"/>
+        <attr name="inputMarginLeft" format="dimension"/>
+        <attr name="inputMarginRight" format="dimension"/>
+        <attr name="inputTextColor" format="color"/>
+        <attr name="withInputText" format="boolean"/>
+        <attr name="android:inputType"/>
+    </declare-styleable>
+
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
+    <dimen name="dimen_40">40dp</dimen>
+    <dimen name="dimen_44">44dp</dimen>
+
+
+
+
+
+<!--    <item name="android:layout_weight">1</item>-->
+
+   <!--  经纬度的滚轮的配置 -->
+    <style name="wheelViewStyle_Latitude_longitude">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">33dp</item>
+        <item name="lineColor">@android:color/transparent</item>
+        <item name="itemNumber">3</item>
+        <item name="lineHeight">1dp</item>
+        <item name="noEmpty">true</item>
+        <item name="normalTextColor">#000066</item>
+        <item name="normalTextSize">@dimen/text_size_normal</item>
+        <item name="selectedTextColor">#000000</item>
+        <item name="selectedTextSize">@dimen/text_size_select</item>
+        <item name="unitHeight">@dimen/dimen_10</item>
+        <item name="android:inputType">number</item>
+        <item name="withInputText">true</item>
+    </style>
+
+
+    <dimen name="text_size_normal">12sp</dimen>
+    <dimen name="text_size_select">13sp</dimen>
+</resources>
