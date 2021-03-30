@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="onClickListener"
+            type="one.example.com.myapplication3.ui.socket.IClickListener" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.socket.SocketActivity">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->onClickListener.onClick(1)}"
+            android:text="btn1"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->onClickListener.onClick(2)}"
+            android:text="btn2"
+            app:layout_constraintTop_toBottomOf="@+id/btn1"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->onClickListener.onClick(3)}"
+            android:text="btn3"
+            app:layout_constraintTop_toBottomOf="@+id/btn2"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->onClickListener.onClick(4)}"
+            android:text="btn4"
+            app:layout_constraintTop_toBottomOf="@+id/btn3"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->onClickListener.onClick(5)}"
+            android:text="btn5"
+            app:layout_constraintTop_toBottomOf="@+id/btn4"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

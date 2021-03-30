@@ -46,6 +46,7 @@ import one.example.com.myapplication3.ui.recyclerviews.RecyclerViewActivity;
 import one.example.com.myapplication3.ui.reflection.plugin.ReflectionActivity;
 import one.example.com.myapplication3.ui.retrofit.RetrofitActivity;
 import one.example.com.myapplication3.ui.rxjava.RxJavaTestActivity;
+import one.example.com.myapplication3.ui.socket.SocketActivity;
 import one.example.com.myapplication3.ui.viewAndEvent.ViewAndEventActivity;
 import one.example.com.myapplication3.ui.wheelview.WheelViewActivity;
 
@@ -111,6 +112,7 @@ public class MainActivity extends Activity {
         list.add(new ItemBean("IntentService 使用",25));
         list.add(new ItemBean("AsyncTask 使用",26));
         list.add(new ItemBean("WheelView",27));
+        list.add(new ItemBean("Socket通信",28));
         return list;
     }
 
@@ -247,6 +249,10 @@ public class MainActivity extends Activity {
             case 27:
                 Intent button27 = new Intent(this, WheelViewActivity.class);
                 startActivity(button27);
+                break;
+            case 28:
+                Intent button28 = new Intent(this, SocketActivity.class);
+                startActivity(button28);
                 break;
         }
     }
