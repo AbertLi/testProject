@@ -652,7 +652,7 @@ class WheelView : FrameLayout {
         controlWidth = width.toFloat()
         drawLine(canvas)
         drawList(canvas)
-        drawMask(canvas)
+//        drawMask(canvas)
     }
 
     /**

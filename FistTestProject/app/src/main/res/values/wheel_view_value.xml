@@ -22,14 +22,6 @@
         <attr name="android:inputType"/>
     </declare-styleable>
 
-    <dimen name="dimen_10">10dp</dimen>
-    <dimen name="dimen_12">12dp</dimen>
-    <dimen name="dimen_20">20dp</dimen>
-    <dimen name="dimen_40">40dp</dimen>
-    <dimen name="dimen_44">44dp</dimen>
-
-
-
 
 
 <!--    <item name="android:layout_weight">1</item>-->
@@ -44,7 +36,7 @@
         <item name="noEmpty">true</item>
         <item name="normalTextColor">#000066</item>
         <item name="normalTextSize">@dimen/text_size_normal</item>
-        <item name="selectedTextColor">#000000</item>
+        <item name="selectedTextColor">#FFFFFF</item>
         <item name="selectedTextSize">@dimen/text_size_select</item>
         <item name="unitHeight">@dimen/dimen_10</item>
         <item name="android:inputType">number</item>

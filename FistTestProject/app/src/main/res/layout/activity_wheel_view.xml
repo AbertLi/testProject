@@ -7,8 +7,9 @@
     tools:context=".ui.wheelview.WheelViewActivity">
 
     <LinearLayout
+        android:background="#ff1f4b8f"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="33dp">
 
         <one.example.com.myapplication3.ui.wheelview.kotlin.WheelView
             android:id="@+id/wheelview"
