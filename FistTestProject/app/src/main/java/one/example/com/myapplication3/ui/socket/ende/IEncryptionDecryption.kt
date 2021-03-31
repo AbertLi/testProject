@@ -1,9 +1,7 @@
 package one.example.com.myapplication3.ui.socket.ende
 
 interface IEncryptionDecryption {
-    //加密
-    fun encode(str: String): String
+    fun encode(): ByteArray
 
-    //解密
-    fun decode(str: String): String
+    fun decodeToJsonString(byteArray: ByteArray): String
 }

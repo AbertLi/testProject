@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.wifi.WifiManager
 import android.provider.Settings
+import android.text.format.Formatter
+import one.example.com.myapplication3.Logs
 
 object WifiUtil {
 
@@ -27,6 +29,19 @@ object WifiUtil {
         var wifiInfo = wifiManager.connectionInfo
         var ipAddress = wifiInfo.ipAddress
         return intToIp(ipAddress)
+    }
+
+    fun getWIFILYIP(appContext: Application): String {
+        var wifi_service = appContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+        var dhcpInfo = wifi_service.getDhcpInfo();
+//        WifiInfo wifiinfo = wifi_service.getConnectionInfo();
+//        System.out.println("Wifi info----->" + wifiinfo.getIpAddress());
+//        System.out.println("DHCP info gateway----->" + Formatter.formatIpAddress(dhcpInfo.gateway));
+//        System.out.println("DHCP info netmask----->" + Formatter.formatIpAddress(dhcpInfo.netmask));
+        //DhcpInfo中的ipAddress是一个int型的变量，通过Formatter将其转化为字符串IP地址
+        var routeIp = Formatter.formatIpAddress(dhcpInfo.gateway);
+        Logs.iprintln("wifi route ip：" + routeIp);
+        return routeIp;
     }
 
     private fun intToIp(i: Int): String {
