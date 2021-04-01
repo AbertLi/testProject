@@ -21,12 +21,15 @@ class SocketActivity : AppCompatActivity(), IClickListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_socket)
         binding.onClickListener = this
         SocketManager.getInstance().startNetThread(handler,WifiUtil.getWIFILYIP(this.application),9000)
-    }
 
+    }
+    var enDe = EncryptionImp()
     @SuppressLint("HandlerLeak")
     var handler = object : Handler() {
         override fun handleMessage(msg: Message) {
             Logs.iprintln("SocketActivity msg = $msg")
+            var  result = msg.obj as String
+            enDe.getJson(result)
         }
     }
 
@@ -35,9 +38,7 @@ class SocketActivity : AppCompatActivity(), IClickListener {
             1 -> {
                 var sourceStr = "{\"cmdType\":1101,\"equipNo\":\"00000000\",\"type\":0,\"timeStamp\":1606966212,\"snno\":1,\"len\":84,\"crc\":\"A474C16F\",\"dataArea\":{\"opt\":0,\"minProtocolVer\":\"V1.00.00\"}}"
 //                var sendStr = EncryptionDecryptionImp().decode(sourceStr)
-                var a = EncryptionImp()
-                SocketManager.getInstance().sendData(a.encode())
-
+                SocketManager.getInstance().sendData(enDe.encodeToByteArray())
             }
             2 -> {
 //                var ende = EncryptionDecryptionImp()
@@ -54,7 +55,7 @@ class SocketActivity : AppCompatActivity(), IClickListener {
             }
             5 -> {
                 var a = EncryptionImp()
-                Logs.iprintln("result = ${String(a.encode())}")
+                Logs.iprintln("result = ${String(a.encodeToByteArray())}")
             }
         }
     }

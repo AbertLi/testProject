@@ -3,7 +3,6 @@ package one.example.com.myapplication3.ui.socket
 import android.os.Handler
 import android.os.Message
 import one.example.com.myapplication3.Logs
-import one.example.com.myapplication3.ui.socket.ende.NumOfCallUtil
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -48,7 +47,7 @@ class SocketManager {
                     val bytes = ByteArray(1024)
                     var n: Int = inputStream.read(bytes)
                     while (true) {
-                        Logs.iprintln("SocketManager 获取的内容=${String(bytes, 0, n)}")
+                        Logs.iprintln(TAG," 获取的内容=${String(bytes, 0, n)}")
                         val msg: Message = handler.obtainMessage(HANDLER_MSG_TELL_RECV, String(bytes, 0, n))
                         msg.sendToTarget()
                         n = inputStream.read(bytes)
@@ -66,7 +65,7 @@ class SocketManager {
      * @param data
      */
     fun sendData(data: ByteArray) {
-        Logs.iprintln("SocketManager byteString  result = ${data.toString(Charset.defaultCharset())}")
+        Logs.iprintln(TAG,"sendData = ${data.toString(Charset.defaultCharset())}")
         object : Thread() {
             override fun run() {
                 try {

@@ -8,6 +8,8 @@ import java.util.zip.CRC32;
 import one.example.com.myapplication3.Logs;
 
 public class EncryptionImp extends AbstractEnDe {
+    private String TAG = "EncryptionImp";
+
     @Override
     public String getJsonString() throws JSONException {
         JSONObject object = new JSONObject();
@@ -42,11 +44,20 @@ public class EncryptionImp extends AbstractEnDe {
         return Long.toHexString(crc32.getValue());
     }
 
-
     public JSONObject getDataArea() throws JSONException {
         JSONObject areaObj = new JSONObject();
         areaObj.put("opt", 0);
         areaObj.put("minProtocolVer", "V1.00.00");
         return areaObj;
+    }
+
+    /**
+     * =====================================================================
+     **/
+
+    public String getJson(String str) {
+        String result = decode(str.getBytes());
+        Logs.iprintln(TAG, "解密结果"+result);
+        return result;
     }
 }
