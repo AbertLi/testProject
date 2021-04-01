@@ -44,19 +44,29 @@ class SocketManager {
                 try {
                     socket.connect(InetSocketAddress(host, port), 3000)
                     val inputStream: InputStream = socket.getInputStream()
-                    val bytes = ByteArray(1024)
+                    val bytes = ByteArray(2048)
                     var n: Int = inputStream.read(bytes)
                     while (true) {
-                        Logs.iprintln(TAG," 获取的内容=${String(bytes, 0, n)}")
+                        Logs.iprintln(TAG," 获取的内容 len = $n =${String(bytes, 0, n)}\n " +
+                                " ${Logs.iprintln("返回结果中的byte=${BytesHexStrTranslate.bytesToHexFun3(bytes)}")}" )
                         val msg: Message = handler.obtainMessage(HANDLER_MSG_TELL_RECV, String(bytes, 0, n))
+                        var byteArray = ByteArray(n)
+                        saveByteArray(bytes,byteArray)
+                        msg.obj = byteArray
                         msg.sendToTarget()
                         n = inputStream.read(bytes)
                     }
                 } catch (e: Exception) {
-                    Logs.iprintln("SocketManager excepting")
+                    Logs.eprintln("SocketManager excepting e=${e.toString()}")
                 }
             }
         }.start()
+    }
+
+    fun saveByteArray(bytes: ByteArray, byteArray: ByteArray) {
+        for (i in byteArray.indices) {
+            byteArray[i] = bytes[i]
+        }
     }
 
     /**

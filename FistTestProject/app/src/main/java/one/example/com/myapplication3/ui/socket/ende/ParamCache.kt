@@ -2,7 +2,7 @@ package one.example.com.myapplication3.ui.socket.ende
 
 
 class ParamCache {
-    var cmdType = 0           //具体业务类型标识
+    var cmdType = 1101           //具体业务类型标识
     var equipNo = "00000000"   //设备编号IBG_SN，不超过32字节
     var type = 0              //0：设备网关IBG
 //    var timeStamp = ""         //时间戳定义

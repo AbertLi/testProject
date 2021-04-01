@@ -1,35 +1,63 @@
 package one.example.com.myapplication3.ui.socket
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import io.netty.buffer.ByteBuf
+import io.netty.channel.ChannelFutureListener
 import one.example.com.myapplication3.Logs
 import one.example.com.myapplication3.R
 import one.example.com.myapplication3.databinding.ActivitySocketBinding
-import one.example.com.myapplication3.ui.socket.ende.EncryptionImp
+import one.example.com.myapplication3.ui.socket.ende.EncryptionDecryptionImp
 import one.example.com.myapplication3.ui.socket.ende.NumOfCallUtil
+import one.example.com.myapplication3.ui.socket.socket.Const
+import one.example.com.myapplication3.ui.socket.socket.NettyClient
+import one.example.com.myapplication3.ui.socket.socket.NettyListener
 import one.example.com.myapplication3.utile.WifiUtil
 import java.util.zip.CRC32
 
-class SocketActivity : AppCompatActivity(), IClickListener {
+//https://github.com/mrniko/netty-socketio
+class SocketActivity : AppCompatActivity(), IClickListener, NettyListener {
+    private val TAG = "SocketActivity"
+
+    private var nettyClient: NettyClient? = null  //socket操作连接对象
     lateinit var binding: ActivitySocketBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_socket)
         binding.onClickListener = this
-        SocketManager.getInstance().startNetThread(handler,WifiUtil.getWIFILYIP(this.application),9000)
-
+        SocketManager.getInstance().startNetThread(handler, WifiUtil.getWIFILYIP(this.application), 9000)
+        initSocketTcp();
     }
-    var enDe = EncryptionImp()
+
+    /*
+     socket 端口号以及开始连接，配置接口监听
+     */
+    private fun initSocketTcp() {
+        nettyClient = NettyClient(WifiUtil.getWIFILYIP(this.application), Const.TCP_PORT)
+        if (!nettyClient?.connectStatus!!) {
+            nettyClient?.setListener(this@SocketActivity)
+            nettyClient?.connect()
+        } else {
+            nettyClient?.disconnect()
+        }
+    }
+
+
+    var enDe = EncryptionDecryptionImp()
+
     @SuppressLint("HandlerLeak")
     var handler = object : Handler() {
         override fun handleMessage(msg: Message) {
             Logs.iprintln("SocketActivity msg = $msg")
-            var  result = msg.obj as String
-            enDe.getJson(result)
+            var resultByteArray = msg.obj as ByteArray
+            var results = enDe.decode(resultByteArray)
+            Logs.iprintln(TAG," 解密结果 = $results")
         }
     }
 
@@ -41,8 +69,7 @@ class SocketActivity : AppCompatActivity(), IClickListener {
                 SocketManager.getInstance().sendData(enDe.encodeToByteArray())
             }
             2 -> {
-//                var ende = EncryptionDecryptionImp()
-//                Logs.iprintln("result = ${ende.getEquipNoSUM("00000000").toByte()}")
+
             }
             3 -> {
                 Logs.iprintln("result = ${NumOfCallUtil.getInstance().getCallNumAdd()}")
@@ -54,9 +81,36 @@ class SocketActivity : AppCompatActivity(), IClickListener {
 
             }
             5 -> {
-                var a = EncryptionImp()
+                var a = EncryptionDecryptionImp()
                 Logs.iprintln("result = ${String(a.encodeToByteArray())}")
             }
         }
+    }
+
+    override fun onMessageResponse(msg: Any?) {
+        val result = msg as ByteBuf
+        val result1 = ByteArray(result.readableBytes())
+        result.readBytes(result1)
+        result.release()
+        val ss = String(result1)
+
+        runOnUiThread { Toast.makeText(this@SocketActivity, "接收成功${enDe.decode(ss.toByteArray())}", Toast.LENGTH_SHORT).show() }
+    }
+
+    override fun onServiceStatusConnectChanged(statusCode: Int) {
+        runOnUiThread {
+            if (statusCode == NettyListener.STATUS_CONNECT_SUCCESS) {
+                Log.e(TAG, "STATUS_CONNECT_SUCCESS:")
+                if (nettyClient!!.connectStatus) {
+                    Toast.makeText(this@SocketActivity, "连接成功", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Log.e(TAG, "onServiceStatusConnectChanged:$statusCode")
+                if (!nettyClient!!.connectStatus) {
+                    Toast.makeText(this@SocketActivity, "网路不好，正在重连", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
     }
 }

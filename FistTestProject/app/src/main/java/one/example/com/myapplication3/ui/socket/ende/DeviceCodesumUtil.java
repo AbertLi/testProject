@@ -28,8 +28,8 @@ public class DeviceCodesumUtil {
      */
     public byte getEquipNoSUM(String sourceStr) {
         byte sum = 0;
-        for (char ch : sourceStr.toCharArray()) {
-            sum += (byte) ch;
+        for (byte ch : sourceStr.getBytes()) {
+            sum += ch;
         }
         mSum = sum;
         return sum;
