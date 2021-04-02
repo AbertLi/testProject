@@ -5,7 +5,11 @@ import org.json.JSONObject;
 
 import java.util.zip.CRC32;
 
-public class EncryptionDecryptionImp extends AbstractEncryption {
+import one.example.com.myapplication3.ui.socket.ende.inner.AbstractEncryption;
+import one.example.com.myapplication3.ui.socket.ende.inner.NumOfCallUtil;
+import one.example.com.myapplication3.ui.socket.ende.inner.ParamCache;
+
+public class EncryptionImp extends AbstractEncryption {
     private String TAG = "EncryptionImp";
 
     @Override

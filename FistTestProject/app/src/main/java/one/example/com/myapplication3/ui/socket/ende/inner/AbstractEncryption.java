@@ -1,16 +1,15 @@
-package one.example.com.myapplication3.ui.socket.ende;
+package one.example.com.myapplication3.ui.socket.ende.inner;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.charset.Charset;
-
-import one.example.com.runtime.utils.Logs;
+import one.example.com.myapplication3.ui.socket.ende.DeviceCodesumUtil;
+import one.example.com.myapplication3.ui.socket.ende.ProtocolConstant;
 
 /**
  * 加密
  */
-abstract class AbstractEncryption implements IEncryption {
+public abstract class AbstractEncryption implements IEncryption {
     private String TAG = "AbstractEncryption";
 
     /**
@@ -70,8 +69,6 @@ abstract class AbstractEncryption implements IEncryption {
     }
 
     abstract public int getCmdType();
-
-    abstract public String getEquipNo();
 
     abstract public long getTimeStamp();
 
