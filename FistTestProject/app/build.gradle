@@ -120,8 +120,13 @@ dependencies {
 
     implementation 'com.pl:wheelview:0.7.2'//wheelView
 
-    implementation 'com.tonystark.android:socket:4.1.0'
-    implementation 'com.tonystark.android:socket-server:4.1.0'
+//    implementation 'com.tonystark.android:socket:4.1.0'
+//    implementation 'com.tonystark.android:socket-server:4.1.0'
+
+
+//    implementation 'com.corundumstudio.socketio:netty-socketio:1.5.4'
+    implementation 'io.netty:netty-all:4.0.13.Final'
+
 
     //RePlugin插件引用包
 //    if (isCompileHostReplugin.toBoolean()) {

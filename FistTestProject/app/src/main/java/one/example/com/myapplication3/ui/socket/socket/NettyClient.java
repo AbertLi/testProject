@@ -145,10 +145,10 @@ public class NettyClient {
     }
 
     //发送消息到服务端。 Bootstrap设置的时候我没有设置解码，这边才转的
-    public boolean sendMsgToServer(String data, ChannelFutureListener listener) {
+    public boolean sendMsgToServer(byte[] data, ChannelFutureListener listener) {
         boolean flag = channel != null && isConnect;
         if (flag) {
-            ByteBuf byteBuf = Unpooled.copiedBuffer(data + System.getProperty("line.separator"), CharsetUtil.UTF_8);
+            ByteBuf byteBuf = Unpooled.copiedBuffer(new String(data) + System.getProperty("line.separator"), CharsetUtil.UTF_8);
             channel.writeAndFlush(byteBuf).addListener(listener);
         }
         return flag;

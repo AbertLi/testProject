@@ -63,7 +63,7 @@ class SocketManager {
         }.start()
     }
 
-    fun saveByteArray(bytes: ByteArray, byteArray: ByteArray) {
+    private fun saveByteArray(bytes: ByteArray, byteArray: ByteArray) {
         for (i in byteArray.indices) {
             byteArray[i] = bytes[i]
         }
