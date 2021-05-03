@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.wheelview.WheelViewActivity"></activity>
+        <activity android:name=".ui.socket.SocketActivity"></activity>
+        <activity android:name=".ui.wheelview.WheelViewActivity" />
         <activity android:name=".ui.async.asynctask.AsyncTaskActivity" />
         <activity android:name=".ui.async.IntentHandler.IntentHandlerActivity" />
         <activity android:name=".ui.async.handlerthread.HandlerThreadActivity" />
