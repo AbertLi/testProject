@@ -1,3 +1,5 @@
+include ':logViewTool'
+project(':logViewTool').projectDir = new File(rootDir, 'mavenLib/logViewTool')
 //include ':app', ':bundle_one'
 include ':app', ':common'
 //include ':bundle_one'
@@ -10,19 +12,19 @@ include ':app', ':common'
 //project(':bundle_three').projectDir=new File(rootDir,'sample/bundle_three')
 
 include ':recyclerview'
-project(':recyclerview').projectDir=new File(rootDir,'Repository/recyclerview')
+project(':recyclerview').projectDir = new File(rootDir, 'Repository/recyclerview')
 
 //include ':bundle_common'
 //project(':bundle_common').projectDir=new File(rootDir,'../CommonProject/Lib/bundle_common')//引用本地其他工程里面的lib包
 
 include ':data'
-project(':data').projectDir=new File(rootDir,'Repository/data')
+project(':data').projectDir = new File(rootDir, 'Repository/data')
 
 include ':r_t'
-project(':r_t').projectDir=new File(rootDir,'libs/r_t')
+project(':r_t').projectDir = new File(rootDir, 'libs/r_t')
 
 include ':interfalib'
-project(':interfalib').projectDir=new File(rootDir,'libs/interfalib')
+project(':interfalib').projectDir = new File(rootDir, 'libs/interfalib')
 include ':testlib'
 include ':mvpsample'
 include ':mvcsample'
