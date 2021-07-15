@@ -14,5 +14,10 @@ class WheelViewActivity : AppCompatActivity() {
             listData.add("$i")
         }
         wheelview.setData(listData)
+
+
+
+
+
     }
 }
