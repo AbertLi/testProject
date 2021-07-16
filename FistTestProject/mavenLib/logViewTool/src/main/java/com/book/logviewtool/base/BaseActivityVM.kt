@@ -3,7 +3,6 @@ package com.book.logviewtool.base
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +11,7 @@ import androidx.core.util.Pair
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.book.logviewtool.interfaces.IBackListener
+import com.book.logviewtool.util.DensityUtil
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivityVM<VM : ViewModel> : AppCompatActivity(),
@@ -28,6 +28,7 @@ abstract class BaseActivityVM<VM : ViewModel> : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DensityUtil.setCustomDensity(this,this.application)
         onCreateView()
         onCreateView(savedInstanceState)
     }

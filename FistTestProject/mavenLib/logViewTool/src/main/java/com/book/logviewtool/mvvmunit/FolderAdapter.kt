@@ -1,6 +1,7 @@
 package com.book.logviewtool.mvvmunit
 
 import com.book.logviewtool.base.BaseAdapter
+import com.book.logviewtool.interfaces.OnClickListener
 import com.example.logviewtool.R
 import com.example.logviewtool.databinding.FolderItemBinding
 
@@ -11,6 +12,8 @@ import com.example.logviewtool.databinding.FolderItemBinding
 class FolderAdapter(itemList: ArrayList<FolderBean>? = null, brId: Int)
     : BaseAdapter<FolderBean, FolderItemBinding>(itemList, brId) {
 
+    var mOnClickListener: OnClickListener? = null
+
     override fun getLayoutId(): Int {
         return R.layout.folder_item
     }
@@ -19,11 +22,26 @@ class FolderAdapter(itemList: ArrayList<FolderBean>? = null, brId: Int)
         mItemList = itemList
     }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.binding.clItemRootView.setOnClickListener { view ->
+            mOnClickListener?.onClick(view, position)
+        }
+        super.onBindViewHolder(holder, position)
+    }
+
     fun addData(itemList: ArrayList<FolderBean>) {
         if (mItemList == null) {
             mItemList = itemList
         } else {
             mItemList?.addAll(itemList)
         }
+    }
+
+    fun getItem(position: Int): FolderBean? {
+        return mItemList?.get(position)
+    }
+
+    fun setOnclickListener(onClickListener: OnClickListener) {
+        mOnClickListener = onClickListener
     }
 }

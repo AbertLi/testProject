@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -9,7 +10,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21//矢量图5.0才支持
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -32,6 +33,10 @@ android {
         jvmTarget = '1.8'
     }
 
+    kapt {
+        generateStubs = true
+    }
+
     dataBinding {
         enabled = true
     }
@@ -48,6 +53,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    //debugApi 'com.imuxuan:floatingview:1.6'//应用内悬浮窗
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -9,8 +9,8 @@
             name="folderBean"
             type="com.book.logviewtool.mvvmunit.FolderBean" />
 
-<!--        <import type="android.view.View" />-->
-<!--        <import type="android.text.TextUtils" />-->
+        <!--        <import type="android.view.View" />-->
+        <!--        <import type="android.text.TextUtils" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,20 +46,89 @@
 
 
         <TextView
-            android:id="@+id/tv_msg_name"
-            android:layout_width="0dp"
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:text="@{folderBean.dateTime}"
             android:textColor="#5c000000"
             android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/icon"
             app:layout_constraintTop_toBottomOf="@+id/tv_alarm_code_"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_size"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:text="@{folderBean.size}"
+            android:textColor="#5c000000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alarm_code_"
+            tools:ignore="MissingConstraints" />
+
+
+        <TextView
+            android:id="@+id/tv_file_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/dev_tool_file_num"
+            android:textColor="#5c000000"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/icon"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_file_num"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:text="@{folderBean.fileNum}"
+            android:textColor="#5c000000"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_file_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_dir_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/dev_tool_dir_num"
+            android:textColor="#5c000000"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_file_num"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_dir_num"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@{folderBean.directoryNum}"
+            android:textColor="#5c000000"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_dir_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,8 +3,12 @@
     package="com.example.logviewtool">
 
     <application>
-        <activity android:name="com.book.logviewtool.mvvmunit.LogDetailActivity"/>
-        <activity android:name="com.book.logviewtool.mvvmunit.folder.FolderActivity" />
+        <activity
+            android:name="com.book.logviewtool.mvvmunit.LogDetailActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="com.book.logviewtool.mvvmunit.folder.FolderActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>

@@ -12,10 +12,16 @@ class FolderViewModel : BaseViewModel<FolderRep>() {
     }
 
     var folderFileLiveData = MutableLiveData<ArrayList<FolderBean>>()
-    fun getFolderFileList(filePath: String) {
+    var folderFileLiveDataAdd = MutableLiveData<ArrayList<FolderBean>>()
+
+    fun getFolderFileList(filePath: String, isAdd: Boolean = false) {
         viewModelScope.launch {
             mRepository.getFolderFileList(filePath) {
-                folderFileLiveData.value = it
+                if (isAdd) {
+                    folderFileLiveDataAdd.value = it
+                } else {
+                    folderFileLiveData.value = it
+                }
             }
         }
     }

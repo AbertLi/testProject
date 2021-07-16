@@ -17,6 +17,7 @@ import java.util.Map;
 
 import android.os.Build;
 import android.os.Environment;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -40,6 +41,7 @@ public class GetFilesUtils {
     public static final String FILE_INFO_PATH = "fPath";
     public static final String FILE_INFO_CREATE_TIME = "create_time";
     public static final String FILE_INFO_UPDATE_TIME = "update_time";
+    public static final String FILE_INFO_SIZE = "file_size";
 
     private static GetFilesUtils gfu;
 
@@ -54,7 +56,7 @@ public class GetFilesUtils {
      **/
     public static GetFilesUtils getInstance() {
         if (gfu == null) {
-            synchronized (gfu) {
+            synchronized (GetFilesUtils.class) {
                 if (gfu == null) {
                     gfu = new GetFilesUtils();
                 }
@@ -104,11 +106,17 @@ public class GetFilesUtils {
                             fileInfo.put(FILE_INFO_NUM_SONFILES, bFiles.length - getNumOfDir);
                         }
                         fileInfo.put(FILE_INFO_TYPE, FILE_TYPE_FOLDER);
+                        fileInfo.put(FILE_INFO_SIZE,"");
                     } else {
                         fileInfo.put(FILE_INFO_ISFOLDER, false);
                         fileInfo.put(FILE_INFO_NUM_SONDIRS, 0);
                         fileInfo.put(FILE_INFO_NUM_SONFILES, 0);
                         fileInfo.put(FILE_INFO_TYPE, getFileType(files[i].getName()));
+                        try{
+                            fileInfo.put(FILE_INFO_SIZE,getFileSize(files[i]));
+                        }catch (IOException e){
+                            Log.e("GetFileUtil","getFileSize exception e = "+e.toString());
+                        }
                     }
                     fileInfo.put(FILE_INFO_PATH, files[i].getAbsoluteFile());
                     list.add(fileInfo);

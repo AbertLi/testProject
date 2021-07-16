@@ -1,1 +1,4 @@
-<resources></resources>
+<resources>
+    <string name="dev_tool_file_num">文件数量：</string>
+    <string name="dev_tool_dir_num">文件夹数量：</string>
+</resources>
