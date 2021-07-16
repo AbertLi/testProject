@@ -2,4 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.logviewtool">
 
+    <application>
+        <activity android:name="com.book.logviewtool.mvvmunit.LogDetailActivity"/>
+        <activity android:name="com.book.logviewtool.mvvmunit.folder.FolderActivity" />
+    </application>
+
 </manifest>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="refreshListener"
+            type="com.book.logviewtool.interfaces.IRefreshListener" />
+
+        <variable
+            name="backListener"
+            type="com.book.logviewtool.interfaces.IBackListener" />
+
+        <variable
+            name="titleName"
+            type="java.lang.String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/title"
+            layout="@layout/activity_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:listener="@{backListener}"
+            bind:refreshListener="@{refreshListener}"
+            bind:titleName="@{titleName}" />
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
+            <com.scwang.smart.refresh.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srlAccentColor="@android:color/white"
+                app:srlPrimaryColor="#661f4b8f"
+                app:srlTextFailed="@string/srl_header_failed"
+                app:srlTextFinish="@string/srl_header_finish"
+                app:srlTextLoading="@string/srl_header_loading"
+                app:srlTextPulling="@string/srl_header_pulling"
+                app:srlTextRefreshing="@string/srl_header_refreshing"
+                app:srlTextRelease="@string/srl_header_release"
+                app:srlTextSecondary="@string/srl_header_secondary"
+                app:srlTextUpdate="@string/srl_header_update" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:ignore="MissingConstraints"
+                tools:listitem="@layout/folder_item" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
