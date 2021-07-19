@@ -7,7 +7,7 @@
 
     <application>
         <activity
-            android:name="com.book.logviewtool.mvvmunit.LogDetailActivity"
+            android:name="com.book.logviewtool.mvvmunit.logdetail.LogDetailActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name="com.book.logviewtool.mvvmunit.folder.FolderActivity"

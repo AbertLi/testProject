@@ -7,7 +7,7 @@
 
         <variable
             name="folderBean"
-            type="com.book.logviewtool.mvvmunit.FolderBean" />
+            type="com.book.logviewtool.mvvmunit.folder.FolderBean" />
 
         <!--        <import type="android.view.View" />-->
         <!--        <import type="android.text.TextUtils" />-->

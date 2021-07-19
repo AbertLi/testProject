@@ -1,4 +1,4 @@
-package com.book.logviewtool.mvvmunit
+package com.book.logviewtool.mvvmunit.folder
 
 import com.book.logviewtool.base.BaseAdapter
 import com.book.logviewtool.interfaces.OnClickListener

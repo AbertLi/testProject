@@ -8,8 +8,7 @@ import androidx.lifecycle.Observer
 import com.book.logviewtool.base.BaseActivityVM
 import com.book.logviewtool.interfaces.IBackListener
 import com.book.logviewtool.interfaces.OnClickListener
-import com.book.logviewtool.mvvmunit.FolderAdapter
-import com.book.logviewtool.mvvmunit.LogDetailActivity
+import com.book.logviewtool.mvvmunit.logdetail.LogDetailActivity
 import com.book.logviewtool.util.GetFilesUtils
 import com.example.logviewtool.BR
 import com.example.logviewtool.R
@@ -46,6 +45,7 @@ class FolderActivity : BaseActivityVM<FolderViewModel>() {
                         jumpToActivity(FolderActivity::class.java, bundle)
                     } else {
                         var bundle = Bundle()
+                        bundle.putString("path", folderBean.fileInfoPath)
                         jumpToActivity(LogDetailActivity::class.java, bundle)
                     }
                 }

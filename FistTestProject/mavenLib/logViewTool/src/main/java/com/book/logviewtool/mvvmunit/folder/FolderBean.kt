@@ -1,4 +1,4 @@
-package com.book.logviewtool.mvvmunit
+package com.book.logviewtool.mvvmunit.folder
 
 data class FolderBean(var fileName: String,
                       var dateTime: String,
