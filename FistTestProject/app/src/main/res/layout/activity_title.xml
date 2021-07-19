@@ -30,7 +30,7 @@
         android:background="#2B2B2B">
 
         <TextView
-            android:id="@+id/titleName"
+            android:id="@+id/tv_title_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{titleName}"

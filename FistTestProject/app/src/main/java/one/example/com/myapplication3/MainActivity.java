@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.book.logviewtool.LogToolManager;
 import com.heytap.advert.dev_console.ConsoleConstant;
 import com.heytap.advert.dev_console.LogConsoleActivity;
 import com.wifi.mvpsample.MVPActivity;
@@ -115,6 +116,7 @@ public class MainActivity extends Activity {
         list.add(new ItemBean("WheelView",27));
         list.add(new ItemBean("Socket通信",28));
         list.add(new ItemBean("Sensor 传感器",29));
+        list.add(new ItemBean("开发者选项工具",30));
         return list;
     }
 
@@ -259,6 +261,9 @@ public class MainActivity extends Activity {
             case 29:
                 Intent button29 = new Intent(this, SensorActivity.class);
                 startActivity(button29);
+                break;
+            case 30:
+                LogToolManager.get().start(this,Environment.getExternalStorageState());
                 break;
         }
     }
