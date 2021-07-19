@@ -12,10 +12,10 @@ import com.book.logviewtool.mvvmunit.logdetail.LogDetailActivity
 import com.book.logviewtool.util.GetFilesUtils
 import com.example.logviewtool.BR
 import com.example.logviewtool.R
-import com.example.logviewtool.databinding.ActivityFolderBinding
+import com.example.logviewtool.databinding.DevToolActivityFolderBinding
 
 class FolderActivity : BaseActivityVM<FolderViewModel>() {
-    lateinit var binding: ActivityFolderBinding
+    lateinit var binding: DevToolActivityFolderBinding
     private var adapter = FolderAdapter(null, BR.folderBean)
     private var path = ""
     override fun onCreateView() {
@@ -23,7 +23,7 @@ class FolderActivity : BaseActivityVM<FolderViewModel>() {
         if (TextUtils.isEmpty(path)) {
             path = externalCacheDir?.absolutePath ?: ""
         }
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_folder)
+        binding = DataBindingUtil.setContentView(this, R.layout.dev_tool_activity_folder)
         binding.rv.adapter = adapter
         mViewModel.getFolderFileList(path)
         binding.refreshLayout.setOnRefreshListener {

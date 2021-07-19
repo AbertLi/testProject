@@ -3,19 +3,19 @@ package com.book.logviewtool.mvvmunit.logdetail
 import com.book.logviewtool.base.BaseAdapter
 import com.book.logviewtool.interfaces.OnClickListener
 import com.example.logviewtool.R
-import com.example.logviewtool.databinding.LogItemBinding
+import com.example.logviewtool.databinding.DevToolLogItemBinding
 
 /**
  * 该适配器需要做内存容量限制
  * 采取DiskLruCache 的算法处理
  */
 class LogDetailAdapter(itemList: ArrayList<String>? = null, brId: Int)
-    : BaseAdapter<String, LogItemBinding>(itemList, brId) {
+    : BaseAdapter<String, DevToolLogItemBinding>(itemList, brId) {
 
     var mOnClickListener: OnClickListener? = null
 
     override fun getLayoutId(): Int {
-        return R.layout.log_item
+        return R.layout.dev_tool_log_item
     }
 
     fun addData(itemList: ArrayList<String>) {

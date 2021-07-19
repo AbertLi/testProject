@@ -17,12 +17,12 @@ public class DataBindingImageViewSet {
         int dra = 0;
         if (!TextUtils.isEmpty(infoType)) {
             if (infoType.equals(GetFilesUtils.FILE_TYPE_FOLDER)) {
-                dra = R.drawable.ic_baseline_folder_10;
+                dra = R.drawable.dev_tool_ic_baseline_folder_10;
             } else {
-                dra = R.drawable.ic_baseline_insert_drive_file_10;
+                dra = R.drawable.dev_tool_ic_baseline_insert_drive_file_10;
             }
         }else{
-            dra = R.drawable.ic_baseline_folder_10;
+            dra = R.drawable.dev_tool_ic_baseline_folder_10;
         }
         view.setImageResource(dra);
     }

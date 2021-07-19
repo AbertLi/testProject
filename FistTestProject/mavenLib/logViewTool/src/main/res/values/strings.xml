@@ -1,4 +1,5 @@
 <resources>
+    <!--   所有的资源文件都加上这个前缀 dev_tool_-->
     <string name="dev_tool_file_num">文件数量：</string>
     <string name="dev_tool_dir_num">文件夹数量：</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.book.logviewtool.mvvmunit.logdetail
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -11,11 +13,11 @@ import com.book.logviewtool.base.BaseActivityVM
 import com.book.logviewtool.interfaces.IRefreshListener
 import com.example.logviewtool.BR
 import com.example.logviewtool.R
-import com.example.logviewtool.databinding.ActivityLogDetailBinding
+import com.example.logviewtool.databinding.DevToolActivityLogDetailBinding
 
 class LogDetailActivity : BaseActivityVM<LogDetailViewModel>() {
     private val TAG = "LogDetailActivity"
-    lateinit var binding: ActivityLogDetailBinding
+    lateinit var binding: DevToolActivityLogDetailBinding
     private var logAdapter = LogDetailAdapter(null, BR.logItem)
     private var mKeyWords = ""
     private var filePath = ""
@@ -25,10 +27,15 @@ class LogDetailActivity : BaseActivityVM<LogDetailViewModel>() {
 
     override fun onCreateView() {
         filePath = intent.extras?.getString("path") ?: ""
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_log_detail)
+        binding = DataBindingUtil.setContentView(this, R.layout.dev_tool_activity_log_detail)
         binding.rv.adapter = logAdapter
         binding.backListener = this
         binding.refreshListener = serchListener
+        val drawable1: Drawable = resources.getDrawable(R.drawable.dev_tool_ic_baseline_search_72)
+        drawable1.setBounds(dip2px(this, 5f), 0, dip2px(this, 30f), dip2px(this, 30f)) //第一0是距左边距离，第二0是距上边距离，40分别是长宽
+        binding.etTitle.setCompoundDrawables(drawable1, null, null, null) //只放左边
+
+
         requestNewFile("")
         binding.rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -113,5 +120,13 @@ class LogDetailActivity : BaseActivityVM<LogDetailViewModel>() {
         mKeyWords = searchStr
         var requestBean = LogReadBean(true, startLine, filePath, mKeyWords, 100)
         mViewModel.getLogList(requestBean)
+    }
+
+    /**
+     * dpתpx
+     */
+    fun dip2px(ctx: Context, dpValue: Float): Int {
+        val scale = ctx.resources.displayMetrics.density
+        return (dpValue * scale + 0.5f).toInt()
     }
 }

@@ -44,7 +44,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="16dp"
-                    android:background="@drawable/ic_baseline_arrow_back_10"
+                    android:background="@drawable/dev_tool_ic_baseline_arrow_back_10"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -78,9 +78,9 @@
                 android:id="@+id/et_title"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:paddingStart="6dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginRight="20dp"
-                android:paddingStart="6dp"
                 android:background="@drawable/dev_tool_log_serch_edit_bg"
                 android:text="@{titleName}"
                 android:textColor="#FFFFFF"
@@ -103,6 +103,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_title"
             tools:ignore="MissingConstraints"
-            tools:listitem="@layout/log_item" />
+            tools:listitem="@layout/dev_tool_log_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

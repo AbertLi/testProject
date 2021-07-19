@@ -3,19 +3,19 @@ package com.book.logviewtool.mvvmunit.folder
 import com.book.logviewtool.base.BaseAdapter
 import com.book.logviewtool.interfaces.OnClickListener
 import com.example.logviewtool.R
-import com.example.logviewtool.databinding.FolderItemBinding
+import com.example.logviewtool.databinding.DevToolFolderItemBinding
 
 /**
  * 该适配器需要做内存容量限制
  * 采取DiskLruCache 的算法处理
  */
 class FolderAdapter(itemList: ArrayList<FolderBean>? = null, brId: Int)
-    : BaseAdapter<FolderBean, FolderItemBinding>(itemList, brId) {
+    : BaseAdapter<FolderBean, DevToolFolderItemBinding>(itemList, brId) {
 
     var mOnClickListener: OnClickListener? = null
 
     override fun getLayoutId(): Int {
-        return R.layout.folder_item
+        return R.layout.dev_tool_folder_item
     }
 
     fun setData(itemList: ArrayList<FolderBean>) {
