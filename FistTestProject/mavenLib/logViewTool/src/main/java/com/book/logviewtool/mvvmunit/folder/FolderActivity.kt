@@ -19,8 +19,7 @@ class FolderActivity : BaseActivityVM<FolderViewModel>() {
     lateinit var binding: ActivityFolderBinding
     private var adapter = FolderAdapter(null, BR.folderBean)
     private var path = ""
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView() {
         path = intent.extras?.getString("path") ?: ""
         if (TextUtils.isEmpty(path)) {
             path = externalCacheDir?.absolutePath ?: ""
@@ -30,24 +29,24 @@ class FolderActivity : BaseActivityVM<FolderViewModel>() {
         mViewModel.getFolderFileList(path)
         binding.refreshLayout.setOnRefreshListener {
             mViewModel.getFolderFileList(path)
-            binding.refreshLayout.finishRefresh(5000,false,false)
+            binding.refreshLayout.finishRefresh(10000, false, false)
         }
         binding.backListener = object : IBackListener {
             override fun back() {
                 finish()
             }
         }
-        adapter.setOnclickListener(object:OnClickListener{
+        adapter.setOnclickListener(object : OnClickListener {
             override fun onClick(v: View?, position: Int) {
                 var itemBean = adapter.getItem(position)
-                itemBean?.let {folderBean ->
-                    if (folderBean.fileInfoType == GetFilesUtils.FILE_TYPE_FOLDER){
+                itemBean?.let { folderBean ->
+                    if (folderBean.fileInfoType == GetFilesUtils.FILE_TYPE_FOLDER) {
                         var bundle = Bundle()
-                        bundle.putString("path",folderBean.fileInfoPath)
-                        jumpToActivity(FolderActivity::class.java,bundle)
-                    }else{
+                        bundle.putString("path", folderBean.fileInfoPath)
+                        jumpToActivity(FolderActivity::class.java, bundle)
+                    } else {
                         var bundle = Bundle()
-                        jumpToActivity(LogDetailActivity::class.java,bundle)
+                        jumpToActivity(LogDetailActivity::class.java, bundle)
                     }
                 }
 

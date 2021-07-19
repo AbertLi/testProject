@@ -263,7 +263,7 @@ public class MainActivity extends Activity {
                 startActivity(button29);
                 break;
             case 30:
-                LogToolManager.get().start(this,Environment.getExternalStorageState());
+                LogToolManager.get().start(this,Environment.getExternalStorageDirectory().getAbsolutePath());
                 break;
         }
     }

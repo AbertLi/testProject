@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.book.logviewtool.base.BaseViewModel
 import com.book.logviewtool.mvvmunit.FolderBean
+import com.book.logviewtool.util.HandlerUtils
 import kotlinx.coroutines.launch
 
 class FolderViewModel : BaseViewModel<FolderRep>() {
@@ -16,11 +17,13 @@ class FolderViewModel : BaseViewModel<FolderRep>() {
 
     fun getFolderFileList(filePath: String, isAdd: Boolean = false) {
         viewModelScope.launch {
-            mRepository.getFolderFileList(filePath) {
-                if (isAdd) {
-                    folderFileLiveDataAdd.value = it
-                } else {
-                    folderFileLiveData.value = it
+            mRepository.getData(filePath) {
+                HandlerUtils.postDelayed(0) {
+                    if (isAdd) {
+                        folderFileLiveDataAdd.value = it
+                    } else {
+                        folderFileLiveData.value = it
+                    }
                 }
             }
         }

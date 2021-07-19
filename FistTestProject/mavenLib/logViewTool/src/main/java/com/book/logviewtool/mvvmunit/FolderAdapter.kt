@@ -20,6 +20,7 @@ class FolderAdapter(itemList: ArrayList<FolderBean>? = null, brId: Int)
 
     fun setData(itemList: ArrayList<FolderBean>) {
         mItemList = itemList
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

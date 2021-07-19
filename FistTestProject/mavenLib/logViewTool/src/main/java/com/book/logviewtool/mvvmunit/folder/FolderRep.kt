@@ -4,8 +4,15 @@ import android.util.Log
 import com.book.logviewtool.base.BaseRepository
 import com.book.logviewtool.mvvmunit.FolderBean
 import com.book.logviewtool.util.GetFilesUtils
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class FolderRep : BaseRepository() {
+    suspend fun getData(filePath: String, callBack: (ArrayList<FolderBean>) -> Unit) = withContext(Dispatchers.Default) {
+        // 繁重任务
+        getFolderFileList(filePath, callBack)
+    }
+
     fun getFolderFileList(filePath: String, callBack: (ArrayList<FolderBean>) -> Unit) {
         var list = GetFilesUtils.getInstance().getSonNode(filePath)
         if (list == null) {
