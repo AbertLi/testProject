@@ -1,5 +1,6 @@
 package com.book.logviewtool.mvvmunit.folder;
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.book.logviewtool.base.BaseViewModel
@@ -28,4 +29,7 @@ class FolderViewModel : BaseViewModel<FolderRep>() {
         }
     }
 
+    fun getCopyFileStr(context: Context, lineNum: Int, filePath: String) {
+        mRepository.getCopyFile(context, lineNum, filePath)
+    }
 }

@@ -27,6 +27,10 @@ class FolderAdapter(itemList: ArrayList<FolderBean>? = null, brId: Int)
         holder.binding.clItemRootView.setOnClickListener { view ->
             mOnClickListener?.onClick(view, position)
         }
+        holder.binding.clItemRootView.setOnLongClickListener {v->
+            mOnClickListener?.onLongClick(v, position)
+            true
+        }
         super.onBindViewHolder(holder, position)
     }
 

@@ -6,6 +6,8 @@ import android.os.Bundle
 import com.book.logviewtool.mvvmunit.folder.FolderActivity
 
 class LogToolManager {
+    private constructor() {}
+
     class Holder {
         companion object {
             val logToolManager = LogToolManager()
@@ -17,6 +19,16 @@ class LogToolManager {
         fun get(): LogToolManager {
             return Holder.logToolManager
         }
+    }
+
+    private var mConfig: LogToolConfig = LogToolConfig.getDefault()
+
+    fun getConfig(): LogToolConfig {
+        return mConfig
+    }
+
+    fun init(config: LogToolConfig) {
+        this.mConfig = config
     }
 
     fun start(context: Context, path: String = "") {

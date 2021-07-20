@@ -5,6 +5,7 @@ import android.text.TextUtils
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.book.logviewtool.LogToolManager
 import com.book.logviewtool.base.BaseActivityVM
 import com.book.logviewtool.interfaces.IBackListener
 import com.book.logviewtool.interfaces.OnClickListener
@@ -50,6 +51,15 @@ class FolderActivity : BaseActivityVM<FolderViewModel>() {
                     }
                 }
 
+            }
+
+            override fun onLongClick(v: View?, position: Int) {
+                var itemBean = adapter.getItem(position)
+                itemBean?.let { folderBean ->
+                    mViewModel.getCopyFileStr(this@FolderActivity,
+                            LogToolManager.get().getConfig().copyLineNum,
+                            folderBean.fileInfoPath)
+                }
             }
         })
         initObserver()

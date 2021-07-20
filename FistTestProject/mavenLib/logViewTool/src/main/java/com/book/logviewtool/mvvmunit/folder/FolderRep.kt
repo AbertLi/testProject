@@ -1,7 +1,9 @@
 package com.book.logviewtool.mvvmunit.folder;
 
+import android.content.Context
 import android.util.Log
 import com.book.logviewtool.base.BaseRepository
+import com.book.logviewtool.util.CoptyUtil
 import com.book.logviewtool.util.GetFilesUtils
 
 class FolderRep : BaseRepository() {
@@ -28,5 +30,9 @@ class FolderRep : BaseRepository() {
                 callBack(arrayList)
             }
         }
+    }
+
+    fun getCopyFile(context: Context, lineNum: Int, filePath: String) {
+        CoptyUtil.copyText(context, lineNum, filePath)
     }
 }

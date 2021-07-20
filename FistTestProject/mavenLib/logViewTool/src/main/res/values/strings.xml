@@ -2,4 +2,9 @@
     <!--   所有的资源文件都加上这个前缀 dev_tool_-->
     <string name="dev_tool_file_num">文件数量：</string>
     <string name="dev_tool_dir_num">文件夹数量：</string>
+
+    <string name="dev_tool_copying">拷贝中，请稍等......</string>
+    <string name="dev_tool_copy_suc">拷贝成功</string>
+    <string name="dev_tool_content_does_not_exist">复制的内容不存在</string>
+    <string name="dev_tool_dir_cant_copy">文件夹不可以复制</string>
 </resources>
