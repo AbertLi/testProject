@@ -144,6 +144,9 @@ dependencies {
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
     implementation 'org.bouncycastle:bcpkix-jdk15on:1.59'
+    implementation 'com.gcssloop.widget:arc-seekbar:1.7.0'//半环形进度条
+    //implementation 'com.github.lzyzsd:circleprogress:1.2.4'
+
 
     //Room先前引用包
 //    implementation "android.arch.persistence.room:runtime:1.0.0-alpha5"

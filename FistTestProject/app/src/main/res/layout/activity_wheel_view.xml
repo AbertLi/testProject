@@ -4,22 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ff1f4b8f"
     android:orientation="vertical"
     tools:context=".ui.wheelview.WheelViewActivity">
+    <!--  有进度，但是没有办法拖动  -->
+    <one.example.com.myapplication3.ui.wheelview.circleprogress.DonutProgress
+        android:id="@+id/donut_progress"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:donut_finished_color="#0066FF"
+        app:donut_finished_stroke_width="2dp"
+        app:donut_inner_drawable="@drawable/ic_launcher"
+        app:donut_max="100"
+        app:donut_show_text="false"
+        app:donut_unfinished_color="#f5f5f5"
+        app:donut_unfinished_stroke_width="2dp" />
+    <!--  有进度，但是没有办法拖动  -->
+    <one.example.com.myapplication3.ui.wheelview.circleprogress.ArcProgress
+        android:id="@+id/arc_progress"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#214193"
+        app:arc_angle="180"
+        app:arc_bottom_text="MEMORY"
+        app:arc_progress="55"
+        app:arc_stroke_width="10dp"
+        app:arc_suffix_text_size="10px"
+        app:arc_text_size="1px" />
+    <!--  有进度，可以拖动，但是没有两层颜色。  -->
+    <com.gcssloop.widget.ArcSeekBar
+        android:id="@+id/arc_seekbar"
+        android:layout_width="234dp"
+        android:layout_height="234dp"
+        android:padding="11dp"
+        app:arc_colors="@array/arc_colors_progress"
+        app:arc_max="100"
+        app:arc_min="0"
+        app:arc_open_angle="180"
+        app:arc_progress="0"
+        app:arc_thumb_color="@android:color/white"
+        app:arc_thumb_mode="FILL_STROKE"
+        app:arc_thumb_radius="14.5dp"
+        app:arc_thumb_shadow_color="#40000000"
+        app:arc_thumb_shadow_radius="1dp"
+        app:arc_thumb_width="1dp"
+        app:arc_width="10dp" />
+    <!--没有设置拖动按钮描边颜色-->
 
-    <LinearLayout
-        android:background="#ff1f4b8f"
-        android:layout_width="match_parent"
-        android:layout_height="33dp">
-
-        <one.example.com.myapplication3.ui.wheelview.kotlin.WheelView
-            android:id="@+id/wheelview"
-            style="@style/wheelViewStyle_Latitude_longitude" />
-    </LinearLayout>
-
-
-    <one.example.com.myapplication3.ui.view.TextView
-        android:layout_width="300dp"
-        android:layout_height="300dp"/>
+    <!--    <one.example.com.myapplication3.ui.wheelview.HalfRingProgress-->
+    <!--        android:id="@+id/halfRing"-->
+    <!--        android:layout_width="224dp"-->
+    <!--        android:layout_height="224dp"-->
+    <!--        />-->
 
 </LinearLayout>
