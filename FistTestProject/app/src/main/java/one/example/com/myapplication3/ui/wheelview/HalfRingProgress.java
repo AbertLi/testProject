@@ -77,6 +77,9 @@ public class HalfRingProgress extends View {
     private static final int DEFAULT_MAX_VALUE = 100;               // 默认最大数值
     private static final int DEFAULT_MIN_VALUE = 0;                 // 默认最小数值
 
+    private final int default_finished_color = 0XFF246BFE;//蓝色
+    private final int default_unfinished_color = 0xa6ffffff;//类似灰色
+
     private static final String KEY_PROGRESS_PRESENT = "PRESENT";   // 用于存储和获取当前百分比
 
     // 可配置数据
@@ -106,12 +109,18 @@ public class HalfRingProgress extends View {
     private float mThumbX;         // 拖动按钮 中心点 X
     private float mThumbY;         // 拖动按钮 中心点 Y
 
+    private int finishedStrokeColor;    //完成颜色
+    private int unfinishedStrokeColor;  //没有完成的颜色
+
     private Path mSeekPath;
     private Path mBorderPath;
     private Paint mArcPaint;
     private Paint mThumbPaint;
     private Paint mBorderPaint;
     private Paint mShadowPaint;
+
+    private Paint paint;//绘制两层颜色
+    private RectF rectF = new RectF();
 
     private float[] mTempPos;
     private float[] mTempTan;
@@ -148,38 +157,40 @@ public class HalfRingProgress extends View {
 
     // 初始化各种属性
     private void initAttrs(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ArcSeekBar);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.halfRingProgress);
         mArcColors = getArcColors(context, ta);
-        mArcWidth = ta.getDimensionPixelSize(R.styleable.ArcSeekBar_arc_width, dp2px(DEFAULT_ARC_WIDTH));
-        mOpenAngle = ta.getFloat(R.styleable.ArcSeekBar_arc_open_angle, DEFAULT_OPEN_ANGLE);
-        mRotateAngle = ta.getFloat(R.styleable.ArcSeekBar_arc_rotate_angle, DEFAULT_ROTATE_ANGLE);
-        mMaxValue = ta.getInt(R.styleable.ArcSeekBar_arc_max, DEFAULT_MAX_VALUE);
-        mMinValue = ta.getInt(R.styleable.ArcSeekBar_arc_min, DEFAULT_MIN_VALUE);
+        mArcWidth = ta.getDimensionPixelSize(R.styleable.halfRingProgress_width, dp2px(DEFAULT_ARC_WIDTH));
+        mOpenAngle = ta.getFloat(R.styleable.halfRingProgress_open_angle, DEFAULT_OPEN_ANGLE);
+        mRotateAngle = ta.getFloat(R.styleable.halfRingProgress_rotate_angle, DEFAULT_ROTATE_ANGLE);
+        mMaxValue = ta.getInt(R.styleable.halfRingProgress_max, DEFAULT_MAX_VALUE);
+        mMinValue = ta.getInt(R.styleable.halfRingProgress_min, DEFAULT_MIN_VALUE);
         // 如果用户设置的最大值和最小值不合理，则直接按照默认进行处理
         if (mMaxValue <= mMinValue) {
             mMaxValue = DEFAULT_MAX_VALUE;
             mMinValue = DEFAULT_MIN_VALUE;
         }
-        int progress = ta.getInt(R.styleable.ArcSeekBar_arc_progress, mMinValue);
+        int progress = ta.getInt(R.styleable.halfRingProgress_progress, mMinValue);
         setProgress(progress);
-        mBorderWidth = ta.getDimensionPixelSize(R.styleable.ArcSeekBar_arc_border_width, dp2px(DEFAULT_BORDER_WIDTH));
-        mBorderColor = ta.getColor(R.styleable.ArcSeekBar_arc_border_color, DEFAULT_BORDER_COLOR);
+        mBorderWidth = ta.getDimensionPixelSize(R.styleable.halfRingProgress_border_width, dp2px(DEFAULT_BORDER_WIDTH));
+        mBorderColor = ta.getColor(R.styleable.halfRingProgress_border_color, DEFAULT_BORDER_COLOR);
 
-        mThumbColor = ta.getColor(R.styleable.ArcSeekBar_arc_thumb_color, DEFAULT_THUMB_COLOR);
-        mThumbRadius = ta.getDimensionPixelSize(R.styleable.ArcSeekBar_arc_thumb_radius, dp2px(DEFAULT_THUMB_RADIUS));
-        mThumbShadowRadius = ta.getDimensionPixelSize(R.styleable.ArcSeekBar_arc_thumb_shadow_radius, dp2px(DEFAULT_THUMB_SHADOW_RADIUS));
-        mThumbShadowColor = ta.getColor(R.styleable.ArcSeekBar_arc_thumb_shadow_color, DEFAULT_THUMB_SHADOW_COLOR);
-        mThumbWidth = ta.getDimensionPixelSize(R.styleable.ArcSeekBar_arc_thumb_width, dp2px(DEFAULT_THUMB_WIDTH));
-        mThumbMode = ta.getInt(R.styleable.ArcSeekBar_arc_thumb_mode, THUMB_MODE_STROKE);
+        mThumbColor = ta.getColor(R.styleable.halfRingProgress_thumb_color, DEFAULT_THUMB_COLOR);
+        finishedStrokeColor = ta.getColor(R.styleable.halfRingProgress_finished_color, default_finished_color);
+        unfinishedStrokeColor = ta.getColor(R.styleable.halfRingProgress_unfinished_color, default_unfinished_color);
+        mThumbRadius = ta.getDimensionPixelSize(R.styleable.halfRingProgress_thumb_radius, dp2px(DEFAULT_THUMB_RADIUS));
+        mThumbShadowRadius = ta.getDimensionPixelSize(R.styleable.halfRingProgress_thumb_shadow_radius, dp2px(DEFAULT_THUMB_SHADOW_RADIUS));
+        mThumbShadowColor = ta.getColor(R.styleable.halfRingProgress_thumb_shadow_color, DEFAULT_THUMB_SHADOW_COLOR);
+        mThumbWidth = ta.getDimensionPixelSize(R.styleable.halfRingProgress_thumb_width, dp2px(DEFAULT_THUMB_WIDTH));
+        mThumbMode = ta.getInt(R.styleable.halfRingProgress_thumb_mode, THUMB_MODE_STROKE);
 
-        mShadowRadius = ta.getDimensionPixelSize(R.styleable.ArcSeekBar_arc_shadow_radius, dp2px(DEFAULT_SHADOW_RADIUS));
+        mShadowRadius = ta.getDimensionPixelSize(R.styleable.halfRingProgress_shadow_radius, dp2px(DEFAULT_SHADOW_RADIUS));
         ta.recycle();
     }
 
     // 获取 Arc 颜色数组
     private int[] getArcColors(Context context, TypedArray ta) {
         int[] ret;
-        int resId = ta.getResourceId(R.styleable.ArcSeekBar_arc_colors, 0);
+        int resId = ta.getResourceId(R.styleable.halfRingProgress_colors, 0);
         if (0 == resId) {
             resId = R.array.arc_colors_default;
         }
@@ -200,6 +211,7 @@ public class HalfRingProgress extends View {
 
     // 初始化数据
     private void initData() {
+        paint = new Paint();
         mSeekPath = new Path();
         mBorderPath = new Path();
         mSeekPathMeasure = new PathMeasure();
@@ -217,6 +229,7 @@ public class HalfRingProgress extends View {
         initThumbPaint();
         initBorderPaint();
         initShadowPaint();
+        intPaint();
     }
 
     // 初始化圆弧画笔
@@ -262,6 +275,14 @@ public class HalfRingProgress extends View {
         mShadowPaint.setStyle(Paint.Style.FILL_AND_STROKE);
     }
 
+    private void intPaint(){
+        paint.setColor(default_unfinished_color);
+        paint.setAntiAlias(true);
+        paint.setStrokeWidth(mArcWidth);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeCap(Paint.Cap.ROUND);
+    }
+
     //--- 初始化结束 -------------------------------------------------------------------------------
 
     //--- 状态存储 ---------------------------------------------------------------------------------
@@ -295,7 +316,6 @@ public class HalfRingProgress extends View {
         int wm = MeasureSpec.getMode(widthMeasureSpec);     //取出宽度的测量模式
         int hs = MeasureSpec.getSize(heightMeasureSpec);    //取出高度的确切数值
         int hm = MeasureSpec.getMode(heightMeasureSpec);    //取出高度的测量模
-
         if (wm == MeasureSpec.UNSPECIFIED) {
             wm = MeasureSpec.EXACTLY;
             ws = dp2px(DEFAULT_EDGE_LENGTH);
@@ -335,6 +355,8 @@ public class HalfRingProgress extends View {
 
         // 得到显示区域和中心的
         RectF content = new RectF(startX + fix, startY + fix, startX + edgeLength, startY + edgeLength);
+//        rectF.set(mArcWidth / 2f, mArcWidth / 2f, ws - mArcWidth / 2f, MeasureSpec.getSize(heightMeasureSpec) - mArcWidth / 2f);
+        rectF.set(startX + fix, startY + fix, startX + edgeLength, startY + edgeLength);
         mCenterX = content.centerX();
         mCenterY = content.centerY();
 
@@ -380,12 +402,23 @@ public class HalfRingProgress extends View {
         if (mBorderWidth > 0) {
             canvas.drawPath(mBorderPath, mBorderPaint);
         }
-        if (mThumbShadowRadius > 0) {
+
+        int progress = getProgress();
+        float startAngle = 180 - (360 - mOpenAngle) / 2f;
+        float finishedSweepAngle = progress / (float) mMaxValue * (360 - mOpenAngle);
+        float finishedStartAngle = startAngle;
+        if (progress == 0) finishedStartAngle = 0.01f;
+        paint.setColor(unfinishedStrokeColor);
+        canvas.drawArc(rectF, startAngle, 360 - mOpenAngle, false, paint);
+        paint.setColor(finishedStrokeColor);
+        canvas.drawArc(rectF, finishedStartAngle, finishedSweepAngle, false, paint);
+
+        if (mThumbShadowRadius > 0) {//绘制圆形拖动块的阴影
             mThumbPaint.setShadowLayer(mThumbShadowRadius, 0, 0, mThumbShadowColor);
             canvas.drawCircle(mThumbX, mThumbY, mThumbRadius, mThumbPaint);
             mThumbPaint.clearShadowLayer();
         }
-        canvas.drawCircle(mThumbX, mThumbY, mThumbRadius, mThumbPaint);
+        canvas.drawCircle(mThumbX, mThumbY, mThumbRadius, mThumbPaint);//绘制圆形拖动块
         canvas.restore();
     }
 
@@ -412,7 +445,7 @@ public class HalfRingProgress extends View {
                 float tempProgressPresent = getCurrentProgress(event.getX(), event.getY());
                 if (!mAllowTouchSkip) {
                     // 不允许突变
-                    if (Math.abs(tempProgressPresent - mProgressPresent) > 0.5f) {
+                    if (Math.abs(tempProgressPresent - mProgressPresent) > 1.5f) {
                         break;
                     }
                 }

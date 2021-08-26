@@ -6,6 +6,7 @@ import android.os.SystemClock
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.LinearLayout
+import android.widget.TextView
 import one.example.com.myapplication3.Logs
 import one.example.com.myapplication3.R
 import one.example.com.myapplication3.ui.wheelview.CircularSeekBar.OnSeekChangeListener
@@ -51,5 +52,19 @@ class WheelViewActivity : Activity() {
         var progression = findViewById<DonutProgress>(R.id.donut_progress)
         progression.progress = 30f
 
+        var halfRing = findViewById<HalfRingProgress>(R.id.halfRing)
+        halfRing.progress = 30
+
+        halfRing.setOnProgressChangeListener(object : HalfRingProgress.OnProgressChangeListener {
+            override fun onProgressChanged(seekBar: HalfRingProgress?, progress: Int, isUser: Boolean) {
+                findViewById<TextView>(R.id.tv).text = "$progress"
+            }
+
+            override fun onStartTrackingTouch(seekBar: HalfRingProgress?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: HalfRingProgress?) {
+            }
+        })
     }
 }
