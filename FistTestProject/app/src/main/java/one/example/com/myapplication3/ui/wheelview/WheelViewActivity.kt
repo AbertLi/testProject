@@ -57,7 +57,6 @@ class WheelViewActivity : Activity() {
 
         halfRing.setOnProgressChangeListener(object : HalfRingProgress.OnProgressChangeListener {
             override fun onProgressChanged(seekBar: HalfRingProgress?, progress: Int, isUser: Boolean) {
-                findViewById<TextView>(R.id.tv).text = "$progress"
             }
 
             override fun onStartTrackingTouch(seekBar: HalfRingProgress?) {
