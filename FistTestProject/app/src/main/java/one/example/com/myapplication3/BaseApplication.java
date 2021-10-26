@@ -16,6 +16,7 @@ import one.example.com.myapplication3.ui.Notifications.NotificationTools2;
 import one.example.com.myapplication3.utile.ApplicationUtile;
 import one.example.com.myapplication3.utile.logutile.LogWriteUtile;
 import one.example.com.runtime.host.HostInit;
+import timber.log.Timber;
 
 /**
  *
@@ -43,6 +44,11 @@ public class BaseApplication extends Application {
 
         HostInit.attachBeseContext(this);//初始化中间件
         RunTimeInit.init();//初始化公共能力
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        } else {
+            //Timber.plant(new CrashReportingTree())
+        }
 
         registerActivityLifecycleCallback();
         registerComponentCallback();

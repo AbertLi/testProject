@@ -16,6 +16,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
             <!--  有进度，但是没有办法拖动  -->
             <one.example.com.myapplication3.ui.wheelview.circleprogress.DonutProgress
                 android:id="@+id/donut_progress"
