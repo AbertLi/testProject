@@ -49,6 +49,7 @@ import one.example.com.myapplication3.ui.retrofit.RetrofitActivity;
 import one.example.com.myapplication3.ui.rxjava.RxJavaTestActivity;
 import one.example.com.myapplication3.ui.sensor.SensorActivity;
 import one.example.com.myapplication3.ui.socket.SocketActivity;
+import one.example.com.myapplication3.ui.view.ViewTestActivity;
 import one.example.com.myapplication3.ui.viewAndEvent.ViewAndEventActivity;
 import one.example.com.myapplication3.ui.wheelview.WheelViewActivity;
 
@@ -117,6 +118,7 @@ public class MainActivity extends Activity {
         list.add(new ItemBean("Socket通信",28));
         list.add(new ItemBean("Sensor 传感器",29));
         list.add(new ItemBean("开发者选项工具",30));
+        list.add(new ItemBean("彗星尾巴效果",32));
         return list;
     }
 
@@ -264,6 +266,10 @@ public class MainActivity extends Activity {
                 break;
             case 30:
                 LogToolManager.get().start(this,Environment.getExternalStorageDirectory().getAbsolutePath());
+                break;
+            case 32:
+                Intent button32 = new Intent(this, ViewTestActivity.class);
+                startActivity(button32);
                 break;
         }
     }

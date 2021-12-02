@@ -18,7 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.sensor.SensorActivity"></activity>
+        <activity
+            android:name=".ui.view.ViewTestActivity"
+            android:exported="false" />
+        <activity android:name=".ui.sensor.SensorActivity" />
         <activity android:name=".ui.socket.SocketActivity" />
         <activity android:name=".ui.wheelview.WheelViewActivity" />
         <activity android:name=".ui.async.asynctask.AsyncTaskActivity" />
